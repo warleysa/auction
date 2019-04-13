@@ -9,8 +9,17 @@ export class TestRepo {
     };
 
     registerUser(username, password, first_name, last_name) {
+			console.log("Registering Usering... API Side");
 			return new Promise((resolve, reject) => {
 					axios.post(`${this.url}/register`, username, password, first_name, last_name, this.config)
+							.then(resp => resolve(resp.data))
+							.catch(resp => alert(resp));
+			});
+    }
+
+		getUser(userId) {
+			return new Promise((resolve, reject) => {
+					axios.get(`${this.url}/user/${userId}`, this.config)
 							.then(resp => resolve(resp.data))
 							.catch(resp => alert(resp));
 			});

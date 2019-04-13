@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
-import { Account } from '../../models/account';
 import luigi from './../Luigi.png';
-import { Card, Button, Container, Row, Col, Alert } from 'react-bootstrap';
-import { Header } from './../Header';
+import { Card, Button, Row, Col, Alert } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { TestRepo } from '../../api/testRepo';
 
 export class RegisterPage extends Component {
-	testRepo = new TestRepo;
+	testRepo = new TestRepo();
 
 	state = {
 		id: -1,
@@ -19,7 +17,7 @@ export class RegisterPage extends Component {
 		userAvailable: 1
 	}
 
-	onSubmit() {
+	onRegister() {
 		console.log("Submitting Register information");
 		if ((!this.state.username == '') && (!this.state.password == '') && (!this.state.first_name == '') && (!this.state.last_name == '')) {
 			console.log("Both password and username entered!");
@@ -30,6 +28,7 @@ export class RegisterPage extends Component {
 				last_name: this.state.last_name
 			})
 				.then(user => {
+					console.log("Register submitted");
 					this.setState({
 						username: user.username,
 						password: user.password,
@@ -78,7 +77,6 @@ export class RegisterPage extends Component {
   render () {
     return (
 			<>
-			<Header/>
 			<div className="row h-75 m-1">
 				<Col className="col-sm-6 my-auto mx-auto">
 					<Card onHide={ this.props.hideLoginModal }>
@@ -134,8 +132,8 @@ export class RegisterPage extends Component {
 								</form>
 								<Button variant="success"
 									className="form-control"
-									disabled={ this.state.usernameNotAvailable || (this.state.username == '') || (this.state.password== '') }
-									onClick={e => this.onSubmit()}>
+									disabled={ this.state.usernameNotAvailable || (this.state.username == '') || (this.state.password == '') }
+									onClick={e => this.onRegister()}>
 		              Register
 		            </Button>
 								<hr/>

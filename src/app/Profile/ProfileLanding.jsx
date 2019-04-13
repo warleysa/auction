@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import { Account, Department } from './../../models';
+import React from 'react';
+import { Department } from './../../models';
 import { TestRepo } from '../../api/testRepo';
-import { Redirect } from 'react-router-dom';
 import { Header } from './../Header';
 import { AuctionList } from './../Auction/AuctionList';
+import { ProfilePage } from './ProfilePage'
 
 export class ProfileLanding extends React.Component {
 		testRepo = new TestRepo;
@@ -13,10 +13,11 @@ export class ProfileLanding extends React.Component {
     };
 
 
+
     render() {
         return (
             <>
-						<Header/>
+						<ProfilePage globalUserId={ this.state.globalUserId } isAdmin={ this.state.isAdmin }/>
             </>
         );
     }

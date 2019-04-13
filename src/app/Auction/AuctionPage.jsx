@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import ReviewForm from './ReviewForm';
-import ReviewList from './ReviewList';
+import ReviewForm from './../Reviews/ReviewForm';
+import ReviewList from './../Reviews/ReviewList';
 import { TestRepo } from '../../api/testRepo';
-import { Header } from './../Header';
 import { Link } from 'react-router-dom';
 
 
 export class AuctionPage extends Component {
-	testRepo = new TestRepo;
+	testRepo = new TestRepo();
 	state = {
 		reviews: [],
 		auction: {
@@ -29,7 +28,6 @@ export class AuctionPage extends Component {
 	render () {
 		return (
 			<>
-			<Header />
 			<div className="m-4">
 				<header className="mb-4">
 					<nav aria-label="breadcrumb">

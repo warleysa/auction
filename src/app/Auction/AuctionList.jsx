@@ -8,7 +8,7 @@ export const AuctionList = (props) => (
 				props.auctions.map((p, i) =>
 				<div className="col-sm-6 col-md-4 col-lg-3 mt-4" key={i}>
 					<div className="card">
-						<img className="card-img-top p-3" src={p.image}/>
+						<img className="card-img-top p-3" alt={p.name} src={p.image} />
 						<div className="card-block p-3">
 							<h4 className="card-title">{p.name}</h4>
 							<span className="badge badge-primary">${ p.price }</span>

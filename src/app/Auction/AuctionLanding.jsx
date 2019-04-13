@@ -1,12 +1,9 @@
-import React, { Component } from 'react';
-import { Account, Department } from './../../models';
+import React from 'react';
 import { TestRepo } from '../../api/testRepo';
-import { Redirect } from 'react-router-dom';
-import { Header } from './../Header';
 import { AuctionList } from './AuctionList';
 
 export class AuctionLanding extends React.Component {
-	testRepo = new TestRepo;
+	testRepo = new TestRepo();
 
 
     state = {
@@ -17,7 +14,6 @@ export class AuctionLanding extends React.Component {
     render() {
         return (
             <>
-						<Header/>
 						<AuctionList auctions={this.state.auctions}/>
             </>
         );
