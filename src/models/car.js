@@ -1,20 +1,15 @@
-export class Car {
-  constructor(id, userId, name, color, price, type, imageUrl, rating, brandName) {
-    this.id = id;
-		this.userId = userId;
-    this.name = name;
-    this.color = color;
-		this.price = price;
-		this.type = type;
-    this.imageUrl = imageUrl;
-		this.rating = rating;
-		this.brandName = brandName;
-		let today = new Date();
-		this.dateCreated = today;
-  }
-};
+export class Car{
+	constructor(make, model, year, mileage, zip, description, auction_end_date, auction_reserve_price){
+		this.make = make;
+		this.model = model;
+		this.year = year;
+    this.mileage = mileage;
+		this.zip = zip;
+		this.description = description;
+    this.auction_end_date = auction_end_date;
+		this.auction_reserve_price = auction_reserve_price;
+    this.imageURL = "http://distinctivecartoyz.com/wp-content/uploads/2017/04/lambo-vect.png";
+	}
+}
 
 export default Car;
-
-
-//type is equal to materials

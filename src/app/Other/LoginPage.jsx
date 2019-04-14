@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import luigi from './../Luigi.png';
-import { Card, Button, Col } from 'react-bootstrap';
+import { Card, Button, Col, Alert } from 'react-bootstrap';
 import { TestRepo } from '../../api/testRepo';
 import { Link, Redirect } from 'react-router-dom';
 import { StorageManage } from './../../StorageManage';
@@ -14,7 +14,8 @@ export class LoginPage extends Component{
 		username: '',
 		password: '',
 		loginAuth: 0,
-		redirect: ''
+		redirect: '',
+		loginAlertShow: false
 	}
 
 	onSubmit() {
@@ -25,7 +26,11 @@ export class LoginPage extends Component{
 			.then(user => {
 				this.setState(user)
 				if(this.state.loginAuth == 0) {
-					window.alert('Incorrect Password Entered!');
+					this.setState(
+						{
+							loginAlertShow: true
+						}
+					)
 				} else {
 					this.props.setAuthState(true);
 					this.storage.setAuthStatus(true);
@@ -41,9 +46,12 @@ export class LoginPage extends Component{
 		}
 	}
 
-	hideLoginModal() {
-		console.log("Closing Modal");
-		this.props.hideLoginModal(false);
+	hideLoginAlert() {
+		this.setState(
+			{
+				loginAlertShow: false
+			}
+		)
 	}
 
 	render () {
@@ -54,6 +62,9 @@ export class LoginPage extends Component{
 		}
 		return (
 			<>
+			<Alert dismissible variant="danger" show={ this.state.loginAlertShow } onClose={() => this.hideLoginAlert()} className="text-center fixed-top w-75 mx-auto mt-3">
+				Username and Password are incorrect!
+			</Alert>
 			<div className="row h-75 m-1">
 				<Col className="col-sm-4 my-auto mx-auto">
 					<Card>

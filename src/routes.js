@@ -5,13 +5,13 @@ import { LoginPage } from './app/Other/LoginPage';
 import { RegisterPage } from './app/Other/RegisterPage';
 import { AuctionLanding } from './app/Auction/AuctionLanding';
 import { AuctionPage } from './app/Auction/AuctionPage';
-import { ProfilePage } from './app/Profile/ProfilePage'
+import { ProfileLanding } from './app/Profile/ProfileLanding'
 
 export const ROUTES = [
 	{ path: '/register', component: RegisterPage },
 	{ path: '/login', component: LoginPage },
-	{ path: '/profile/:userId', component: ProfilePage },
-	{ path: '/profile', component: ProfilePage },
+	{ path: '/profile/:userId', component: ProfileLanding },
+	{ path: '/profile', component: ProfileLanding },
 	// { path: '/edit/:accountId', component: CarEditor },
 	// { path: '/new', component: CarEditor },
 	{ path: '/auctions', component: AuctionLanding },
