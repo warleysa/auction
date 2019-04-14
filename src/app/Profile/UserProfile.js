@@ -16,6 +16,7 @@ import Rating from './../Reviews/Rating';
 import MyCarsList from './MyCarsList';
 
 import AddCarModal from './AddCarModal';
+import AccountSidebar from './AccountSidebar';
 
 
 
@@ -52,7 +53,7 @@ class UserProfile extends Component {
   handleInputChange = (event) => {
     this.setState({
         [event.target.name]: event.target.value
-    })
+    });
   };
 
   onCarAdded(newCar){
@@ -163,23 +164,13 @@ class UserProfile extends Component {
 
       <Row>
         <Col md={3}>
-          <Card className="pt-3">
-            <Card.Img variant="top" src={defaultPic}/>
-            <Card.Body>
-              <Card.Title>My Account</Card.Title>
-                <div>
-                  <ul className="list-group">
-                    <li className="list-group-item text-left"><span className="pull-left"><strong>Name:</strong></span>{this.state.first_name} {this.state.last_name}</li>
-                    <li className="list-group-item text-left"><span className="pull-left"><strong>Date Joined:</strong></span>{this.state.register_date}</li>
-                    <li className="list-group-item text-left"><span className="pull-left"><strong>Cars Listed:</strong></span>{this.state.cars_listed}</li>
-                    <li className="list-group-item text-left"><span className="pull-left"><strong>Cars Sold:</strong></span> {this.state.cars_sold}</li>
-                    <li className="list-group-item text-left"><span className="pull-left"><strong>Cars Purchased:</strong></span>{this.state.cars_purchased}</li>
-                    <li className="list-group-item text-left"><span className="pull-left"><strong>User Ranking:</strong></span><Rating value={this.state.ranking}/></li>
-                  </ul>
-                </div>
-
-            </Card.Body>
-          </Card>
+					<AccountSidebar first_name={this.state.first_name}
+                            last_name={this.state.last_name}
+                            date_joined={this.state.date_joined}
+                            cars_listed={this.state.cars_listed}
+                            cars_purchased={this.state.cars_purchased}
+                            cars_sold={this.state.cars_sold}
+                            ranking={this.state.ranking}/>
         </Col>
 
         <Col md={9}>
