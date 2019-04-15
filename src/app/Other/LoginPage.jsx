@@ -3,11 +3,9 @@ import luigi from './../Luigi.png';
 import { Card, Button, Col, Alert } from 'react-bootstrap';
 import { TestRepo } from '../../api/testRepo';
 import { Link, Redirect } from 'react-router-dom';
-import { StorageManage } from './../../StorageManage';
 
 export class LoginPage extends Component{
 	testRepo = new TestRepo();
-	storage = new StorageManage();
 
 	state = {
 		id: -1,
@@ -32,9 +30,7 @@ export class LoginPage extends Component{
 						}
 					)
 				} else {
-					this.props.setAuthState(true);
-					this.storage.setAuthStatus(true);
-					this.isAuthenticated = true;
+					this.props.setAuthState(true, this.state.id);
 					this.setState(
 						{
 							redirect: `/profile/${ this.state.id }`,
@@ -55,8 +51,6 @@ export class LoginPage extends Component{
 	}
 
 	render () {
-		let authStatus = this.storage.getAuthStatus();
-		console.log("Logged in?" + authStatus);
 		if(this.state.redirect) {
 			return <Redirect to={this.state.redirect}/>
 		}

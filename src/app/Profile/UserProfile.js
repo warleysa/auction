@@ -24,13 +24,6 @@ import AccountSidebar from './AccountSidebar';
 class UserProfile extends Component {
 
 	state = {
-		first_name:'Tate',
-		last_name: 'Hakert',
-		email:  'tatehakert@gmail.com',
-		address: '2900 McKinnon St., Unit 1701',
-		city:   'Dallas',
-		state_code:  'TX',
-		zip:  '75201',
 		register_date: '3-3-19',
 		cars_listed: '1',
 		cars_sold: '0',
@@ -147,8 +140,7 @@ class UserProfile extends Component {
       })
     }
 
-
-
+		this.setState(this.state.profileInfo);
 
 
     return (
@@ -287,6 +279,7 @@ class UserProfile extends Component {
       </Container>
     );
   }
+
 }
 
 export default UserProfile;

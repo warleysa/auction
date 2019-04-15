@@ -68,17 +68,5 @@ export class ProfilePage extends Component {
 		)
 	}
 	componentDidMount() {
-		if(this.props.match) {
-			let userId = +this.props.match.params.userId;
-			// console.log("State Auth: " + this.state.authId);
-			// console.log("State Global User ID:" + this.state.globalUserId);
-			if (userId) {
-				this.testRepo.getUser(userId)
-				.then(p => {
-					this.setState({profile: p});
-					console.log(this.state);
-				});
-			}
-		}
 	}
 };

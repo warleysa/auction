@@ -12,15 +12,17 @@ class App extends Component {
 
 	state = {
 		isAuthenticated: this.storage.getAuthStatus(),
-		dogTest: 16325
+		currentUserId: this.storage.getUserId()
 	}
 
-	setAuthState(s) {
-		if(s == true) {
+	setAuthState(auth, userId) {
+		console.log("Setting UserID to: " + userId);
+		if(auth == true) {
 			console.log("Logging In");
-			this.storage.setAuthStatus(true);
+			this.storage.setAuthStatus(true, userId);
 			this.setState(state => {
 	      state.isAuthenticated = true;
+				state.currentUserId = +userId;
 	      return state;
 	    });
 		} else {
@@ -28,6 +30,7 @@ class App extends Component {
 			this.storage.setAuthStatus(false);
 			this.setState(state => {
 	      state.isAuthenticated = false;
+				state.currentUserId = '';
 	      return state;
 	    });
 		}
@@ -38,14 +41,14 @@ class App extends Component {
     return (
       <>
 				<Router>
-					{ <Header isAuthenticated={ this.state.isAuthenticated } setAuthState={e => this.setAuthState(e) } /> }
+					{ <Header isAuthenticated={ this.state.isAuthenticated } setAuthState={ (auth, userId) => this.setAuthState(auth, userId) } /> }
 					<Switch>
 						{ ROUTES.map(({path, component: C, getAuthStatus}, i) => (
 							<Route
 								key={i}
 								path={path}
-								render={ (props) => <C {...props} isAuthenticated={ this.state.isAuthenticated }
-								 									setAuthState={e => this.setAuthState(e) } /> } />
+								render={ (props) => <C {...props} userInfo={ {isAuthenticated: this.state.isAuthenticated, currentUserId: this.state.currentUserId } }
+								 									setAuthState={(auth, userId) => this.setAuthState(auth, userId) } /> } />
 						))}
 
 					</Switch>

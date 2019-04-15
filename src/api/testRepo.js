@@ -1,6 +1,11 @@
 import axios from 'axios';
 
+import { StorageManage } from './../StorageManage';
+
+
 export class TestRepo {
+		storage = new StorageManage();
+
     url = "http://18.191.249.64:4444/api";
 		config = {
         headers: {
@@ -17,12 +22,21 @@ export class TestRepo {
 			});
     }
 
-		getUser(userId) {
-			return new Promise((resolve, reject) => {
-					axios.get(`${this.url}/user/${userId}`, this.config)
-							.then(resp => resolve(resp.data))
-							.catch(resp => alert(resp));
-			});
+		getUserInfo(userId) {
+			console.log("Local Storage: " + this.storage.getUserId() + ", Passed in: " + userId);
+			if(this.storage.getUserId() == userId) {
+				return new Promise((resolve, reject) => {
+						axios.get(`${this.url}/userPrivate/${userId}`, this.config)
+								.then(resp => resolve(resp.data))
+								.catch(resp => alert(resp));
+				});
+			} else {
+				return new Promise((resolve, reject) => {
+						axios.get(`${this.url}/user/${userId}`, this.config)
+								.then(resp => resolve(resp.data))
+								.catch(resp => alert(resp));
+				});
+			}
     }
 
 		loginUser(username, password) {

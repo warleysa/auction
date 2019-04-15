@@ -1,14 +1,19 @@
+
+
 export class StorageManage {
 	constructor() {
 
 	}
 
-	setAuthStatus(authenticated) {
+	setAuthStatus(authenticated, userId) {
 		if(authenticated == false) {
 			localStorage.removeItem('authStatus');
+			localStorage.removeItem('currUserId');
 		} else {
 			let auth = {loggedIn: authenticated, timestamp: new Date().getTime()}
 			localStorage.setItem('authStatus', JSON.stringify(auth));
+			localStorage.setItem('userId', userId);
+
 		}
 	}
 
@@ -23,6 +28,11 @@ export class StorageManage {
 			return false;
 		}
 		return true;
+	}
+
+	getUserId() {
+		let currUserId = localStorage.getItem("userId");
+		return currUserId;
 	}
 
 }

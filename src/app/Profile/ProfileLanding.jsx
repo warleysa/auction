@@ -18,8 +18,7 @@ export class ProfileLanding extends React.Component {
     render() {
         return (
             <>
-
-							<UserProfile profileInfo={ this.state.profile } globalUserId={ this.state.globalUserId } isAdmin={ this.state.isAdmin }/>
+							<UserProfile profileInfo={ this.state.profile } userInfo={ this.state.userInfo }/>
             </>
         );
     }
@@ -27,14 +26,12 @@ export class ProfileLanding extends React.Component {
 
 		componentDidMount() {
 			if(this.props.match) {
-				let userId = +this.props.match.params.userId;
-				if (userId) {
-					this.testRepo.getUser(userId)
-					.then(p => {
-						this.setState({profile: p});
-						console.log(this.state);
-					});
-				}
+			let userId = +this.props.match.params.userId;
+				this.testRepo.getUserInfo(userId)
+				.then(p => {
+					this.setState({profile: p});
+					console.log(this.state);
+				});
 			}
 		}
 }
