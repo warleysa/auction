@@ -4,6 +4,8 @@ import { NavLink } from 'react-router-dom';
 
 import { Container } from 'react-bootstrap';
 
+import logo from './logo.ico';
+
 
 
 export class Header extends React.Component {
@@ -15,8 +17,9 @@ export class Header extends React.Component {
 	render() {
 		return (
 			<>
-			<nav className="navbar navbar-expand-lg navbar-light bg-light">
-				<a className="navbar-brand" href="/">Car Auction</a>
+			<nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+				<img src={ logo } className="mx-auto p-2" alt="Logo" height="50" width="50"/>
+				<a className="navbar-brand" href="/">Luigi's Car Auction</a>
 				<button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 					<span className="navbar-toggler-icon"></span>
 				</button>

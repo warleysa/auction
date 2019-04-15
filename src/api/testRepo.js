@@ -6,7 +6,7 @@ import { StorageManage } from './../StorageManage';
 export class TestRepo {
 		storage = new StorageManage();
 
-    url = "http://18.191.249.64:4444/api";
+    url = "http://3.16.180.80:4444/api";
 		config = {
         headers: {
             Authorization: 'swarley'
@@ -57,7 +57,7 @@ export class TestRepo {
 
 		getAuctions() {
         return new Promise((resolve, reject) => {
-            axios.get(`${this.url}/products`, this.config)
+            axios.get(`${this.url}/auctions`, this.config)
                 .then(resp => resolve(resp.data))
                 .catch(resp => alert(resp));
         });
@@ -65,7 +65,7 @@ export class TestRepo {
 
 		getAuction(auctionId) {
         return new Promise((resolve, reject) => {
-            axios.get(`${this.url}/product/${auctionId}`, this.config)
+            axios.get(`${this.url}/auction/${auctionId}`, this.config)
                 .then(resp => resolve(resp.data))
                 .catch(resp => alert(resp));
         });

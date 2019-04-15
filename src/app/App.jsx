@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Header } from './Header';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { StorageManage } from './../StorageManage';
+import { Container } from 'react-bootstrap';
 
 
 import ROUTES from './../routes.js';
@@ -41,7 +42,7 @@ class App extends Component {
     return (
       <>
 				<Router>
-					{ <Header isAuthenticated={ this.state.isAuthenticated } setAuthState={ (auth, userId) => this.setAuthState(auth, userId) } /> }
+					<Header isAuthenticated={ this.state.isAuthenticated } setAuthState={ (auth, userId) => this.setAuthState(auth, userId) } />
 					<Switch>
 						{ ROUTES.map(({path, component: C, getAuthStatus}, i) => (
 							<Route
