@@ -14,14 +14,8 @@ class ChangePassword extends Component {
       oldPassword: '',
       newPassword: '',
       newPassword2: '',
-      passwordsMatch: false,
-      oldPassValidated: false,
-      newPassValidated: false,
-      newPass2Validated: false,
-      showModal: false,
-      oldPasswordError: '',
       newPasswordError: '',
-      newPassword2Error: '',
+      showModal: false,
       validated: false
 
     }
@@ -30,7 +24,12 @@ class ChangePassword extends Component {
 
 
   handleClose = () => {
-    this.setState({ showModal: false });
+    this.setState({
+      showModal: false,
+      oldPassword: '',
+      newPassword: '',
+      newPassword2: '',
+      });
   }
 
   handleShow = () => {
@@ -49,6 +48,15 @@ class ChangePassword extends Component {
         event.target.classList.remove('is-invalid')
         event.target.classList.add('is-valid')
       }else{
+        if(event.target.value.length === 0){
+          this.setState({
+            newPasswordError: "password is required"
+          })
+        }else{
+          this.setState({
+            newPasswordError: "password needs a minimum of 4 characters"
+          })
+        }
         event.target.classList.remove('is-valid')
         event.target.classList.add('is-invalid')
       }
@@ -58,8 +66,10 @@ class ChangePassword extends Component {
           event.target.classList.remove('is-valid')
           event.target.classList.add('is-invalid')
         }else{
-          event.target.classList.remove('is-invalid')
-          event.target.classList.add('is-valid')
+          if(event.target.value.length > 3){
+            event.target.classList.remove('is-invalid')
+            event.target.classList.add('is-valid')
+          }
         }
     }
   };
@@ -107,7 +117,7 @@ class ChangePassword extends Component {
                               value={this.state.newPassword}
                               onChange={this.handleInputChange} />
                 <Form.Control.Feedback type='valid'>looks good</Form.Control.Feedback>
-                <Form.Control.Feedback type='invalid'>password is required</Form.Control.Feedback>
+                <Form.Control.Feedback type='invalid'>{this.state.newPasswordError}</Form.Control.Feedback>
               </Form.Group>
 
               <Form.Group>

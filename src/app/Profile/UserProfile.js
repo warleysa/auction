@@ -265,16 +265,10 @@ class UserProfile extends Component {
 
             </Form>
 
-            <div className="d-flex flex-row-reverse">
-
-              <div className=" ">
-
-              </div>
-            </div>
 
 						<Row className='justify-content-between'>
-							<Col sm={4} ><ChangePassword/></Col>
-							<Col sm={3} > {editSaveButton()}</Col>
+							<Col className="col-sm-auto"><ChangePassword/></Col>
+							<Col className="col-sm-auto" > {editSaveButton()}</Col>
 						</Row>
 
 

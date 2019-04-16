@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export const AuctionList = (props) => (
-	<div class="container">
+	<div className="container">
 		<div className="row">
 			{
 				props.auctions.map((p, i) =>
