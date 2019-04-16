@@ -41,6 +41,7 @@ class App extends Component {
   render() {
     return (
       <>
+			<div className="container-fluid p-0">
 				<Router>
 					<Header isAuthenticated={ this.state.isAuthenticated } setAuthState={ (auth, userId) => this.setAuthState(auth, userId) } />
 					<Switch>
@@ -51,9 +52,9 @@ class App extends Component {
 								render={ (props) => <C {...props} userInfo={ {isAuthenticated: this.state.isAuthenticated, currentUserId: this.state.currentUserId } }
 								 									setAuthState={(auth, userId) => this.setAuthState(auth, userId) } /> } />
 						))}
-
 					</Switch>
 				</Router>
+				</div>
       </>
     );
   }

@@ -7,6 +7,7 @@ export class ProfileLanding extends React.Component {
 
 
     state = {
+			profile: {}
     };
 
 
@@ -14,7 +15,7 @@ export class ProfileLanding extends React.Component {
     render() {
         return (
             <>
-							<UserProfile profileInfo={ this.state.profile } userInfo={ this.state.userInfo }/>
+							<UserProfile state={ this.state.profile } userInfo={ this.state.userInfo }/>
             </>
         );
     }

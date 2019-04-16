@@ -1,0 +1,41 @@
+Home Page
+	- GET request for all auction cars, same as 'Auction Home Page'
+	- GET for any notifications that the user may need?
+
+Login Page
+	- POST request need to body/params of password, username and CRSF Token for browser check
+		- Returns basic user profile information such as email and contact info
+
+Register Page
+	- POST request with
+		- email verification check if already contained within the database
+			- if already contained, return an error code of -1
+			- else return the same information as the login page
+
+Profile Page (VIEW)
+	- GET request with params as user_id
+		- returns all car auctions associated with the user_id
+		- returns all profile information relevant to that user_id
+	- DELETE request for removing an auction by auction_id
+		- after GUI check user_id == to current user_id state
+
+Profile Page (EDIT)
+	- POST request that only updates the information that is sent
+	- DELETE request for deleting the entire account recursively
+	- PUT request for adding a car to the profile page (will be same request as adding the car with a pop-up modal)
+
+Auction Product Page (VIEW)
+	- GET request auction data for the auction_id requested and all related comments to that auction_id
+		- Return name, username that created it, date posted, price and ... comments as array?
+		- Might be better to make 2 GET requests. Since comments as array, not sure how easy this is with Hapi
+			- One for auction data
+			- One for comment data
+	- POST for comment
+		- Sending body with user_id and comment
+		- Return comment_id, username (& user_id if needed), comment, and date created
+
+Auction Home Page (VIEW)
+	- GET for all auctions that have not expired and rating associated with them
+		- Returns auction_id and associated data
+		- Return rating as average of all ratings associated with that auction_id
+	- PUT for sending the rating to DB, no return needed? Or should we need rating_id for tracking?

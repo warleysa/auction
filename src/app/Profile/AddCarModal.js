@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import { Col, Dropdown } from 'react-bootstrap';
+import Datetime from 'react-datetime';
 import Button from 'react-bootstrap/Button';
 import AddImages	from './AddImages';
 import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
@@ -28,7 +29,8 @@ class AddCarModal extends Component {
 			description:	"",
 			auction_end_date: "",
 			auction_reserve_price: "",
-			images: []
+			images: [],
+			durationValues: [1,3,7,14,30]
 		};
 	}
 
@@ -188,16 +190,20 @@ class AddCarModal extends Component {
 							<Form.Row>
 								<Form.Group as={Col} controlId="carFormAuctionEndDate">
 
-									<Form.Label>Auction end date </Form.Label>
+									<Form.Label>Auction Duration (in Days)</Form.Label>
 									<InputGroup>
 										<InputGroup.Prepend>
 											<InputGroup.Text id="inputGroupPrepend"><i className="fas fa-calendar-day"></i></InputGroup.Text>
 										</InputGroup.Prepend>
-										<Form.Control placeholder="2019-04-09"
-																	type="date"
-																	name="auction_end_date"
-																	value={this.state.auction_end_date}
-																	onChange={this.handleInputChange} />
+										<Form.Control
+												as="select"
+												value={this.state.durationSelected}
+												onChange={ e => this.setState({ durationSelected: e.target.value }) }>
+												<select></select>
+												{
+													this.state.durationValues.map((x,y) => <option key={y} value={x}>{x}</option>)
+												}
+											</Form.Control>
 									</InputGroup>
 								</Form.Group>
 

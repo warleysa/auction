@@ -40,6 +40,7 @@ class UserProfile extends Component {
 
 
 
+
   handleInputChange = (event) => {
     this.setState({
         [event.target.name]: event.target.value
@@ -136,8 +137,6 @@ class UserProfile extends Component {
         temp_zip: this.state.zip
       })
     }
-
-		this.setState(this.state.profileInfo);
 
 
     return (

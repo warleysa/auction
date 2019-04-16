@@ -31,8 +31,18 @@ export class StorageManage {
 	}
 
 	getUserId() {
-		let currUserId = localStorage.getItem("userId");
+		let currUserId = +localStorage.getItem("userId");
 		return currUserId;
 	}
+
+	setCart(cartItems) {
+		localStorage.setItem('cartItems', JSON.stringify(cartItems));
+	}
+
+	getCart() {
+		let cartItems = JSON.parse(localStorage.getItem(cartItems));
+		return cartItems;
+	}
+
 
 }
