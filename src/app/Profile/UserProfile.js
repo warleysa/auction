@@ -17,7 +17,7 @@ import MyCarsList from './MyCarsList';
 
 import AddCarModal from './AddCarModal';
 import AccountSidebar from './AccountSidebar';
-
+import ChangePassword from './ChangePassword';
 
 
 
@@ -45,7 +45,8 @@ class UserProfile extends Component {
 		temp_city:   'Dallas',
 		temp_state_code:  'TX',
 		temp_zip:  '75201',
-		modalShowState: false
+		modalShowState: false,
+		passwordModalShowState: false
 	}
 
 
@@ -84,8 +85,9 @@ class UserProfile extends Component {
       if(this.state.form_readOnly){
         return (
           <Button variant="outline-primary"
-                  onClick={toggleEditing}>
-            Edit Details
+                  onClick={toggleEditing}
+									className='m-1'>
+          <i className="m-1 far fa-edit"></i>  Edit Details
           </Button>
         )
       }else{
@@ -93,13 +95,13 @@ class UserProfile extends Component {
           <>
           <Button variant="danger"
                   onClick={onCancel}
-                  className="mr-1">
+                  className="m-1">
             Cancel
           </Button>
 
           <Button variant="success"
                   onClick={onSave}
-                  className="mr-1">
+                  className="m-1">
             Save
           </Button>
 
@@ -264,10 +266,16 @@ class UserProfile extends Component {
             </Form>
 
             <div className="d-flex flex-row-reverse">
+
               <div className=" ">
-                {editSaveButton()}
+
               </div>
             </div>
+
+						<Row className='justify-content-between'>
+							<Col sm={4} ><ChangePassword/></Col>
+							<Col sm={3} > {editSaveButton()}</Col>
+						</Row>
 
 
             </Tab>
