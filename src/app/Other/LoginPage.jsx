@@ -1,3 +1,4 @@
+/* eslint eqeqeq: "off" */
 import React, { Component } from 'react';
 import luigi from './../Luigi.png';
 import { Card, Button, Col, Alert, Container } from 'react-bootstrap';
@@ -19,7 +20,7 @@ export class LoginPage extends Component{
 	onSubmit() {
 		if ((!this.state.username == '') && (!this.state.password == '')) {
 			this.testRepo.loginUser(
-				{ username: this.state.username, password: this.state.password}
+				{ username: this.state.username, password: this.state.password }
 			)
 			.then(user => {
 				this.setState(user)

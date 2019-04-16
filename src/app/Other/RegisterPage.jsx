@@ -1,3 +1,4 @@
+/* eslint eqeqeq: "off" */
 import React, { Component } from 'react';
 import luigi from './../Luigi.png';
 import { Card, Button, Row, Col, Alert } from 'react-bootstrap';

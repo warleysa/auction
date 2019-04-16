@@ -10,9 +10,6 @@ import Tab from 'react-bootstrap/Tab';
 import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
 import Alert from 'react-bootstrap/Alert';
 import './UserProfile.css';
-import Card from 'react-bootstrap/Card';
-import defaultPic from './man.png';
-import Rating from './../Reviews/Rating';
 import MyCarsList from './MyCarsList';
 
 import AddCarModal from './AddCarModal';

@@ -1,3 +1,4 @@
+/* eslint eqeqeq: "off" */
 import axios from 'axios';
 
 import { StorageManage } from './../StorageManage';
@@ -24,6 +25,14 @@ export class TestRepo {
 
 		getUserInfo(userId) {
 			console.log("Local Storage: " + this.storage.getUserId() + ", Passed in: " + userId);
+			if(!userId) {
+				userId = this.storage.getUserId();
+				return new Promise((resolve, reject) => {
+						axios.get(`${this.url}/userPrivate/${userId}`, this.config)
+								.then(resp => resolve(resp.data))
+								.catch(resp => alert(resp));
+				});
+			}
 			if(this.storage.getUserId() == userId) {
 				return new Promise((resolve, reject) => {
 						axios.get(`${this.url}/userPrivate/${userId}`, this.config)

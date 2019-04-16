@@ -1,3 +1,4 @@
+/* eslint eqeqeq: "off" */
 import React from 'react';
 import { TestRepo } from '../../api/testRepo';
 import { AuctionList } from './AuctionList';

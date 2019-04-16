@@ -1,3 +1,4 @@
+/* eslint eqeqeq: "off" */
 import React, { Component } from 'react';
 import ReviewForm from './../Reviews/ReviewForm';
 import ReviewList from './../Reviews/ReviewList';
