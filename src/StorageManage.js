@@ -1,4 +1,4 @@
-
+/* eslint eqeqeq: "off" */
 
 export class StorageManage {
 	constructor() {

@@ -22,7 +22,14 @@ const AccountSidebar = (props) => {
               <li className="list-group-item text-left"><span className="pull-left"><strong>Cars Listed:</strong></span>{props.cars_listed}</li>
               <li className="list-group-item text-left"><span className="pull-left"><strong>Cars Sold:</strong></span> {props.cars_sold}</li>
               <li className="list-group-item text-left"><span className="pull-left"><strong>Cars Purchased:</strong></span>{props.cars_purchased}</li>
-              <li className="list-group-item text-left"><span className="pull-left"><strong>User Ranking:</strong></span><Rating value={props.ranking}/></li>
+              <li className="list-group-item text-left">
+								<span className="pull-left">
+									<strong>User Ranking:</strong>
+								</span>
+								<div className="pull-left">
+									<Rating className="pull-left" value={props.ranking}/>
+								</div>
+							</li>
             </ul>
           </div>
 

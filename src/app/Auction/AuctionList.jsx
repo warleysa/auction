@@ -1,8 +1,9 @@
+/* eslint eqeqeq: "off" */
 import React from 'react';
 import { Link } from 'react-router-dom';
 
 export const AuctionList = (props) => (
-	<div class="container">
+	<div class="container mt-2">
 		<div className="row">
 			{
 				props.auctions.map((p, i) =>
