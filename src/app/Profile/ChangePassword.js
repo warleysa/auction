@@ -116,7 +116,7 @@ class ChangePassword extends Component {
                               name="newPassword"
                               value={this.state.newPassword}
                               onChange={this.handleInputChange} />
-                <Form.Control.Feedback type='valid'>looks good</Form.Control.Feedback>
+                <Form.Control.Feedback type='valid'>Looks Good!</Form.Control.Feedback>
                 <Form.Control.Feedback type='invalid'>{this.state.newPasswordError}</Form.Control.Feedback>
               </Form.Group>
 

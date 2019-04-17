@@ -11,9 +11,9 @@ const AccountSidebar = (props) => {
 
 
   return(
-    <Card className="mb-3">
+    <Card className="mb-3 shadow-sm">
       <div className="p-2">
-        <Card.Img variant="top" src={defaultPic}  />
+        <Card.Img variant="top" src={defaultPic} />
       </div>
       <Card.Header><Card.Title>{props.first_name}'s account</Card.Title></Card.Header>
       <Card.Body className="p-3">

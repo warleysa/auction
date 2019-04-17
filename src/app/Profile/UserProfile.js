@@ -64,6 +64,7 @@ class UserProfile extends Component {
     });
   };
 
+
   render() {
 
     const onDismissAlert = () => this.setState({showWelcomeAlert: false});
@@ -181,8 +182,8 @@ class UserProfile extends Component {
             <AddCarModal modalShowState={ this.state.modalShowState } onCarAdded= {car => this.onCarAdded(car)}/>
           </ButtonToolbar>
 
-          <Tabs defaultActiveKey="AccountSettings" id="uncontrolled-tab-example" >
-            <Tab eventKey="AccountSettings" title="Account Settings" className="p-4">
+          <Tabs defaultActiveKey="AccountSettings" id="uncontrolled-tab-example"  >
+            <Tab eventKey="AccountSettings" title="Account Settings" className="p-4 shadow-sm">
 
 
             <Form >
