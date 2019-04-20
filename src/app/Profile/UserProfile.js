@@ -14,7 +14,8 @@ import MyCarsList from './MyCarsList';
 
 import AddCarModal from './AddCarModal';
 import AccountSidebar from './AccountSidebar';
-
+import ChangePassword from './ChangePassword';
+import UserList from './../Other/UserList';
 
 
 
@@ -35,7 +36,8 @@ class UserProfile extends Component {
 		temp_city:   'Dallas',
 		temp_state_code:  'TX',
 		temp_zip:  '75201',
-		modalShowState: false
+		modalShowState: false,
+		passwordModalShowState: false
 	}
 
 
@@ -53,6 +55,7 @@ class UserProfile extends Component {
       return state;
     });
   };
+
 
   render() {
 
@@ -75,8 +78,9 @@ class UserProfile extends Component {
       if(this.state.form_readOnly){
         return (
           <Button variant="outline-primary"
-                  onClick={toggleEditing}>
-            Edit Details
+                  onClick={toggleEditing}
+									className='m-1'>
+          <i className="m-1 far fa-edit"></i>  Edit Details
           </Button>
         )
       }else{
@@ -84,13 +88,13 @@ class UserProfile extends Component {
           <>
           <Button variant="danger"
                   onClick={onCancel}
-                  className="mr-1">
+                  className="m-1">
             Cancel
           </Button>
 
           <Button variant="success"
                   onClick={onSave}
-                  className="mr-1">
+                  className="m-1">
             Save
           </Button>
 
@@ -271,7 +275,128 @@ class UserProfile extends Component {
         </Col>
       </Row>
 
+      {/* ---Profile overview (left sidebar)--- */}
 
+		      <Row>
+		        <Col md={5} lg={4} xl={3}>
+							<AccountSidebar first_name={this.state.first_name}
+		                            last_name={this.state.last_name}
+		                            date_joined={this.state.register_date}
+		                            cars_listed={this.state.cars_listed}
+		                            cars_purchased={this.state.cars_purchased}
+		                            cars_sold={this.state.cars_sold}
+		                            ranking={this.state.ranking}
+																keyId="hello"/>
+		        </Col>
+
+		        <Col md={7} lg={8} xl={9}>
+		          <ButtonToolbar style={{flexDirection: 'row', justifyContent: 'flex-end'}}>
+		            <AddCarModal modalShowState={ this.state.modalShowState } onCarAdded= {car => this.onCarAdded(car)}/>
+		          </ButtonToolbar>
+
+		          <Tabs defaultActiveKey="AccountSettings" id="uncontrolled-tab-example"  >
+		            <Tab eventKey="AccountSettings" title="Account Settings" className="p-4 shadow-sm">
+
+
+		            <Form>
+		              <Row>
+		                <Col>
+		                    <Form.Group as={Row} controlId="formFirstName">
+		                      <Form.Label column sm='4'>First:</Form.Label>
+		                        <Col sm='8'>
+		                          <Form.Control type="text"
+		                                        name="temp_first_name"
+		                                        value={this.state.temp_first_name}
+		                                        placeholder="Enter first name"
+		                                        readOnly= {this.state.form_readOnly}
+		                                        onChange={this.handleInputChange}/>
+		                        </Col>
+		                    </Form.Group>
+		                </Col>
+
+		                <Col>
+		                    <Form.Group as={Row} controlId="formLastName">
+		                      <Form.Label column sm='4'>Last:</Form.Label>
+		                      <Col sm='8'>
+		                        <Form.Control type="text"
+		                                      name="temp_last_name"
+		                                      placeholder="Enter last name"
+		                                      value={this.state.temp_last_name}
+		                                      readOnly= {this.state.form_readOnly}
+		                                      onChange={this.handleInputChange}/>
+		                      </Col>
+		                    </Form.Group>
+		                </Col>
+		              </Row>
+
+		              <Form.Group as={Row} controlId="formAddressl1">
+		                <Form.Label column sm='2'>Address</Form.Label>
+		                <Col sm='10'>
+		                  <Form.Control placeholder="1234 Main St"
+		                                type="text"
+		                                name="temp_address"
+		                                value={this.state.temp_address}
+		                                readOnly= {this.state.form_readOnly}
+		                                onChange={this.handleInputChange}/>
+		                </Col>
+		              </Form.Group>
+
+
+
+		              <Form.Row>
+		                <Form.Group as={Col} controlId="formCity">
+		                  <Form.Label>City</Form.Label>
+		                  <Form.Control placeholder="enter a city"
+		                                type="text"
+		                                name="temp_city"
+		                                value={this.state.temp_city}
+		                                readOnly= {this.state.form_readOnly}
+		                                onChange={this.handleInputChange}/>
+		                </Form.Group>
+
+		                <Form.Group as={Col} controlId="formState">
+		                  <Form.Label>State</Form.Label>
+		                  <Form.Control placeholder="enter a state"
+		                                type="text"
+		                                name="temp_state_code"
+		                                value={this.state.temp_state_code}
+		                                readOnly= {this.state.form_readOnly}
+		                                onChange={this.handleInputChange}/>
+		                </Form.Group>
+
+		                <Form.Group as={Col} controlId="formZip">
+		                  <Form.Label>Zip</Form.Label>
+		                  <Form.Control placeholder="54321"
+		                                type="text"
+		                                name="temp_zip"
+		                                value={this.state.temp_zip}
+		                                readOnly= {this.state.form_readOnly}
+		                                onChange={this.handleInputChange}/>
+		                </Form.Group>
+		              </Form.Row>
+
+		            </Form>
+
+
+								<Row className='justify-content-between'>
+									<Col className="col-sm-auto"><ChangePassword/></Col>
+									<Col className="col-sm-auto" > {editSaveButton()}</Col>
+								</Row>
+
+
+		            </Tab>
+
+		            {/* --My Cars tab -- */}
+
+		            <Tab eventKey="MyCars" title="My Cars" className="p-4">
+		              <MyCarsList cars={this.state.cars}/>
+		            </Tab>
+
+		          </Tabs>
+		        </Col>
+		      </Row>
+
+					<UserList/>
 
       </Container>
     );
