@@ -25,7 +25,7 @@ export class RealRepo {
 
 		loginUser(username, password) {
         return new Promise((resolve, reject) => {
-            axios.post(`${this.url}/users/login`, username, password, this.config)
+            axios.post(`${this.url}/user/login`, username, password, this.config)
                 .then(resp => resolve(resp.data))
                 .catch(resp => alert(resp));
         });

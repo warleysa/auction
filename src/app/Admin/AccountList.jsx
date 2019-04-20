@@ -6,8 +6,8 @@ export const AccountList = (props) => (
         <thead>
             <tr>
                 <th>Name</th>
-                <th>Email</th>
-                <th>Employee</th>
+                <th>Username</th>
+                <th>Admin</th>
                 <th>Department</th>
                 <th>&nbsp;</th>
             </tr>
@@ -17,10 +17,10 @@ export const AccountList = (props) => (
                 props.accounts.map((a, i) =>
                     <tr key={i}>
                         <td>
-                            <Link to={`/edit/${a.id}`}>{ a.name }</Link>
+                            <Link to={`/edit/${a.id}`}>{ `${a.firstName} ${a.lastName}` }</Link>
                         </td>
-                        <td>{ a.email }</td>
-                        <td>{ a.isEmployee ? "Y" : "N" }</td>
+                        <td>{ a.username }</td>
+                        <td>{ a.isAdmin ? "Y" : "N" }</td>
                         <td>{ a.departmentId }</td>
                         <td>
                             <button className="btn btn-sm btn-danger"
