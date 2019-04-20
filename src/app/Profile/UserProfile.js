@@ -141,7 +141,7 @@ class UserProfile extends Component {
 
     return (
       <Container className="mt-4">
-      <Alert variant='success' show={this.state.showWelcomeAlert} >
+      <Alert variant='success' show={this.state.showWelcomeAlert} dismissable>
         <Alert.Heading>
           Welcome back {this.state.first_name} !
           <Button className="close" onClick={onDismissAlert}>x</Button>
@@ -176,7 +176,7 @@ class UserProfile extends Component {
               <Row>
                 <Col>
                     <Form.Group as={Row} controlId="formFirstName">
-                      <Form.Label column sm='4'>First:</Form.Label>
+                      <Form.Label column sm={6}>First:</Form.Label>
                         <Col sm='8'>
                           <Form.Control type="text"
                                         name="temp_first_name"
@@ -190,7 +190,7 @@ class UserProfile extends Component {
 
                 <Col>
                     <Form.Group as={Row} controlId="formLastName">
-                      <Form.Label column sm='4'>Last:</Form.Label>
+                      <Form.Label column sm={6}>Last:</Form.Label>
                       <Col sm='8'>
                         <Form.Control type="text"
                                       name="temp_last_name"
@@ -204,7 +204,7 @@ class UserProfile extends Component {
               </Row>
 
               <Form.Group as={Row} controlId="formAddressl1">
-                <Form.Label column sm='2'>Address</Form.Label>
+                <Form.Label column sm={2}>Address</Form.Label>
                 <Col sm='10'>
                   <Form.Control placeholder="1234 Main St"
                                 type="text"
@@ -218,7 +218,7 @@ class UserProfile extends Component {
 
 
               <Form.Row>
-                <Form.Group as={Col} controlId="formCity">
+                <Form.Group as={Col} sm={4} controlId="formCity">
                   <Form.Label>City</Form.Label>
                   <Form.Control placeholder="enter a city"
                                 type="text"
@@ -228,7 +228,7 @@ class UserProfile extends Component {
                                 onChange={this.handleInputChange}/>
                 </Form.Group>
 
-                <Form.Group as={Col} controlId="formState">
+                <Form.Group as={Col} sm={4} controlId="formState">
                   <Form.Label>State</Form.Label>
                   <Form.Control placeholder="enter a state"
                                 type="text"
@@ -238,11 +238,12 @@ class UserProfile extends Component {
                                 onChange={this.handleInputChange}/>
                 </Form.Group>
 
-                <Form.Group as={Col} controlId="formZip">
+                <Form.Group as={Col} sm={4} controlId="formZip">
                   <Form.Label>Zip</Form.Label>
                   <Form.Control placeholder="54321"
                                 type="text"
                                 name="temp_zip"
+																maxlength="9"
                                 value={this.state.temp_zip}
                                 readOnly= {this.state.form_readOnly}
                                 onChange={this.handleInputChange}/>

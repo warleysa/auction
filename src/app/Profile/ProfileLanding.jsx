@@ -10,6 +10,21 @@ export class ProfileLanding extends React.Component {
 			profile: {}
     };
 
+		getProfileInfo() {
+			if(this.props.match) {
+			let userId = +this.props.match.params.userId;
+				this.testRepo.getUserInfo(userId)
+				.then(p => {
+					this.setState({profile: p});
+					console.log(this.state);
+				});
+			}
+		}
+
+		setProfileInfo() {
+
+		}
+
 
 
     render() {

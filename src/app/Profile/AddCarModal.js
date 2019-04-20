@@ -135,6 +135,7 @@ class AddCarModal extends Component {
 										<Form.Control placeholder="2006"
 																	type="text"
 																	name="year"
+																	maxlength="4"
 																	value={this.state.year}
 																	onChange={this.handleInputChange} />
 									</InputGroup>
@@ -149,6 +150,7 @@ class AddCarModal extends Component {
 										<Form.Control placeholder="22300"
 																	type="text"
 																	name="mileage"
+																	maxlength="6"
 																	value={this.state.mileage}
 																	onChange={this.handleInputChange}/>
 									</InputGroup>
@@ -166,6 +168,7 @@ class AddCarModal extends Component {
 										<Form.Control placeholder="54321"
 																	type="text"
 																	name="zip"
+																	maxlength="9"
 																	value={this.state.zip}
 																	onChange={this.handleInputChange}/>
 									</InputGroup>
@@ -188,7 +191,7 @@ class AddCarModal extends Component {
 
 
 							<Form.Row>
-								<Form.Group as={Col} controlId="carFormAuctionEndDate">
+								<Form.Group as={Col} sm={6 } controlId="carFormAuctionEndDate">
 
 									<Form.Label>Auction Duration (in Days)</Form.Label>
 									<InputGroup>
@@ -207,7 +210,7 @@ class AddCarModal extends Component {
 									</InputGroup>
 								</Form.Group>
 
-								<Form.Group as={Col} controlId="carFormAuctionReservePrice">
+								<Form.Group as={Col} sm={6} controlId="carFormAuctionReservePrice">
 									<Form.Label >Auction reserve price</Form.Label>
 									<InputGroup>
               			<InputGroup.Prepend>
@@ -216,6 +219,7 @@ class AddCarModal extends Component {
 									<Form.Control placeholder="2500"
 																type="text"
 																name="auction_reserve_price"
+																maxlength="7"
 																value={this.state.auction_reserve_price}
 																onChange={this.handleInputChange}/>
 									</InputGroup>

@@ -2,11 +2,11 @@
 import React, { Component } from 'react';
 import luigi from './../Luigi.png';
 import { Card, Button, Col, Alert, Container } from 'react-bootstrap';
-import { TestRepo } from '../../api/testRepo';
+import { RealRepo } from '../../api/realRepo';
 import { Link, Redirect } from 'react-router-dom';
 
 export class LoginPage extends Component{
-	testRepo = new TestRepo();
+	apiRepo = new RealRepo();
 
 	state = {
 		id: -1,
@@ -19,7 +19,7 @@ export class LoginPage extends Component{
 
 	onSubmit() {
 		if ((!this.state.username == '') && (!this.state.password == '')) {
-			this.testRepo.loginUser(
+			this.apiRepo.loginUser(
 				{ username: this.state.username, password: this.state.password }
 			)
 			.then(user => {
@@ -31,11 +31,11 @@ export class LoginPage extends Component{
 						}
 					)
 				} else {
-					this.props.setAuthState(true, this.state.id);
+					this.props.setAuthState(true, this.state.userId);
 					this.setState(
 						{
-							redirect: `/profile/${ this.state.id }`,
-							authId: this.state.id
+							redirect: `/profile/${ this.state.userId }`,
+							authId: this.state.userId
 						}
 					)
 				}

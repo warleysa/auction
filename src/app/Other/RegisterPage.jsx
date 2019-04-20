@@ -3,38 +3,38 @@ import React, { Component } from 'react';
 import luigi from './../Luigi.png';
 import { Card, Button, Row, Col, Alert } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { TestRepo } from '../../api/testRepo';
+import { RealRepo } from '../../api/realRepo';
 
 export class RegisterPage extends Component {
-	testRepo = new TestRepo();
+	apiRepo = new RealRepo();
 
 	state = {
 		id: -1,
 		username: '',
 		password: '',
-		first_name: '',
-		last_name: '',
+		firstName: '',
+		lastName: '',
 		usernameNotAvailable: false,
 		userAvailable: 1
 	}
 
 	onRegister() {
 		console.log("Submitting Register information");
-		if ((!this.state.username == '') && (!this.state.password == '') && (!this.state.first_name == '') && (!this.state.last_name == '')) {
+		if ((!this.state.username == '') && (!this.state.password == '') && (!this.state.firstName == '') && (!this.state.lastName == '')) {
 			console.log("Both password and username entered!");
-			this.testRepo.registerUser({
+			this.apiRepo.registerUser({
 				username: this.state.username,
 				password: this.state.password,
-				first_name: this.state.first_name,
-				last_name: this.state.last_name
+				firstName: this.state.firstName,
+				lastName: this.state.lastName
 			})
 				.then(user => {
 					console.log("Register submitted");
 					this.setState({
 						username: user.username,
 						password: user.password,
-						first_name: user.first_name,
-						last_name: user.last_name
+						firstName: user.firstName,
+						lastName: user.lastName
 					});
 					if(this.state.errorCode == -1) {
 		 				window.alert('This username has already been taken! Please choose another!');
@@ -55,19 +55,23 @@ export class RegisterPage extends Component {
 	usernameCheck(e) {
 		this.setState({ username: e.target.value });
 		console.log("Username check: -> " + e.target.value);
-		this.testRepo.checkUsername({username: e.target.value})
-			.then(u => {
-				this.setState(u);
-				if(this.state.userAvailable == 0) {
-					this.setState(state => ({
-						usernameNotAvailable: true
-					}))
-				} else {
-					this.setState(state => ({
-						usernameNotAvailable: false
-					}))
-				}
-			});
+		if(e.target.value) {
+			this.apiRepo.checkUsername(e.target.value)
+				.then(u => {
+					this.setState(u);
+					console.log(u);
+					console.log(this.state);
+					if(this.state.userAvailable == 0) {
+						this.setState(state => ({
+							usernameNotAvailable: true
+						}))
+					} else {
+						this.setState(state => ({
+							usernameNotAvailable: false
+						}))
+					}
+				});
+		}
 	}
 
 	hideLoginModal() {
@@ -89,22 +93,22 @@ export class RegisterPage extends Component {
 								<form>
 									<Row className="my-auto">
 										<div className="form-group col-md-6">
-											<label htmlFor="first_name">First Name:</label>
+											<label htmlFor="firstName">First Name:</label>
 											<input type="text"
-												id="first_name"
-												name="first_name"
+												id="firstName"
+												name="firstName"
 												className="form-control"
-												value={this.state.first_name}
-												onChange={ e => this.setState({ first_name: e.target.value }) }/>
+												value={this.state.firstName}
+												onChange={ e => this.setState({ firstName: e.target.value }) }/>
 										</div>
 										<div className="form-group col-md-6">
-											<label htmlFor="last_name">Last Name:</label>
+											<label htmlFor="lastName">Last Name:</label>
 											<input type="text"
-												id="last_name"
-												name="last_name"
+												id="lastName"
+												name="lastName"
 												className="form-control"
-												value={this.state.last_name}
-												onChange={ e => this.setState({ last_name: e.target.value }) }/>
+												value={this.state.lastName}
+												onChange={ e => this.setState({ lastName: e.target.value }) }/>
 										</div>
 									</Row>
 									<div className="form-group">
