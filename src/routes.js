@@ -5,7 +5,8 @@ import { LoginPage } from './app/Other/LoginPage';
 import { RegisterPage } from './app/Other/RegisterPage';
 import { AuctionLanding } from './app/Auction/AuctionLanding';
 import { AuctionPage } from './app/Auction/AuctionPage';
-import { ProfileLanding } from './app/Profile/ProfileLanding'
+import { ProfileLanding } from './app/Profile/ProfileLanding';
+import {AdminLanding} from './app/Admin/AdminLanding';
 
 export const ROUTES = [
 	{ path: '/register', component: RegisterPage },
@@ -17,8 +18,9 @@ export const ROUTES = [
 	{ path: '/auctions', component: AuctionLanding },
 	{ path: '/auction/:auctionId', component: AuctionPage },
 	{ path: '/home', component: AuctionLanding },
+	{ path: '/admin', component:AdminLanding},
 	// { path: '/profile/:userId', component: AccountEditor },
-	{ path: '/', component: AuctionLanding },
+	{ path: '/', component: AuctionLanding }
 ];
 
 export default ROUTES;

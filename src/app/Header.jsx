@@ -60,7 +60,7 @@ export class Header extends React.Component {
 												</NavLink>
 											</li>
 											<li className="nav-item" hidden={ !this.props.isAuthenticated }>
-												<NavLink to="/" className="nav-link" activeClassName="active">
+												<NavLink to="/admin" className="nav-link" activeClassName="active">
 													<i className="fa"></i>&nbsp;
 														Admin Viewer
 													</NavLink>
