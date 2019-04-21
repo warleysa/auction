@@ -1,9 +1,23 @@
 export class User {
-  constructor(username, password, email) {
-    this.username = username;
-    this.password = password;
-		this.email = email;
-  }
-};
+    constructor(userId, username, firstname, lastname, address, city, state_code, zip, register_date) {
+        this.userId = userId;
+        this.username = username;
+				this.first_name = firstname;
+        this.last_name = lastname;
+				this.address = address;
+				this.city = city;
+				this.state_code = state_code;
+        this.zip = zip;
+        this.register_date = register_date;
+    }
 
-export default User;
+		apiJsonFormat() {
+			return({
+				userId: this.userId,
+				firstName: this.first_name,
+				lastName: this.last_name,
+				address: this.address,
+				zip: this.zip
+			})
+		}
+}

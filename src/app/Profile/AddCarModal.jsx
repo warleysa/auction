@@ -78,7 +78,7 @@ class AddCarModal extends Component {
 
     return (
 			<>
-			<Button variant="success" size="lg" onClick={this.handleShow}>
+			<Button variant="success" className="col-lg-2 col-xs-12 m-2" onClick={this.handleShow}>
 				Add Car<i className="fas fa-car ml-2"></i>
 			</Button>
 
@@ -196,7 +196,7 @@ class AddCarModal extends Component {
 									<Form.Label>Auction Duration (in Days)</Form.Label>
 									<InputGroup>
 										<InputGroup.Prepend>
-											<InputGroup.Text id="inputGroupPrepend"><i className="fas fa-calendar-day mr-2"></i> 12:00PM CST on</InputGroup.Text>
+											<InputGroup.Text id="inputGroupPrepend"><i className="fas fa-calendar-day mr-2"></i></InputGroup.Text>
 										</InputGroup.Prepend>
 										<Form.Control
 												as="select"

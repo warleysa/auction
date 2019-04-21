@@ -38,4 +38,39 @@ export class RealRepo {
                 .catch(resp => alert(resp));
         });
     }
+
+		getUserInfo(userId) {
+			console.log("Local Storage: " + this.storage.getUserId() + ", Passed in: " + userId);
+			if(!userId) {
+				userId = this.storage.getUserId();
+				return new Promise((resolve, reject) => {
+						axios.get(`${this.url}/user/${userId}`, this.config) //private
+								.then(resp => resolve(resp.data))
+								.catch(resp => alert(resp));
+				});
+			}
+			if(this.storage.getUserId() == userId) {
+				return new Promise((resolve, reject) => {
+						axios.get(`${this.url}/user/${userId}`, this.config) //private
+								.then(resp => resolve(resp.data))
+								.catch(resp => alert(resp));
+				});
+			} else {
+				return new Promise((resolve, reject) => {
+						axios.get(`${this.url}/user/${userId}`, this.config)
+								.then(resp => resolve(resp.data))
+								.catch(resp => alert(resp));
+				});
+			}
+    }
+
+		updateUser(user) {
+			console.log("Registering Usering... API Side");
+
+			return new Promise((resolve, reject) => {
+					axios.put(`${this.url}/user`, user.apiJsonFormat(), this.config)
+							.then(resp => resolve(resp.data))
+							.catch(resp => alert(resp));
+			});
+    }
 }
