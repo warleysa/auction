@@ -84,8 +84,8 @@ export class RegisterPage extends Component {
 			<>
 			<div className="row h-75 m-1">
 				<Col className="col-sm-6 my-auto mx-auto">
-					<Card onHide={ this.props.hideLoginModal }>
-		          <Card.Header closeButton>
+					<Card>
+		          <Card.Header>
 		            <Card.Title className="text-center my-auto">Car Auction - Register Page</Card.Title>
 		          </Card.Header>
 							<img src={ luigi } className="mx-auto p-2" alt="Luigi" height="100" width="100"/>

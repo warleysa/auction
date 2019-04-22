@@ -9,6 +9,7 @@ import AddImages	from './AddImages';
 import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Car from './../../models/car';
+import carData from './carData.json';
 
 
 
@@ -21,16 +22,19 @@ class AddCarModal extends Component {
 		this.handleClose = this.handleClose.bind(this);
 
 		this.state = {
+			userId: "",
 			make:	"",
 			model: "",
-			year:	"",
+			year:	0,
 			mileage:	"",
 			zip:	"",
 			description:	"",
-			auction_end_date: "",
+			duration: '',
 			auction_reserve_price: "",
 			images: [],
-			durationValues: [1,3,7,14,30]
+			durationValues: [1,3,7,14,30],
+			modelInputDiasbled: true,
+			modelOptions: []
 		};
 	}
 
@@ -48,24 +52,38 @@ class AddCarModal extends Component {
     })
   };
 
+	handleModelChange = (event) => {
+    this.setState({
+        [event.target.name]: event.target.value,
+				modelInputDiasbled: false,
+				modelOptions: carData.find( value => value.brand === event.target.value ).models
+    })
+  };
+
 	onSubmit(){
-		this.props.onCarAdded(new Car(this.state.make,
+		let date_created = new Date();
+		let endDate = new Date();
+		let end_date = endDate.setDate(date_created + this.state.duration);
+		this.props.onCarAdded(new Car(this.state.userId,
+																	this.state.make,
 																	this.state.model,
 																	this.state.year,
 																	this.state.mileage,
 																	this.state.zip,
 																	this.state.description,
-																	this.state.auction_end_date,
-																	this.state.auction_reserve_price));
+																	this.state.auction_reserve_price,
+																	date_created,
+																	end_date
+																));
 		this.setState(
 			{
 				make:	"",
 				model: "",
 				year:	"",
 				mileage:	"",
-				zip:	"",
+				zip: this.props.userInfo.zip,
 				description:	"",
-				auction_end_date: "",
+				duration: "",
 				auction_reserve_price: "",
 				images: [],
 				modalShowState: false
@@ -96,31 +114,44 @@ class AddCarModal extends Component {
 					<Modal.Body>
 						<Form>
 							<Form.Row>
-								<Form.Group as={Col} controlId="carFormGridMake">
+								<Form.Group as={Col} sm={6} controlId="carFormGridMake">
 									<Form.Label>Make</Form.Label>
-									<InputGroup>
-										<InputGroup.Prepend>
-											<InputGroup.Text id="inputGroupPrepend"><i className="fas fa-landmark"></i></InputGroup.Text>
-										</InputGroup.Prepend>
-										<Form.Control placeholder="Audi"
-										 							type="text"
-																	name="make"
-																	value={this.state.make}
-																	onChange={this.handleInputChange}/>
-									</InputGroup>
+										<InputGroup>
+											<InputGroup.Prepend>
+												<InputGroup.Text id="inputGroupPrepend"><i className="fas fa-landmark"></i></InputGroup.Text>
+											</InputGroup.Prepend>
+											<Form.Control
+													as="select"
+													name="make"
+													className="custom-select"
+													value={this.state.make}
+													onChange={this.handleModelChange}>
+													<option></option>
+													{
+														carData.map(obj => <option key={obj.brand} value={obj.brand}>{obj.brand}</option>)
+													}
+												</Form.Control>
+										</InputGroup>
 								</Form.Group>
 
-								<Form.Group as={Col} controlId="carFormModel">
+								<Form.Group as={Col} sm={6} controlId="carFormModel">
 									<Form.Label>Model</Form.Label>
 									<InputGroup>
 										<InputGroup.Prepend>
 											<InputGroup.Text id="inputGroupPrepend"><i className="fas fa-car-side"></i></InputGroup.Text>
 										</InputGroup.Prepend>
-										<Form.Control placeholder="A5"
-																	type="text"
-																	name="model"
-																	value={this.state.model}
-																	onChange={this.handleInputChange}/>
+										<Form.Control
+												as="select"
+												name="model"
+												disabled={this.state.modelInputDiasbled}
+												className="custom-select"
+												value={this.state.model}
+												onChange={this.handleInputChange}>
+												<option></option>
+												{
+													this.state.modelOptions.map((model, x) => <option key={x} value={model}>{model}</option>)
+												}
+											</Form.Control>
 									</InputGroup>
 								</Form.Group>
 							</Form.Row>
@@ -132,12 +163,19 @@ class AddCarModal extends Component {
 									<InputGroup.Prepend>
 										<InputGroup.Text id="inputGroupPrepend"><i className="fas fa-history"></i></InputGroup.Text>
 									</InputGroup.Prepend>
-										<Form.Control placeholder="2006"
-																	type="text"
-																	name="year"
-																	maxlength="4"
-																	value={this.state.year}
-																	onChange={this.handleInputChange} />
+									<Form.Control
+											as="select"
+											name="year"
+											className="custom-select"
+											value={this.state.year}
+											onChange={this.handleInputChange}>
+											<option></option>
+											{
+												Array.from( new Array((new Date().getFullYear())-1899), (v,i) =>
+									        <option key={i} value={1899+i}>{1899+i}</option>
+									      ).reverse()
+											}
+										</Form.Control>
 									</InputGroup>
 								</Form.Group>
 
@@ -150,7 +188,7 @@ class AddCarModal extends Component {
 										<Form.Control placeholder="22300"
 																	type="text"
 																	name="mileage"
-																	maxlength="6"
+																	min="0" max="10000000"
 																	value={this.state.mileage}
 																	onChange={this.handleInputChange}/>
 									</InputGroup>
@@ -168,7 +206,7 @@ class AddCarModal extends Component {
 										<Form.Control placeholder="54321"
 																	type="text"
 																	name="zip"
-																	maxlength="9"
+																	maxLength="9"
 																	value={this.state.zip}
 																	onChange={this.handleInputChange}/>
 									</InputGroup>
@@ -191,7 +229,7 @@ class AddCarModal extends Component {
 
 
 							<Form.Row>
-								<Form.Group as={Col} sm={6 } controlId="carFormAuctionEndDate">
+								<Form.Group as={Col} sm={6} controlId="carFormAuctionDuration">
 
 									<Form.Label>Auction Duration (in Days)</Form.Label>
 									<InputGroup>
@@ -200,11 +238,12 @@ class AddCarModal extends Component {
 										</InputGroup.Prepend>
 										<Form.Control
 												as="select"
-												value={this.state.durationSelected}
-												onChange={ e => this.setState({ durationSelected: e.target.value }) }>
-												<select></select>
+												className="custom-select"
+												value={this.state.duration}
+												onChange={ e => this.setState({ duration: e.target.value }) }>
+												<option></option>
 												{
-													this.state.durationValues.map((x,y) => <option key={y} value={x}>{x}</option>)
+													this.state.durationValues.map(x => <option key={x} value={x}>{x}</option>)
 												}
 											</Form.Control>
 									</InputGroup>
@@ -219,7 +258,7 @@ class AddCarModal extends Component {
 									<Form.Control placeholder="2500"
 																type="text"
 																name="auction_reserve_price"
-																maxlength="7"
+																maxLength="7"
 																value={this.state.auction_reserve_price}
 																onChange={this.handleInputChange}/>
 									</InputGroup>
@@ -233,9 +272,12 @@ class AddCarModal extends Component {
 					</Modal.Body>
 
 					<Modal.Footer>
+						{/*
 						<Form.Group as={Col} id="auctionByDate">
 							<Form.Check type="checkbox" label="I agree to the terms and conditions" />
+							<Form.Control.Feedback type='invalid'>You must accept the terms and conditions before posting!</Form.Control.Feedback>
 						</Form.Group>
+						*/}
 
 						<ButtonToolbar style={{flexDirection: 'row', justifyContent: 'flex-end'}}>
 							<Button variant="success" type="submit" onClick={e => this.onSubmit(e)}>
@@ -248,6 +290,14 @@ class AddCarModal extends Component {
 
     );
   }
+	componentWillReceiveProps(props) {
+		// if(this.props.userInfo) {
+			this.setState({
+				userId: props.userInfo.userId,
+				zip: props.userInfo.zip,
+			});
+		// }
+	}
 }
 
 export default AddCarModal;

@@ -3,16 +3,13 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Form from 'react-bootstrap/Form';
+import moment from 'moment';
+
 
 const MyCarsList = (props) => {
 
-  var carCount = 0;
-  if(props.cars.length){
-    carCount = props.cars.length;
-  }
-
   const CheckForCars = () => {
-    if(carCount < 1){
+    if(props.cars.length < 1){
       return (
           <div className="card mb-3">
             <div className="card-header">You haven't listed any cars yet! Add your first car now!</div>
@@ -21,13 +18,12 @@ const MyCarsList = (props) => {
     }
     return null
   }
-
   return(
     <>
-      <h4>My Cars <span className="text-muted">({carCount})</span></h4>
+      <h4>My Cars <span className="text-muted">({props.cars.length})</span></h4>
       <CheckForCars/>
 
-      {props.cars.map( (car, i) =>
+      { props.cars.map( (car, i) =>
         <div className="card text-center my-3">
           <div className="card-header">
             <h4>  {car.year} {car.make} {car.model} </h4>
@@ -45,52 +41,54 @@ const MyCarsList = (props) => {
 
 
           </div>
-          <div className="card-footer text-muted text-left">
-          <Row>
+          <div className="card-footer text-left">
+          <dl class="row">
+            <dt class="col-sm-5">Time/Location Information </dt>
+            <dd class="col-sm-7 text-muted">
+							<dl class="row">
+								<dt class="col-sm-3 ml-1">Start date: </dt>
+								<dd class="col-sm-8">{car.start_date_readable}</dd>
+							</dl>
+							<dl class="row">
+								<dt class="col-sm-3 ml-1">End date: </dt>
+								<dd class="col-sm-8">{car.end_date_readable}</dd>
+							</dl>
+							<dl class="row">
+								<dt class="col-sm-3 ml-1">Time Left: </dt>
+								<dd class="col-sm-8"><em>{moment(car.end_date).fromNow(true)}</em></dd>
+							</dl>
+							<dl class="row">
+								<dt class="col-sm-4">Zip Code:  </dt>
+								<dd>
+									<InputGroup>
+										<InputGroup.Prepend>
+											<InputGroup.Text id="inputGroupPrepend"><i className="fas fa-location-arrow"></i></InputGroup.Text>
+										</InputGroup.Prepend>
+										<Form.Control type="text"
+																	name="zip"
+																	value={car.zip}
+																	readOnly={true}/>
+									</InputGroup>
+								</dd>
+							</dl>
+					  </dd>
+					</dl>
+					<dl class="row">
+            <dt class="col-sm-3">Pricing and Bids </dt>
+            <dd class="col-sm-9">
+							<dl class="row">
+								<dt class="col-sm-4">Minimum Asking price: </dt>
+								<dd class="col-sm-8">${car.auction_reserve_price}</dd>
+							</dl>
+					  </dd>
+					</dl>
             <Col>
-              <Row className="ml-2">
-                <p> <strong> Auction end date: </strong>{car.auction_end_date} </p>
-                <p> <strong> Auction reserve price: </strong>{car.auction_reserve_price} </p>
-              </Row>
-              <Row>
-                <Col sm={6}>
-                  <InputGroup>
-                    <InputGroup.Prepend>
-                      <InputGroup.Text id="inputGroupPrepend"><i className="fas fa-location-arrow"></i></InputGroup.Text>
-                    </InputGroup.Prepend>
-                    <Form.Control type="text"
-                                  name="zip"
-                                  value={car.zip}
-                                  readOnly="true"/>
-                  </InputGroup>
-                </Col>
-              </Row>
+              <a href="#" className="btn btn-primary float-right">View Auction</a>
             </Col>
-            <Col>
-              <Form>
-                <Form.Group as={Col} controlId="carFormAuctionReservePrice">
-                  <Form.Label ><strong>Current bid:</strong></Form.Label>
-                  <InputGroup>
-                    <InputGroup.Prepend>
-                      <InputGroup.Text id="inputGroupPrepend"><i className="fas fa-dollar-sign"></i></InputGroup.Text>
-                    </InputGroup.Prepend>
-                    <Form.Control placeholder="no bids yet!"
-                                  type="text"
-                                  name="current_bid"
-                                  value="2950"
-                                  readOnly="true"/>
-                  </InputGroup>
-                </Form.Group>
-              </Form>
-              <a href="#" className="btn btn-primary float-right">View</a>
-            </Col>
-          </Row>
           </div>
         </div>
-      )}
-
+			)}
     </>
   )
 }
-
 export default MyCarsList;

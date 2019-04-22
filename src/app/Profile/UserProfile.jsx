@@ -1,14 +1,6 @@
 import React, { Component } from 'react';
 
-import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
-import Tabs from 'react-bootstrap/Tabs';
-import Tab from 'react-bootstrap/Tab';
-import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
-import Alert from 'react-bootstrap/Alert';
+import { Container, Form, Row, Col, Button, Tabs, Tab, ButtonToolbar, Alert } from 'react-bootstrap';
 import './UserProfile.css';
 import MyCarsList from './MyCarsList';
 
@@ -17,10 +9,13 @@ import AccountSidebar from './AccountSidebar';
 import ChangePassword from './ChangePassword';
 import UserList from './../Other/UserList';
 import { User } from './../../models/user';
+import { RealRepo } from '../../api/realRepo';
+var zipcodes = require('zipcodes');
 
 
 
 class UserProfile extends React.Component {
+	apiRepo = new RealRepo();
 
 	state = {
 		profile: [],
@@ -33,11 +28,25 @@ class UserProfile extends React.Component {
 		showWelcomeAlert: true,
 		form_readOnly: true,
 		modalShowState: false,
-		passwordModalShowState: false
+		passwordModalShowState: false,
 	}
 
   handleInputChange(e) {
 		const { name, value } = e.target;
+		if(name == "zip") {
+			const zipInfo = zipcodes.lookup(value);
+			if(zipInfo) {
+				this.setState(() => ({
+			    profile: {
+			        ...this.state.profile,
+			        [name]: value,
+							city: zipInfo.city,
+							state_code: zipInfo.state
+			    }
+				}));
+				return this.state;
+			}
+		}
 		this.setState(() => ({
 	    profile: {
 	        ...this.state.profile,
@@ -46,11 +55,18 @@ class UserProfile extends React.Component {
 		}));
   };
 
-  onCarAdded(newCar){
-    this.setState(state => {
-      state.cars.push(newCar);
-      return state;
-    });
+  onCarAdded(newCar) {
+		console.log("Car Object:");
+		console.log(newCar);
+		this.apiRepo.postAuction(newCar)
+			.then(user => {
+				console.log("Car Auction submitted");
+				this.setState(state => {
+		      state.cars.push(newCar);
+		      return state;
+		    });
+			}
+		 );
   };
 
 	onDismissAlert() {
@@ -66,21 +82,28 @@ class UserProfile extends React.Component {
 
 
 	onSave() {
-		this.props.setProfileInfo(new User(this.state.profile.userId, this.state.profile.username, this.state.profile.first_name, this.state.profile.last_name, this.state.profile.address, this.state.profile.city, this.state.profile.state_code, this.state.profile.zip, this.props.userInfo.register_date))
+		let editedUser = new User(this.state.profile.userId, this.state.profile.username, this.state.profile.first_name, this.state.profile.last_name, this.state.profile.address, this.state.profile.city, this.state.profile.state_code, this.state.profile.zip, this.state.profile.register_date);
+		this.props.setProfileInfo(editedUser);
+		this.setState({
+			profile: editedUser,
+			form_readOnly: true,
+		});
 	};
 
 	onCancel() {
+		console.log("Canceling");
+		console.log(this.props);
 		this.setState({
 			form_readOnly: true,
 			profile: {
 				userId: this.props.userInfo.userId,
 				first_name: this.props.userInfo.first_name,
 				last_name: this.props.userInfo.last_name,
-				address: this.props.userInfo.address,
-				city: this.props.userInfo.city,
-				state_code: this.props.userInfo.state_code,
-				zip: this.props.userInfo.zip,
-				register_date: this.props.userInfo.register_date
+				address: this.props.userInfo.address || '',
+				city: this.props.userInfo.city || '',
+				state_code: this.props.userInfo.state_code || '',
+				zip: this.props.userInfo.zip || '',
+				register_date: this.props.userInfo.register_date || ''
 			}
 		});
 	}
@@ -120,30 +143,27 @@ class UserProfile extends React.Component {
 
     return (
       <Container className="mt-4">
-      <Alert variant='success' show={this.state.showWelcomeAlert} dismissable>
-        <Alert.Heading>
-          Welcome back {this.state.first_name} !
-          <Button className="close" onClick={() => this.onDismissAlert()}>x</Button>
-        </Alert.Heading>
-      </Alert>
+				<Alert dismissible variant="info" show={this.state.showWelcomeAlert} onClose={() => this.onDismissAlert()} className="">
+					<h3>Welcome {this.state.profile.first_name}!</h3>
+				</Alert>
 
       {/* ---Profile overview (left sidebar)--- */}
 
 		      <Row>
 		        <Col md={5} lg={4} xl={3}>
-							<AccountSidebar first_name={this.state.first_name}
-		                            last_name={this.state.last_name}
-		                            date_joined={this.state.register_date}
-		                            cars_listed={this.state.cars_listed}
-		                            cars_purchased={this.state.cars_purchased}
-		                            cars_sold={this.state.cars_sold}
-		                            ranking={this.state.ranking}
+							<AccountSidebar first_name={this.state.profile.first_name}
+		                            last_name={this.state.profile.last_name}
+		                            date_joined={this.state.profile.register_date}
+		                            cars_listed={this.state.profile.cars_listed}
+		                            cars_purchased={this.state.profile.cars_purchased}
+		                            cars_sold={this.state.profile.cars_sold}
+		                            ranking={this.state.profile.ranking}
 																keyId="hello"/>
 		        </Col>
 
 		        <Col md={7} lg={8} xl={9}>
 		          <ButtonToolbar style={{flexDirection: 'row', justifyContent: 'flex-end'}}>
-		            <AddCarModal modalShowState={ this.state.modalShowState } onCarAdded= {car => this.onCarAdded(car)}/>
+		            <AddCarModal userInfo={this.state.profile} modalShowState={ this.state.modalShowState } onCarAdded= {car => this.onCarAdded(car)}/>
 		          </ButtonToolbar>
 
 		          <Tabs defaultActiveKey="AccountSettings" id="uncontrolled-tab-example"  >
@@ -182,12 +202,12 @@ class UserProfile extends React.Component {
 		              </Row>
 
 		              <Form.Group as={Row} controlId="formAddressl1">
-		                <Form.Label column sm='2'>Address</Form.Label>
-		                <Col sm='10'>
+		                <Form.Label column sm={2}>Address</Form.Label>
+		                <Col sm={10}>
 		                  <Form.Control placeholder="1234 Main St"
 		                                type="text"
 		                                name="address"
-		                                value={this.state.profile.address}
+		                                value={this.state.profile.address || ''}
 		                                readOnly= {this.state.form_readOnly}
 		                                onChange={e => this.handleInputChange(e)}/>
 		                </Col>
@@ -196,12 +216,21 @@ class UserProfile extends React.Component {
 
 
 		              <Form.Row>
+										<Form.Group as={Col} controlId="formZip">
+		                  <Form.Label>Zip</Form.Label>
+		                  <Form.Control placeholder="54321"
+		                                type="number"
+		                                name="zip"
+		                                value={this.state.profile.zip  || ''}
+		                                readOnly= {this.state.form_readOnly}
+		                                onChange={e => this.handleInputChange(e)}/>
+		                </Form.Group>
 		                <Form.Group as={Col} controlId="formCity">
 		                  <Form.Label>City</Form.Label>
 		                  <Form.Control placeholder="enter a city"
 		                                type="text"
 		                                name="city"
-		                                value={this.state.profile.city}
+		                                value={this.state.profile.city  || ''}
 		                                readOnly= {this.state.form_readOnly}
 		                                onChange={e => this.handleInputChange(e)}/>
 		                </Form.Group>
@@ -211,17 +240,7 @@ class UserProfile extends React.Component {
 		                  <Form.Control placeholder="enter a state"
 		                                type="text"
 		                                name="state_code"
-		                                value={this.state.profile.state_code}
-		                                readOnly= {this.state.form_readOnly}
-		                                onChange={e => this.handleInputChange(e)}/>
-		                </Form.Group>
-
-		                <Form.Group as={Col} controlId="formZip">
-		                  <Form.Label>Zip</Form.Label>
-		                  <Form.Control placeholder="54321"
-		                                type="text"
-		                                name="zip"
-		                                value={this.state.profile.zip}
+		                                value={this.state.profile.state_code  || ''}
 		                                readOnly= {this.state.form_readOnly}
 		                                onChange={e => this.handleInputChange(e)}/>
 		                </Form.Group>
@@ -241,7 +260,7 @@ class UserProfile extends React.Component {
 		            {/* --My Cars tab -- */}
 
 		            <Tab eventKey="MyCars" title="My Cars" className="p-4">
-		              <MyCarsList cars={this.state.cars}/>
+		              <MyCarsList cars={this.state.cars || []}/>
 		            </Tab>
 
 		          </Tabs>
@@ -254,21 +273,14 @@ class UserProfile extends React.Component {
     );
   }
 	componentWillReceiveProps(props) {
-		// if(this.props.userInfo) {
+		console.log("componentWillReceiveProps");
+		console.log(this.state);
+		if(props.userInfo) {
 			this.setState({
-				profile: {
-					userId: props.userInfo.userId,
-					first_name: props.userInfo.first_name,
-					last_name: props.userInfo.last_name,
-					address: props.userInfo.address,
-					city: props.userInfo.city,
-					state_code: props.userInfo.state_code,
-					zip: props.userInfo.zip,
-					register_date: props.userInfo.register_date
-				}
+				profile: props.userInfo,
+				cars: props.carData
 			});
-			console.log(this.state);
-		// }
+		}
 	}
 
 }

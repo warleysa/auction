@@ -23,7 +23,7 @@ const AccountSidebar = (props) => {
         </Button>
 
       </div>
-      <Card.Header><Card.Title>{props.first_name}'s account</Card.Title></Card.Header>
+      <Card.Header><Card.Title>{`${props.first_name}'s account`}</Card.Title></Card.Header>
       <Card.Body className="p-3">
 
           <div>

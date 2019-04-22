@@ -1,8 +1,8 @@
 import React from 'react';
 
 export class AdminLanding extends React.Component {
-    
-    render() { 
+
+    render() {
         return (
         <>
             <h1>Admin View</h1>
@@ -10,5 +10,5 @@ export class AdminLanding extends React.Component {
             );
     }
 }
- 
+
 export default AdminLanding;
