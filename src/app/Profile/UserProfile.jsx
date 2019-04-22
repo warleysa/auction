@@ -154,7 +154,7 @@ class UserProfile extends React.Component {
 							<AccountSidebar first_name={this.state.profile.first_name}
 		                            last_name={this.state.profile.last_name}
 		                            date_joined={this.state.profile.register_date}
-		                            cars_listed={this.state.profile.cars_listed}
+		                            cars_listed={this.state.cars_listed}
 		                            cars_purchased={this.state.profile.cars_purchased}
 		                            cars_sold={this.state.profile.cars_sold}
 		                            ranking={this.state.profile.ranking}
@@ -277,8 +277,13 @@ class UserProfile extends React.Component {
 		console.log(this.state);
 		if(props.userInfo) {
 			this.setState({
-				profile: props.userInfo,
-				cars: props.carData
+				profile: props.userInfo
+			});
+		}
+		if(props.carData) {
+			this.setState({
+				cars: props.carData,
+				cars_listed: props.carData.length
 			});
 		}
 	}
