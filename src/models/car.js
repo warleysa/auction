@@ -14,6 +14,7 @@ export class Car{
 		this.start_date_readable = moment(this.end_date).format('MMMM Do YYYY, h:mm:ss a');
 		this.end_date_readable = moment(this.dateCreated).format('MMMM Do YYYY, h:mm:ss a');
 		this.auction_reserve_price = auction_reserve_price;
+		this.time_left = moment(this.end_date).fromNow(true);
     this.imageURL = "http://distinctivecartoyz.com/wp-content/uploads/2017/04/lambo-vect.png";
 		if(auctionId) {
 			this.auctionId = auctionId;
