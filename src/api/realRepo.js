@@ -42,6 +42,7 @@ export class RealRepo {
 
 		getUserInfo(userId) {
 			console.log("Getting User Info... API Call");
+			console.log(userId);
 			console.log("Local Storage: " + this.storage.getUserId() + ", Passed in: " + userId);
 			if(!userId) {
 				userId = this.storage.getUserId();
@@ -87,10 +88,20 @@ export class RealRepo {
 
 		getAuctionsByUser(userId) {
 				console.log("Getting Auctions... API Call GET");
-        return new Promise((resolve, reject) => {
-            axios.get(`${this.url}/auctions/user/${userId}`, this.config)
-                .then(resp => resolve(resp.data))
-                .catch(resp => alert(resp));
-        });
+				console.log(userId);
+				if(!userId) {
+					userId = this.storage.getUserId();
+	        return new Promise((resolve, reject) => {
+	            axios.get(`${this.url}/auctions/user/${userId}`, this.config)
+	                .then(resp => resolve(resp.data))
+	                .catch(resp => alert(resp));
+	        });
+				} else {
+					return new Promise((resolve, reject) => {
+	            axios.get(`${this.url}/auctions/user/${userId}`, this.config)
+	                .then(resp => resolve(resp.data))
+	                .catch(resp => alert(resp));
+					});
+				}
     }
 }

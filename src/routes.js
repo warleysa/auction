@@ -9,18 +9,18 @@ import { ProfileLanding } from './app/Profile/ProfileLanding';
 import {AdminLanding} from './app/Admin/AdminLanding';
 
 export const ROUTES = [
-	{ path: '/register', component: RegisterPage },
-	{ path: '/login', component: LoginPage },
-	{ path: '/profile/:userId', component: ProfileLanding },
-	{ path: '/profile', component: ProfileLanding },
+	{ path: '/register', component: RegisterPage, authRequired: false },
+	{ path: '/login', component: LoginPage, authRequired: false },
+	{ path: '/profile/:userId', component: ProfileLanding, authRequired: false },
+	{ path: '/profile', component: ProfileLanding, authRequired: true },
 	// { path: '/edit/:accountId', component: CarEditor },
 	// { path: '/new', component: CarEditor },
-	{ path: '/auctions', component: AuctionLanding },
-	{ path: '/auction/:auctionId', component: AuctionPage },
-	{ path: '/home', component: AuctionLanding },
-	{ path: '/admin', component:AdminLanding},
+	{ path: '/auctions', component: AuctionLanding, authRequired: false },
+	{ path: '/auction/:auctionId', component: AuctionPage, authRequired: false },
+	{ path: '/home', component: AuctionLanding, authRequired: false},
+	{ path: '/admin', component:AdminLanding, authRequired: true},
 	// { path: '/profile/:userId', component: AccountEditor },
-	{ path: '/', component: AuctionLanding }
+	{ path: '/', component: AuctionLanding, authRequired: false }
 ];
 
 export default ROUTES;

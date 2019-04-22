@@ -45,7 +45,7 @@ class App extends Component {
 				<Router>
 					<Header isAuthenticated={ this.state.isAuthenticated } setAuthState={ (auth, userId) => this.setAuthState(auth, userId) } />
 					<Switch>
-						{ ROUTES.map(({path, component: C, getAuthStatus}, i) => (
+						{ ROUTES.filter(x => this.state.isAuthenticated || !x.authRequired).map(({path, component: C, getAuthStatus}, i) => (
 							<Route
 								key={i}
 								path={path}

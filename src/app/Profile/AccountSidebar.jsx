@@ -11,9 +11,10 @@ const AccountSidebar = (props) => {
 
 
   return(
-    <Card className="mb-3 shadow-sm">
+    <Card className="mb-auto shadow-sm">
       <div className="p-2 position-relative">
         <Card.Img variant="top" src={defaultPic} />
+				{/*
         <Button variant= "outline-primary"
                 className="btn-sm m-2"
                 style={{position: 'absolute',
@@ -21,9 +22,10 @@ const AccountSidebar = (props) => {
                         bottom:0}}>
             edit<i className="far fa-edit float-right m-1"></i>
         </Button>
+				*/}
 
       </div>
-      <Card.Header><Card.Title>{`${props.first_name}'s account`}</Card.Title></Card.Header>
+      <Card.Header className="text-center"><Card.Title>{`${props.first_name}'s account`}</Card.Title></Card.Header>
       <Card.Body className="p-3">
 
           <div>
