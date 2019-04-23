@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import luigi from './../Luigi.png';
 import { Card, Button, Row, Col, Alert } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { RealRepo } from '../../api/realRepo';
 
 export class RegisterPage extends Component {
