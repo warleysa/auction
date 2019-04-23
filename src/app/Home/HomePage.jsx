@@ -1,8 +1,10 @@
 import './HomePage.css';
-import React, {Component} from 'react';
+import React from 'react';
 
-export const HomePage = (props) =>(
-    <div className="bg"></div>
+export const HomePage = () =>(
+    <body>
+        <div className="bg"></div>
+    </body>
 );
 
 export default HomePage;
