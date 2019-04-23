@@ -3,13 +3,7 @@ import React from 'react';
 import { RealRepo } from '../../api/realRepo';
 import { AuctionList } from '../Auction/AuctionList';
 import { Car } from '../../models/car';
-import Background from './home-bg.jpg';
-
-var sectionStyle = {
-    width: "100%",
-    height: "600px",
-    backgroundImage: `url(${Background})`
-  };
+import HomePage from './HomePage';
 
 export class HomeLanding extends React.Component {
 	realRepo = new RealRepo();
@@ -23,8 +17,8 @@ export class HomeLanding extends React.Component {
 
     render() {
         return (
-            <> 
-                        <section style={sectionStyle}></section>
+            <>  
+                        <HomePage/>
 						<AuctionList auctions={this.state.auctions} userZipCode={this.props.userInfo.userZipCode}/>
             </>
         );
