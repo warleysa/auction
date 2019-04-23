@@ -10,6 +10,7 @@ import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Car from './../../models/car';
 import carData from './carData.json';
+import moment from 'moment';
 
 
 
@@ -62,8 +63,10 @@ class AddCarModal extends Component {
 
 	onSubmit(){
 		let date_created = new Date();
-		let endDate = new Date();
-		let end_date = endDate.setDate(date_created + this.state.duration);
+		let end_date = new Date();
+		end_date.setDate(date_created.getDate()+(+this.state.duration));
+		console.log(end_date);
+		console.log(date_created);
 		this.props.onCarAdded(new Car(this.state.userId,
 																	this.state.make,
 																	this.state.model,

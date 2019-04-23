@@ -2,12 +2,12 @@
 import React, { Component } from 'react';
 import ReviewForm from './../Reviews/ReviewForm';
 import ReviewList from './../Reviews/ReviewList';
-import { TestRepo } from '../../api/testRepo';
+import { RealRepo } from '../../api/realRepo';
 import { Link } from 'react-router-dom';
 
 
 export class AuctionPage extends Component {
-	testRepo = new TestRepo();
+	realRepo = new RealRepo();
 	state = {
 		reviews: [],
 		auction: {
@@ -65,9 +65,10 @@ export class AuctionPage extends Component {
 	componentDidMount() {
 		console.log("Auction Mount Function");
 		let auctionId = +this.props.match.params.auctionId;
-		if (auctionId) {
-			this.testRepo.getAuction(auctionId)
-				.then(a => this.setState({ auction: a }));
-		}
+		console.log(auctionId);
+		// if (auctionId) {
+		// 	this.realRepo.getAuction(auctionId)
+		// 		.then(a => this.setState({ auction: a }));
+		// }
 	}
 };

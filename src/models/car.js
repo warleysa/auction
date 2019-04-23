@@ -1,11 +1,16 @@
 import moment from 'moment';
 
+moment.relativeTimeThreshold('m', 60);
+moment.relativeTimeThreshold('h', 24*3);
+moment.relativeTimeThreshold('s', 60);
+
 export class Car{
 	constructor(userId, make, model, year, mileage, zip, description, auction_reserve_price, date_created, end_date, auctionId){
 		this.userId = userId
 		this.make = make;
 		this.model = model;
 		this.year = year;
+		this.color = "color not in API yet";
     this.mileage = mileage;
 		this.zip = zip;
 		this.description = description;
@@ -28,12 +33,12 @@ export class Car{
 			make: this.make,
 			year: this.year,
 			mileage: this.mileage,
+			color: this.color,
 			zip: this.zip,
 			dateCreated: this.dateCreated,
 			description: this.description,
 			endTime: this.end_date,
 			price: this.auction_reserve_price,
-			// imageURL: this.imageURL
 		})
 	}
 }

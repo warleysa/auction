@@ -79,6 +79,7 @@ export class RealRepo {
 
 		postAuction(car) {
 				console.log("Adding Car... API Call POST");
+				console.log(car.apiJsonFormat());
         return new Promise((resolve, reject) => {
             axios.post(`${this.url}/auction`, car.apiJsonFormat(), this.config)
                 .then(resp => resolve(resp.data))
@@ -103,5 +104,13 @@ export class RealRepo {
 	                .catch(resp => alert(resp));
 					});
 				}
+    }
+
+		getAuctions() {
+        return new Promise((resolve, reject) => {
+            axios.get(`${this.url}/auctions`, this.config)
+                .then(resp => resolve(resp.data))
+                .catch(resp => alert(resp));
+        });
     }
 }

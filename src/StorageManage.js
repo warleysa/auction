@@ -35,13 +35,13 @@ export class StorageManage {
 		return currUserId;
 	}
 
-	setCart(cartItems) {
-		localStorage.setItem('cartItems', JSON.stringify(cartItems));
+	setZipCode(zip) {
+		localStorage.setItem("zipCode", JSON.stringify(zip));
 	}
 
-	getCart() {
-		let cartItems = JSON.parse(localStorage.getItem(cartItems));
-		return cartItems;
+	getZipCode() {
+		let zip = JSON.parse(localStorage.getItem("zipCode"));
+		return zip;
 	}
 
 

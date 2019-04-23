@@ -13,7 +13,8 @@ class App extends Component {
 
 	state = {
 		isAuthenticated: this.storage.getAuthStatus(),
-		currentUserId: this.storage.getUserId()
+		currentUserId: this.storage.getUserId(),
+		userZipCode: this.storage.getZipCode()
 	}
 
 	setAuthState(auth, userId) {
@@ -37,6 +38,14 @@ class App extends Component {
 		}
 	}
 
+	setZipCode(zip) {
+		this.storage.setZipCode(zip);
+		this.setState(state => {
+			state.userZipCode = zip;
+			return state;
+		});
+	}
+
 
   render() {
     return (
@@ -49,8 +58,8 @@ class App extends Component {
 							<Route
 								key={i}
 								path={path}
-								render={ (props) => <C {...props} userInfo={ {isAuthenticated: this.state.isAuthenticated, currentUserId: this.state.currentUserId } }
-								 									setAuthState={(auth, userId) => this.setAuthState(auth, userId) } /> } />
+								render={ (props) => <C {...props} userInfo={ {isAuthenticated: this.state.isAuthenticated, currentUserId: this.state.currentUserId, userZipCode: this.state.userZipCode } }
+								 									setAuthState={(auth, userId) => this.setAuthState(auth, userId) } setZipCode={zip => this.setZipCode(zip)} /> } />
 						))}
 					</Switch>
 				</Router>
