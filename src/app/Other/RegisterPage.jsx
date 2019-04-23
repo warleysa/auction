@@ -32,19 +32,17 @@ export class RegisterPage extends Component {
 			})
 				.then(user => {
 					console.log("Register submitted");
-					this.props.setAuthState(true, this.state.userId);
-					this.setState(
-						{
-							redirect: `/profile/${ this.state.userId }`,
-							authId: this.state.userId
-						}
-					)
 					if(this.state.errorCode == -1) {
 		 				window.alert('This username has already been taken! Please choose another!');
 		 			} else {
-		 				console.log(this.state);
-		 				console.log(this.state.username);
-		 				console.log("Correct Password Entered");
+						this.setState(user)
+						this.props.setAuthState(true, this.state.userId);
+						this.setState(
+							{
+								redirect: `/profile/${ this.state.userId }`,
+								authId: this.state.userId
+							}
+						)
 		 			}
 				}
 			 );
