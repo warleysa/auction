@@ -36,7 +36,7 @@ export class RealRepo {
         return new Promise((resolve, reject) => {
             axios.get(`${this.url}/checkuser/${username}`, this.config)
                 .then(resp => resolve(resp.data))
-                .catch(resp => alert(resp));
+                .catch(resp => console.log(resp));
         });
     }
 
@@ -95,13 +95,13 @@ export class RealRepo {
 	        return new Promise((resolve, reject) => {
 	            axios.get(`${this.url}/auctions/user/${userId}`, this.config)
 	                .then(resp => resolve(resp.data))
-	                .catch(resp => alert(resp));
+	                .catch(resp => console.log(resp));
 	        });
 				} else {
 					return new Promise((resolve, reject) => {
 	            axios.get(`${this.url}/auctions/user/${userId}`, this.config)
 	                .then(resp => resolve(resp.data))
-	                .catch(resp => alert(resp));
+	                .catch(resp => console.log(resp));
 					});
 				}
     }
@@ -110,7 +110,7 @@ export class RealRepo {
         return new Promise((resolve, reject) => {
             axios.get(`${this.url}/auctions`, this.config)
                 .then(resp => resolve(resp.data))
-                .catch(resp => alert(resp));
+                .catch(resp => console.log(resp));
         });
     }
 }
