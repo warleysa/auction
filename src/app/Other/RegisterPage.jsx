@@ -15,7 +15,9 @@ export class RegisterPage extends Component {
 		firstName: '',
 		lastName: '',
 		usernameNotAvailable: false,
-		userAvailable: 1
+		userAvailable: 1,
+		redirect: '',
+		loginAuth: 0
 	}
 
 	onRegister() {
@@ -30,12 +32,13 @@ export class RegisterPage extends Component {
 			})
 				.then(user => {
 					console.log("Register submitted");
-					this.setState({
-						username: user.username,
-						password: user.password,
-						firstName: user.firstName,
-						lastName: user.lastName
-					});
+					this.props.setAuthState(true, this.state.userId);
+					this.setState(
+						{
+							redirect: `/profile/${ this.state.userId }`,
+							authId: this.state.userId
+						}
+					)
 					if(this.state.errorCode == -1) {
 		 				window.alert('This username has already been taken! Please choose another!');
 		 			} else {
@@ -80,6 +83,9 @@ export class RegisterPage extends Component {
 	}
 
   render () {
+		if(this.state.redirect) {
+			return <Redirect to={this.state.redirect}/>
+		}
     return (
 			<>
 			<div className="row h-75 m-1">
