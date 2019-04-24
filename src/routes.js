@@ -21,7 +21,7 @@ export const ROUTES = [
 	{ path: '/home', component:HomeLanding, authRequired: false},
 	{ path: '/admin', component:AdminLanding, authRequired: true},
 	// { path: '/profile/:userId', component: AccountEditor },
-	{ path: '/', component: AuctionLanding, authRequired: false }
+	{ path: '/', component: HomeLanding, authRequired: false }
 ];
 
 export default ROUTES;
