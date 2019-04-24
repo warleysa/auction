@@ -29,7 +29,7 @@ export class Header extends React.Component {
 					<ul className="navbar-nav">
 						<li className="nav-item">
 							<NavLink to="/home" className="nav-item nav-link" activeClassName="active">
-								<i className="fa"></i>&nbsp;
+								<i className="fa fa-home"></i>&nbsp;
 									Home
 								</NavLink>
 							</li>
