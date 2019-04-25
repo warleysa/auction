@@ -6,6 +6,7 @@ body, html {
     height: 91vh;
     background-position: center;
     background-repeat: no-repeat;
+		opacity: 0.7;
     background-size: cover;
     }
 
