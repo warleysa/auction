@@ -10,27 +10,7 @@ body, html {
     background-size: cover;
     }
 
-/* .btn-bottom {
+.btn-bottom {
     position: absolute;
     bottom: .7em;
-} */
-
-#homepage-btn {
-	color: white;
-	margin:auto;
-	display:block;
-	border-color: white;
-	border-width: 3px;
-	border-style: solid;
-	padding: 15px;
-	width: 160px;
-	transition: all .2s;
-}
-
-#homepage-btn:hover {
-	margin:auto;
-	display:block;
-	background-color: white;
-	color: #285d52;
-	transition: all .2s;
 }
