@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 export const HomePage = () =>(
     <body>
         <div className="bg row justify-content-center">
-            <Link to="/auctions" className="btn btn-lg btn-outline-light btn-bottom">
+            <Link to="/auctions" className="btn btn-lg btn-outline-light my-auto" id="homepage-btn">
                 Get Started
             </Link>
         </div>

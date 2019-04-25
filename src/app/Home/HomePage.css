@@ -2,12 +2,13 @@ body, html {
     height: 100%;
     }
     .bg {
-    background-image: url("https://amp.businessinsider.com/images/5a57df4ef421493e028b4752-1334-1001.jpg");
+    background-image: url("https://amp.businessinsider.com/images/5a57df4ef421493e028b4752-1334-1001.jpg") no-repeat fixed;
     height: 91vh;
     background-position: center;
-    background-repeat: no-repeat;
 		opacity: 0.8;
-    background-size: cover;
+		width: 100%;
+		overflow-x: hidden;
+		z-index: -10;
     }
 
 .btn-bottom {
