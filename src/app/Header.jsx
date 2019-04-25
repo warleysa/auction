@@ -18,18 +18,18 @@ export class Header extends React.Component {
 		return (
 			<>
 			<nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-				<NavLink to="/" className="">
+				<NavLink to="/home" className="">
 					<img src={ logo } className="mx-auto p-2" alt="Logo" height="50" width="50"/>
 				</NavLink>
-				<a className="navbar-brand" href="/">Luigi's Car Auction</a>
+				<a className="navbar-brand" href="/home">Luigi's Car Auction</a>
 				<button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 					<span className="navbar-toggler-icon"></span>
 				</button>
 				<div className="collapse navbar-collapse" id="navbarNavAltMarkup">
 					<ul className="navbar-nav">
 						<li className="nav-item">
-							<NavLink to="/" className="nav-item nav-link" activeClassName="active">
-								<i className="fa"></i>&nbsp;
+							<NavLink to="/home" className="nav-item nav-link" activeClassName="active">
+								<i className="fa fa-home"></i>&nbsp;
 									Home
 								</NavLink>
 							</li>

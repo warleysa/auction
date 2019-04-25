@@ -7,6 +7,7 @@ import { AuctionLanding } from './app/Auction/AuctionLanding';
 import { AuctionPage } from './app/Auction/AuctionPage';
 import { ProfileLanding } from './app/Profile/ProfileLanding';
 import {AdminLanding} from './app/Admin/AdminLanding';
+import {HomeLanding} from './app/Home/HomeLanding';
 
 export const ROUTES = [
 	{ path: '/register', component: RegisterPage, authRequired: false },
@@ -17,10 +18,10 @@ export const ROUTES = [
 	// { path: '/new', component: CarEditor },
 	{ path: '/auctions', component: AuctionLanding, authRequired: false },
 	{ path: '/auction/:auctionId', component: AuctionPage, authRequired: false },
-	{ path: '/home', component: AuctionLanding, authRequired: false},
+	{ path: '/home', component:HomeLanding, authRequired: false},
 	{ path: '/admin', component:AdminLanding, authRequired: true},
 	// { path: '/profile/:userId', component: AccountEditor },
-	{ path: '/', component: AuctionLanding, authRequired: false }
+	{ path: '/', component: HomeLanding, authRequired: false }
 ];
 
 export default ROUTES;
