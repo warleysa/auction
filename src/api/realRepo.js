@@ -7,7 +7,7 @@ import { StorageManage } from './../StorageManage';
 export class RealRepo {
 		storage = new StorageManage();
 
-    url = "http://3.17.178.4:4444";
+    url = "http://18.191.136.226:4444";
 		config = {
         headers: {
             Authorization: 'swarley'
