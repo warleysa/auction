@@ -2,27 +2,14 @@ body, html {
     height: 100%;
     }
     .bg {
-    background-image: url("https://amp.businessinsider.com/images/5a57df4ef421493e028b4752-1334-1001.jpg") no-repeat center fixed;
+    background-image: url("https://amp.businessinsider.com/images/5a57df4ef421493e028b4752-1334-1001.jpg");
     height: 91vh;
-		opacity: 0.8;
-		width: 100%;
-		overflow-x: hidden;
-		z-index: -10;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     }
 
 .btn-bottom {
     position: absolute;
     bottom: .7em;
-}
-
-#homepage-btn {
-	color: white;
-	display: block;
-	border-color: white;
-	border-width: 0.2rem;
-	border-style: solid;
-}
-#homepage-btn:hover {
-	background-color: white;
-	color: #285d52;
 }
