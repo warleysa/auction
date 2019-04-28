@@ -121,4 +121,12 @@ export class RealRepo {
 					.catch(resp=>alert(resp));
 			});
 		}
+
+		deleteAuction(){
+			return new Promise((resolve, reject)=>{
+				axios.delete(`${this.url}/auction/auctionId`.this.config)
+					.then(resp=> resolve(reso.data))
+					.catch(resp=>alert(resp));
+			});
+		}
 }
