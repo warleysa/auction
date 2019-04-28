@@ -2,6 +2,7 @@ import React from 'react';
 import {RealRepo} from '../../api/realRepo';
 import {AdminPage} from './AdminPage';
 import {Car} from './../../models/car';
+import {User} from './../../models/user';
 
 export class AdminLanding extends React.Component {
 
@@ -26,8 +27,18 @@ export class AdminLanding extends React.Component {
 				.then(auctions => {
 					let cars = auctions.map(c => new Car(c.UserId, c.Make, c.Model, c.Year, "No API Data for Mileage", c.Zip, c.Description, c.Price, c.StartTime, c.EndTime, +c.AuctionId));
 					this.setState({auctions: cars});
-				});
-		}
+                });
+
+            this.realRepo.getUsers()
+            .then(users => {
+                    let accounts = users.map(a => new User(a.UserId, a.FirstNameString, a.LastNameString, a.AddressString, a.City, a.State, a.Zip));
+                    this.setState({users: accounts});
+            });
+	
+                
+        }
+        
+        
 }
 
 export default AdminLanding;

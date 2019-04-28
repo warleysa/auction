@@ -124,8 +124,8 @@ export class RealRepo {
 
 		deleteAuction(){
 			return new Promise((resolve, reject)=>{
-				axios.delete(`${this.url}/auction/auctionId`.this.config)
-					.then(resp=> resolve(reso.data))
+				axios.delete(`${this.url}/auction/:auctionId`.this.config)
+					.then(resp=> resolve(resp.data))
 					.catch(resp=>alert(resp));
 			});
 		}

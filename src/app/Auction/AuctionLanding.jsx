@@ -30,12 +30,7 @@ export class AuctionLanding extends React.Component {
 					this.setState({auctions: cars});
                 });
                 
-            this.realRepo.getUsers()
-                .then(users => {
-                    let accounts = users.map(a => new User(a.UserId, a.FirstNameString, a.LastNameString, a.AddressString, a.City, a.State, a.Zip));
-                    this.setState({users: accounts});
-                });
-		}
+    	}
 }
 
 
