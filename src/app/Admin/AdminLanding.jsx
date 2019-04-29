@@ -18,7 +18,7 @@ export class AdminLanding extends React.Component {
     render() {
         return (
             <>
-						<AdminPage auctions={this.state.auctions}/>
+						<AdminPage auctions={this.state.auctions} users={this.state.users}/>
             </>
         );
     }
@@ -32,13 +32,13 @@ export class AdminLanding extends React.Component {
 
             this.realRepo.getUsers()
             .then(users => {
-                    let accounts = users.map(a => new User(a.UserId, a.FirstNameString, a.LastNameString, a.AddressString, a.City, a.State, a.Zip));
+                    let accounts = users.map(a => new User(a.UserId, a.Username, a.FirstName, a.LastName, a.Address, a.City, a.State, a.Zip, a.DateCreated));
                     this.setState({users: accounts});
             });
 	
                 
         }
-        
+          
         
 }
 

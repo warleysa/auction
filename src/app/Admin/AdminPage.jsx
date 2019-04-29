@@ -47,8 +47,46 @@ export const AdminPage = (props) => (
                 </tbody>
             </table>
         </div>
+
+        <div className="tab-pane fade show" id="account" role="tabpanel" aria-labelledby="account-tab">
+                    
+                    <table className="table table-striped table-condensed mx-1">
+                        <thead>
+                            <tr>
+                                <th>UserID</th>
+                                <th>User Name</th>
+                                <th>Name</th>
+                                <th>Location</th>
+                            </tr>
+                        </thead>
+                        
+                        <tbody>
+                            {
+                                props.users.map((u, i) =>
+                                    <tr key={i}>
+        
+                                        <td>{u.userId}</td>
+                                        <td>{u.username}</td>
+                                        <td>{u.first_name+" "+u.last_name}</td>
+                                        <td>{ u.city + ", "+ u.state_code}</td>
+                                        {/* <td>
+                                            <button className="btn btn-sm btn-danger"
+                                                    onClick={e => props.onDelete(a.id)}>
+                                                <i className="fa fa-trash"></i>
+                                            </button>
+                                        </td> */}
+                                    </tr>
+                                )
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
     </div>
-</div>
+
+
+       
+
 );
 
 export default AdminPage;
