@@ -112,5 +112,30 @@ export class RealRepo {
                 .then(resp => resolve(resp.data))
                 .catch(resp => console.log(resp));
         });
-    }
+		}
+		
+		getUsers() {
+			return new Promise((resolve, reject) => {
+					axios.get(`${this.url}/user`, this.config)
+							.then(resp => resolve(resp.data))
+							.catch(resp => console.log(resp));
+			});
+		}
+
+		getUserRating(userId){
+			return new Promise((resolve, reject) => {
+				axios.get(`${this.url}/user/rating/${userId}`, this.config)
+						.then(resp => resolve(resp.data))
+						.catch(resp => console.log(resp));
+			});
+		}
+
+		getUserFeedback(userId){
+			return new Promise((resolve, reject) => {
+				axios.get(`${this.url}/user/${userId}`, this.config)
+						.then(resp => resolve(resp.data))
+						.catch(resp => console.log(resp));
+			});
+		}
+
 }

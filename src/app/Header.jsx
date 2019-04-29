@@ -50,7 +50,14 @@ export class Header extends React.Component {
 											<i className="fa"></i>&nbsp;
 												Auctions
 											</NavLink>
-										</li>
+									</li>
+
+									<li className="nav-item">
+									<NavLink to="/users" className="nav-item nav-link" activeClassName="active">
+										<i className="fa"></i>&nbsp;
+											Users
+										</NavLink>
+									</li>
 									</ul>
 									<ul className="navbar-nav ml-auto">
 										<li className="nav-item" hidden={ !this.props.isAuthenticated }>
