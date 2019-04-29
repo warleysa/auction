@@ -10,7 +10,8 @@ export class AdminLanding extends React.Component {
 
 
     state = {
-        auctions: []
+        auctions: [],
+        users: []
     };
 
 

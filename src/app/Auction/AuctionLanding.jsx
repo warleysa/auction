@@ -3,7 +3,6 @@ import React from 'react';
 import { RealRepo } from '../../api/realRepo';
 import { AuctionList } from './AuctionList';
 import { Car } from './../../models/car';
-import {User} from './../../models/user';
 
 export class AuctionLanding extends React.Component {
 	realRepo = new RealRepo();
@@ -11,7 +10,6 @@ export class AuctionLanding extends React.Component {
 
     state = {
         auctions: [],
-        users: []
     };
 
 
