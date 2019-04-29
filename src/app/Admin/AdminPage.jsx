@@ -37,7 +37,7 @@ export const AdminPage = (props) => (
                                 <td>{ a.userId}</td>
                                 <td>
                                     <button className="btn btn-sm btn-danger"
-                                            onClick={e => props.onDelete(a.id)}>
+                                            onClick={e => props.onDelete(a.auctionId)}>
                                         <i className="fa fa-trash"></i>
                                     </button>
                                 </td>
