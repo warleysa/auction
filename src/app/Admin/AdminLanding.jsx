@@ -14,6 +14,17 @@ export class AdminLanding extends React.Component {
         users: []
     };
 
+    onDelete(auctionId){
+        if(window.confirm("Are you sure")){
+            this.realRepo.deleteAuction(auctionId)
+                // .then(()=> {
+                //     this.setState(state => ({
+                //         auctions: state.auctions.filter(x => )
+                //     }))
+                // });
+        }
+    }
+
 
     render() {
         return (

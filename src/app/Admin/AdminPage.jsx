@@ -35,12 +35,12 @@ export const AdminPage = (props) => (
                                 <td>${ a.auction_reserve_price}</td>
                                 <td>{ a.time_left }</td>
                                 <td>{ a.userId}</td>
-                                {/* <td>
+                                <td>
                                     <button className="btn btn-sm btn-danger"
                                             onClick={e => props.onDelete(a.id)}>
                                         <i className="fa fa-trash"></i>
                                     </button>
-                                </td> */}
+                                </td>
                             </tr>
                         )
                     }
