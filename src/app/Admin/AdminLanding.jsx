@@ -17,11 +17,11 @@ export class AdminLanding extends React.Component {
     onDelete(auctionId){
         if(window.confirm("Are you sure")){
             this.realRepo.deleteAuction(auctionId)
-                // .then(()=> {
-                //     this.setState(state => ({
-                //         auctions: state.auctions.filter(x => )
-                //     }))
-                // });
+                .then(()=> {
+                    this.setState(state => ({
+                        auctions: state.auctions.filter(x => x.auctionId != auctionId)
+                    }))
+                });
         }
     }
 
@@ -29,7 +29,8 @@ export class AdminLanding extends React.Component {
     render() {
         return (
             <>
-						<AdminPage auctions={this.state.auctions} users={this.state.users}/>
+						<AdminPage auctions={this.state.auctions} users={this.state.users}
+                        onDelete={x => this.onDelete(x)}/>
             </>
         );
     }
