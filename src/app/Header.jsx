@@ -2,7 +2,7 @@ import React from 'react';
 
 import { NavLink } from 'react-router-dom';
 
-import { Container } from 'react-bootstrap';
+import { Container, Dropdown } from 'react-bootstrap';
 
 import logo from './logo.ico';
 
@@ -55,29 +55,42 @@ export class Header extends React.Component {
 									<ul className="navbar-nav ml-auto">
 										<li className="nav-item" hidden={ !this.props.isAuthenticated }>
 											<NavLink to="/profile" className="nav-link" activeClassName="active">
-												<i className="fas fa-user"></i>&nbsp;
-													Profile
+												<i className="fas fa-users"></i>&nbsp;
+													Users
 												</NavLink>
 											</li>
-											<li className="nav-item" hidden={ !this.props.isAuthenticated }>
-												<NavLink to="/admin" className="nav-link" activeClassName="active">
-													<i className="fas fa-lock"></i>&nbsp;
-														Admin Viewer
-													</NavLink>
-												</li>
-												<li className="nav-item" hidden={ !this.props.isAuthenticated }>
-													<NavLink to="/home" onClick={() => this.setAuthSignOut()} className="nav-link" activeClassName="active">
-														<i className="fa fa-sign-out"></i>&nbsp;
-															Sign Out
-														</NavLink>
-													</li>
-												</ul>
-											</div>
-										</nav>
-										</>
-								);
-							}
+											<li className="nav-item dropdown">
+												<a className="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">My Account</a>
+												<div className="dropdown-menu dropdown-menu-right">
+													<li className="dropdown-item" hidden={ !this.props.isAuthenticated }>
+														<NavLink to="/profile" className="nav-link" activeClassName="active">
+															<i className="fas fa-user"></i>&nbsp;
+																My Profile
+															</NavLink>
+														</li>
+														<li className="dropdown-item" hidden={ !this.props.isAuthenticated }>
+															<NavLink to="/admin" className="nav-link" activeClassName="active">
+																<i className="fas fa-lock"></i>&nbsp;
+																	Admin Viewer
+																</NavLink>
+															</li>
+															<div className="dropdown-divider"></div>
+															<li className="dropdown-item" hidden={ !this.props.isAuthenticated }>
+																<NavLink to="/home" onClick={() => this.setAuthSignOut()} className="nav-link" activeClassName="active">
+																	<i className="fa fa-sign-out"></i>&nbsp;
+																		Sign Out
+																	</NavLink>
+																</li>
+															</div>
+														</li>
 
-							componentDidMount() {
+													</ul>
+												</div>
+											</nav>
+											</>
+									);
+								}
+
+								componentDidMount() {
+								}
 							}
-						}

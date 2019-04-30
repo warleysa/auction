@@ -122,7 +122,7 @@ export class RealRepo {
                 .catch(resp => alert(resp));
         });
 		}
-		
+
 		getUsers(){
 			return new Promise((resolve, reject)=> {
 				axios.get(`${this.url}/users`, this.config)
