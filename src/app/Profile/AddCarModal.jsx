@@ -11,6 +11,10 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import Car from './../../models/car';
 import carData from './carData.json';
 import moment from 'moment';
+import './UserProfile.css';
+
+import { CirclePicker, GithubPicker } from 'react-color';
+
 
 
 
@@ -35,7 +39,9 @@ class AddCarModal extends Component {
 			images: [],
 			durationValues: [1,3,7,14,30],
 			modelInputDiasbled: true,
-			modelOptions: []
+			modelOptions: [],
+			defaultColors: ['#8ed1fc', '#0693e3', '#01579b', '#7b1fa2', '#f78da7', '#ff0404', '#b71c1c', "#ffffff" ,'#abb8c3', '#607d8b',
+											'#555555', '#000000', '#194d33', '#4caf50', '#00d084', '#ffeb3b', '#ff9800']
 		};
 	}
 
@@ -197,9 +203,15 @@ class AddCarModal extends Component {
 								</Form.Group>
 							</Form.Row>
 
-
 							<Form.Row>
-								<Form.Group as={Col} sm='4' controlId="carFormZip">
+								<div className="col-sm-6">
+										<p className="m-0">Color</p>
+										<div className="card bg-light p-2 my-2">
+											<CirclePicker width="100%" color={ this.state.color } colors={this.state.defaultColors} onChangeComplete={ (color, event) => this.setState({ color: color.hex }) } />
+										</div>
+								</div>
+
+								<Form.Group as={Col} sm='6' controlId="carFormZip">
 									<Form.Label>Zip</Form.Label>
 									<InputGroup>
 										<InputGroup.Prepend>
