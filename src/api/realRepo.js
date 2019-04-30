@@ -146,7 +146,7 @@ export class RealRepo {
 
 		postReview(sellerReview) {
 			console.log("Adding review... API Call POST");
-
+			console.log(sellerReview.apiJsonFormat());
 			return new Promise((resolve, reject) => {
 					axios.post(`${this.url}/rating`, sellerReview.apiJsonFormat(), this.config)
 							.then(resp => resolve(resp.data))

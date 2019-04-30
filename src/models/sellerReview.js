@@ -1,17 +1,18 @@
 
 export class SellerReview {
   constructor(sellerId, reviewerId, comment, rating) {
-        this.raterId = reviewerId;
-        this.userId = sellerId;
-		this.rating = rating;
-		this.description = comment;
+    this.userId = +sellerId;    
+    this.raterId = +reviewerId;
+    this.description = comment;
+    this.rating = +rating;
+	
   }
   apiJsonFormat() {
     return({
         userId: this.userId,
         raterId: this.raterId,
         description: this.description,
-        rating: this.rating
+        rating: this.rating,
     })
 }
 };
