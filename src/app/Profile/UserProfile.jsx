@@ -7,7 +7,7 @@ import MyCarsList from './MyCarsList';
 import AddCarModal from './AddCarModal';
 import AccountSidebar from './AccountSidebar';
 import ChangePassword from './ChangePassword';
-import UserList from './../Other/UserList';
+import UsersLanding from './../Users/UsersLanding';
 import { User } from './../../models/user';
 import { RealRepo } from '../../api/realRepo';
 var zipcodes = require('zipcodes');
