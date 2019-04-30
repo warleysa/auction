@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 var zipcodes = require('zipcodes');
 
 export const AdminPage = (props) => (
-<div className="mx-2">
+<div className="container">
+    <div className="mx-2">
     <ul className="nav nav-tabs" id="myTab" role="tablist">
                         <li className="nav-item">
                             <a className="nav-link active" href="#auction"  role="tab" data-toggle="tab" aria-controls="auction" aria-selected="true">Auctions</a>
@@ -16,13 +17,14 @@ export const AdminPage = (props) => (
     <div className="tab-content" id="myTabContent">
         <div className="tab-pane fade show active" id="auction" role="tabpanel" aria-labelledby="auction-tab">
                     
-            <table className="table table-striped table-condensed mx-1">
+            <table className="table table-striped table-condensed">
                 <thead>
                     <tr>
                         <th>Model</th>
                         <th>Price</th>
                         <th>Time left</th>
-                        <th>Seller</th>
+                        <th>Seller ID</th>
+                        <th>Seller Name</th>
                     </tr>
                 </thead>
                 
@@ -35,6 +37,7 @@ export const AdminPage = (props) => (
                                 <td>${ a.auction_reserve_price}</td>
                                 <td>{ a.time_left }</td>
                                 <td>{ a.userId}</td>
+                                <td>{ a.UserName}</td>
                                 <td>
                                     <button className="btn btn-sm btn-danger"
                                             onClick={e => props.onDelete(a.auctionId)}>
@@ -50,13 +53,14 @@ export const AdminPage = (props) => (
 
         <div className="tab-pane fade show" id="account" role="tabpanel" aria-labelledby="account-tab">
                     
-                    <table className="table table-striped table-condensed mx-1">
+                    <table className="table table-striped table-condensed">
                         <thead>
                             <tr>
                                 <th>UserID</th>
                                 <th>User Name</th>
                                 <th>Name</th>
                                 <th>Location</th>
+                                <th></th>
                             </tr>
                         </thead>
                         
@@ -69,12 +73,16 @@ export const AdminPage = (props) => (
                                         <td>{u.username}</td>
                                         <td>{u.first_name+" "+u.last_name}</td>
                                         <td>{ u.city + ", "+ u.state_code}</td>
-                                        {/* <td>
-                                            <button className="btn btn-sm btn-danger"
-                                                    onClick={e => props.onDelete(a.id)}>
-                                                <i className="fa fa-trash"></i>
-                                            </button>
-                                        </td> */}
+                                        <td>
+                                            {/* <div className="btn-group"> */}
+                                                <button className="btn btn-default btn-info mr-3">
+                                                View Comments
+                                                </button>
+                                                <button className="btn btn-default btn-secondary">
+                                                Change Password
+                                                </button>
+                                            {/* </div> */}
+                                        </td>
                                     </tr>
                                 )
                             }
@@ -83,10 +91,7 @@ export const AdminPage = (props) => (
                 </div>
             </div>
     </div>
-
-
-       
-
+</div>
 );
 
 export default AdminPage;
