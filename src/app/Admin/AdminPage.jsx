@@ -75,10 +75,10 @@ export const AdminPage = (props) => (
                                         <td>{ u.city + ", "+ u.state_code}</td>
                                         <td>
                                             {/* <div className="btn-group"> */}
-                                                <button className="btn btn-default btn-info mr-3">
+                                                <button className="btn btn-sm btn-info mr-3">
                                                 View Comments
                                                 </button>
-                                                <button className="btn btn-default btn-secondary">
+                                                <button className="btn btn-sm btn-warning">
                                                 Change Password
                                                 </button>
                                             {/* </div> */}
