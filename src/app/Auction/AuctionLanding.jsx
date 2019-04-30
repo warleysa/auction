@@ -9,7 +9,7 @@ export class AuctionLanding extends React.Component {
 
 
     state = {
-        auctions: []
+        auctions: [],
     };
 
 
@@ -26,8 +26,9 @@ export class AuctionLanding extends React.Component {
 				.then(auctions => {
 					let cars = auctions.map(c => new Car(c.UserId, c.Make, c.Model, c.Year, "No API Data for Mileage", c.Zip, c.Description, c.Price, c.StartTime, c.EndTime, +c.AuctionId));
 					this.setState({auctions: cars});
-				});
-		}
+                });
+                
+    	}
 }
 
 
