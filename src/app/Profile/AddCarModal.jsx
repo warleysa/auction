@@ -13,7 +13,7 @@ import carData from './carData.json';
 import moment from 'moment';
 import './UserProfile.css';
 
-import { CirclePicker, GithubPicker } from 'react-color';
+import { CirclePicker } from 'react-color';
 
 
 
@@ -204,10 +204,14 @@ class AddCarModal extends Component {
 							</Form.Row>
 
 							<Form.Row>
-								<div className="col-sm-6">
+								<div className="col-sm-4">
 										<p className="m-0">Color</p>
 										<div className="card bg-light p-2 my-2">
 											<CirclePicker width="100%" color={ this.state.color } colors={this.state.defaultColors} onChangeComplete={ (color, event) => this.setState({ color: color.hex }) } />
+										</div>
+								</div>
+								<div className="col-sm-2 my-auto w-100 h-100">
+										<div className="p-5 w-75 h-75 rounded-circle border border-secondary" style={{background: this.state.color}}>
 										</div>
 								</div>
 
