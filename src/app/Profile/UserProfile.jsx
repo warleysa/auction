@@ -267,7 +267,7 @@ class UserProfile extends React.Component {
 		        </Col>
 		      </Row>
 
-					<UsersLanding/>
+				
 
       </Container>
     );

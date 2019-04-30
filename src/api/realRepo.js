@@ -116,7 +116,7 @@ export class RealRepo {
 		
 		getUsers() {
 			return new Promise((resolve, reject) => {
-					axios.get(`${this.url}/user`, this.config)
+					axios.get(`${this.url}/usersPublic`, this.config)
 							.then(resp => resolve(resp.data))
 							.catch(resp => console.log(resp));
 			});
@@ -130,12 +130,28 @@ export class RealRepo {
 			});
 		}
 
-		getUserFeedback(userId){
+		getUserFeedback2(userId){
 			return new Promise((resolve, reject) => {
-				axios.get(`${this.url}/user/${userId}`, this.config)
+				axios.get(`${this.url}/user/ratings/${userId}`, this.config)
 						.then(resp => resolve(resp.data))
 						.catch(resp => console.log(resp));
 			});
 		}
+
+		async getUserFeedback(userId) {
+			const feedback = await axios.get(`${this.url}/user/ratings/${userId}`, this.config)
+			return await feedback; 
+		}
+		
+
+		postReview(sellerReview) {
+			console.log("Adding review... API Call POST");
+
+			return new Promise((resolve, reject) => {
+					axios.post(`${this.url}/rating`, sellerReview.apiJsonFormat(), this.config)
+							.then(resp => resolve(resp.data))
+							.catch(resp => alert(resp));
+			});
+	}
 
 }
