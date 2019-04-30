@@ -22,8 +22,8 @@ export class UsersLanding extends React.Component {
 
 		componentDidMount() {
 
-           
-				
+
+
             let temp2= [
                 {
                     "UserId": 1,
@@ -215,4 +215,3 @@ export class UsersLanding extends React.Component {
 
 
 export default UsersLanding;
-

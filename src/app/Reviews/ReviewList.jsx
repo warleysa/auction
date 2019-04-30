@@ -13,7 +13,7 @@ class ReviewList extends Component {
 
 	reviewList(reviews) {
 		return ( reviews.map((r, i) =>
-					<div className="card bg-light mt-3" key={ i }>
+					<div className="card bg-light mt-3" key={ r.id  }>
 							<div className="card-header">
 								<Rating value={ r.rating }/>
 							</div>

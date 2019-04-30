@@ -35,8 +35,8 @@ Auction Product Page (VIEW)
 		- Return comment_id, username (& user_id if needed), comment, and date created
 
 		"scripts": {
-		    "start": "PORT=80 HOST='0.0.0.0' react-scripts start",
-		    "build": "react-scripts build",
-		    "test": "react-scripts test",
-		    "eject": "react-scripts eject"
-		  },
+    	"start": "PORT=80 HOST='0.0.0.0' react-scripts start",
+    	"build": "react-scripts build",
+    	"test": "react-scripts test",
+    	"eject": "react-scripts eject"
+    },

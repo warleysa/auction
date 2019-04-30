@@ -8,7 +8,7 @@ class UsersList extends Component {
     activeUserId: this.props.activeUserId,
   }
 
-  
+
 
 
 
@@ -17,11 +17,11 @@ class UsersList extends Component {
 
     return (
         <div className="card-columns">
-    
+
         {
-            this.props.users.map((user, i) => 
-                    <UserTile user={user} activeUserId={activeUser} key={i}/>  
-            ) 
+            this.props.users.map((user, i) =>
+                    <UserTile user={user} activeUserId={activeUser} key={i}/>
+            )
         }
     </div>
     )

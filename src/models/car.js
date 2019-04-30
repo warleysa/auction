@@ -5,12 +5,12 @@ moment.relativeTimeThreshold('h', 24*3);
 moment.relativeTimeThreshold('s', 60);
 
 export class Car{
-	constructor(userId, make, model, year, mileage, zip, description, auction_reserve_price, date_created, end_date, auctionId){
+	constructor(userId, make, model, year, mileage, color, zip, description, auction_reserve_price, date_created, end_date, auctionId){
 		this.userId = userId
 		this.make = make;
 		this.model = model;
 		this.year = year;
-		this.color = "color not in API yet";
+		this.color = color;
     this.mileage = mileage;
 		this.zip = zip;
 		this.description = description;

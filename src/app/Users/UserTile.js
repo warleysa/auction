@@ -12,7 +12,7 @@ import {NavLink} from 'react-router-dom';
 
 class UserTile extends Component {
     realRepo = new RealRepo();
-    
+
     state = {
         user: [],
         showModal: false,
@@ -30,7 +30,7 @@ class UserTile extends Component {
                 });
             });
             console.log(this.state.sellerFeedback);
-    
+
         }else{
             console.log("could not find user");
         }
@@ -39,7 +39,7 @@ class UserTile extends Component {
 	handleClose = () => {
         this.setState({ showModal: false });
     }
-    
+
     handleShow = () => {
         console.log("running handleShow");
         this.updateFeedback(this.props.user.UserId);
@@ -47,16 +47,16 @@ class UserTile extends Component {
         this.setState({ showModal: true });
     }
 
-    
+
     onSubmit = () => {
-        
+
     }
 
     toggleCollapse = () => {
         let collapse = document.getElementById(`feedback${this.props.user.UserId}`);
         collapse.classList.toggle('collapsed')
     }
-    
+
     render(){
         const feedbackModalContent = () => {
 			if(this.state.activeUserId){
@@ -72,7 +72,7 @@ class UserTile extends Component {
                                 <i className="fa fa-sign-in"></i>&nbsp;
                                 Login
                             </NavLink>
-                            
+
                             <NavLink to="/register" className="nav-item nav-link btn btn-primary my-2" activeClassName="active">
                                 <i className="fa fa-edit"></i>&nbsp;
                                 Register
@@ -82,14 +82,14 @@ class UserTile extends Component {
 				)
 			}
         };
-        
+
         const displayReviews = () => {
-            this.updateFeedback(this.props.user.UserId);
+            // this.updateFeedback(this.props.user.UserId);
             if(this.state.sellerFeedback.length){
                 return(
                     <div>
                     {
-                        this.state.sellerFeedback.map((review, i) => 
+                        this.state.sellerFeedback.map((review, i) =>
                             <div className="m-1" key={`review${i}`}>
                                 <div className="float-right">
                                     <Rating value={review.rating}/>
@@ -98,7 +98,7 @@ class UserTile extends Component {
                                 <hr/>
                                 <p>"Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident."</p>
                             </div>
-                        ) 
+                        )
                     }
                     </div>
                 );
@@ -110,12 +110,12 @@ class UserTile extends Component {
         }
 
         return(
-            <Card className="mb-auto shadow-sm my-4">
+            <Card className="mb-auto shadow-sm m-3 p-0 h-75">
             <div className="p-2 position-relative">
                 <Card.Img variant="top" className="rounded-circle" src={this.props.user.ProfilePicture || defaultPic}  />
             </div>
             <Card.Header className="text-center"><Card.Title>{`${this.props.user.FirstName}'s account`}</Card.Title></Card.Header>
-            <Card.Body className="p-3">
+            <Card.Body className="p-3 m-3">
 
                 <div>
                     <ul className="list-group mb-3">
@@ -140,7 +140,7 @@ class UserTile extends Component {
                             data-target={`#feedback${this.props.user.UserId}`}
                             aria-expanded="false"
                             aria-controls={`feedback${this.props.user.UserId}`}>Seller Feedback</button>
-                        
+
                     </div>
                     <div className="col-3 pl-1 py-1">
                         <button className="btn btn-success btn-block text-center"

@@ -38,7 +38,7 @@ export class AdminLanding extends React.Component {
 		componentDidMount() {
 			this.realRepo.getAuctions()
 				.then(auctions => {
-                    let cars = auctions.map(c => new Car(c.UserId, c.Make, c.Model, c.Year, "No API Data for Mileage", c.Zip, c.Description, c.Price, c.StartTime, c.EndTime, +c.AuctionId));
+                    let cars = auctions.map(c => new Car(c.UserId, c.Make, c.Model, c.Year, c.Mileage, c.Color, c.Zip, c.Description, c.Price, c.StartTime, c.EndTime, +c.AuctionId));
                     cars.map((c,i) => c['UserName']= auctions[i].Username);
 					this.setState({auctions: cars});
                 });
