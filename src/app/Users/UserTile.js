@@ -9,6 +9,7 @@ import { RealRepo } from '../../api/realRepo';
 import Modal from 'react-bootstrap/Modal';
 import SellerReviewForm from '../Reviews/SellerReviewForm';
 import {NavLink} from 'react-router-dom';
+import { Collapse } from 'react-bootstrap';
 
 class UserTile extends Component {
     realRepo = new RealRepo();
@@ -17,8 +18,11 @@ class UserTile extends Component {
         user: [],
         showModal: false,
         activeUserId: this.props.activeUserId,
-        sellerFeedback: []
+        sellerFeedback: [],
+        feedbackLoaded: false,
+        showFeedback: false
     }
+
     updateFeedback(userId) {
         console.log("running updateFeedback");
         if(userId){
@@ -26,7 +30,8 @@ class UserTile extends Component {
             this.realRepo.getUserFeedback2(userId)
             .then(fb => {
                 this.setState({
-                    sellerFeedback: fb
+                    sellerFeedback: fb,
+                    feedbackLoaded: true
                 });
             });
             console.log(this.state.sellerFeedback);
@@ -36,14 +41,11 @@ class UserTile extends Component {
         }
     }
 
-	handleClose = () => {
+	handleModalClose = () => {
         this.setState({ showModal: false });
     }
     
-    handleShow = () => {
-        console.log("running handleShow");
-        this.updateFeedback(this.props.user.UserId);
-
+    handleModalShow = () => {
         this.setState({ showModal: true });
     }
 
@@ -53,8 +55,7 @@ class UserTile extends Component {
     }
 
     toggleCollapse = () => {
-        let collapse = document.getElementById(`feedback${this.props.user.UserId}`);
-        collapse.classList.toggle('collapsed')
+        this.setState(state => ({ showFeedback: !state.showFeedback }));
     }
     
     render(){
@@ -84,28 +85,31 @@ class UserTile extends Component {
         };
         
         const displayReviews = () => {
-            this.updateFeedback(this.props.user.UserId);
-            if(this.state.sellerFeedback.length){
-                return(
-                    <div>
-                    {
-                        this.state.sellerFeedback.map((review, i) => 
-                            <div className="m-1" key={`review${i}`}>
-                                <div className="float-right">
-                                    <Rating value={review.rating}/>
+            if(this.state.feedbackLoaded){
+                if(this.state.sellerFeedback.length){
+                    return(
+                        <div>
+                        {
+                            this.state.sellerFeedback.map((review, i) => 
+                                <div className="m-1" key={`review${i}`}>
+                                    <div className="float-right">
+                                        <Rating value={review.rating}/>
+                                    </div>
+                                    <h6><strong>{review.FirstName}-</strong></h6>
+                                    <hr/>
+                                    <p>"Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident."</p>
                                 </div>
-                                <h6><strong>{review.FirstName}-</strong></h6>
-                                <hr/>
-                                <p>"Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident."</p>
-                            </div>
-                        ) 
-                    }
-                    </div>
-                );
+                            ) 
+                        }
+                        </div>
+                    );
+                }else{
+                    return(<div>Seller doesn't have any reviews</div>);
+                }
             }else{
                 return(
                     <div>Seller doesn't have any reviews</div>
-                );
+                ); 
             }
         }
 
@@ -139,16 +143,18 @@ class UserTile extends Component {
                             data-toggle="collapse"
                             data-target={`#feedback${this.props.user.UserId}`}
                             aria-expanded="false"
-                            aria-controls={`feedback${this.props.user.UserId}`}>Seller Feedback</button>
+                            aria-controls={`feedback${this.props.user.UserId}`}
+                            onClick={e => this.updateFeedback(this.props.user.UserId)}>Seller Feedback</button>
                         
                     </div>
                     <div className="col-3 pl-1 py-1">
                         <button className="btn btn-success btn-block text-center"
-                                onClick={this.handleShow}>+</button>
+                                onClick={this.handleModalShow}>+</button>
                     </div>
                 </div>
 
             </Card.Body>
+          
             <div className="collapse collapsed p-3" id={`feedback${this.props.user.UserId}`}>
                 <div className="card card-body">
                     {displayReviews()}
@@ -163,7 +169,7 @@ class UserTile extends Component {
             </div>
             <Modal  size="md"
 					show={this.state.showModal}
-					onHide={this.handleClose}
+					onHide={this.handleModalClose}
 					aria-labelledby="add-review-modal">
 					<Modal.Header closeButton>
 						<Modal.Title id="add-review-title"> Leave {this.props.user.FirstName} a review</Modal.Title>

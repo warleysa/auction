@@ -11,7 +11,7 @@ export class Car{
 		this.model = model;
 		this.year = year;
 		this.color = "color not in API yet";
-    this.mileage = mileage;
+    	this.mileage = mileage;
 		this.zip = zip;
 		this.description = description;
 		this.dateCreated = date_created;

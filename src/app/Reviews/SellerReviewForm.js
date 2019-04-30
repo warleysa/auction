@@ -1,21 +1,22 @@
 import React, { Component } from 'react';
 import { SellerReview } from './../../models/sellerReview';
 import Rating from './Rating';
+import { RealRepo } from '../../api/realRepo';
 
 class SellerReviewForm extends Component {
-
-  state = {
-    currentUserId: '',
-    sellerUserId: '',
-    rating: '',
-    comment: '',
-	ratingValues: [1,2,3,4,5]
-  }
+    realRepo = new RealRepo();
+    state = {
+        currentUserId: this.props.activeUserId,
+        sellerUserId: this.props.sellerUserId,
+        rating: '',
+        comment: '',
+	    ratingValues: [1,2,3,4,5]
+    }
 
   onSubmit(){
-    this.props.onNewReview(new SellerReview(this.state.sellerUserId, this.state.currentUserId, this.state.comment, this.state.rating));
+    let review = new SellerReview(this.state.sellerUserId, this.state.currentUserId, this.state.comment, this.state.rating);
+    this.realRepo.postReview(review);
 		this.setState({
-			userName: '',
 	        rating: '',
 	        comment: ''
 		});
@@ -65,7 +66,7 @@ class SellerReviewForm extends Component {
 	            </form>
 					<div>
 						<button onClick={e => this.onSubmit()}
-							className="btn btn-primary">
+							className="btn btn-primary float-right">
 							Submit
 						</button>
 					</div>
