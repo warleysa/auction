@@ -211,7 +211,7 @@ class AddCarModal extends Component {
 										</div>
 								</div>
 								<div className="col-sm-2 my-auto w-100 h-100">
-										<div className="p-5 w-75 h-75 rounded-circle border border-secondary" style={{background: this.state.color}}>
+										<div className="p-5 w-100 h-75 rounded border border-secondary" style={{background: this.state.color}}>
 										</div>
 								</div>
 
