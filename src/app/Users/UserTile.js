@@ -62,7 +62,7 @@ class UserTile extends Component {
         const feedbackModalContent = () => {
 			if(this.state.activeUserId){
 				return (
-					<SellerReviewForm sellerUserId={this.props.user.UserId} activeUserId={this.props.activeUserId}/>
+					<SellerReviewForm sellerUserId={+this.props.user.UserId} activeUserId={+this.props.activeUserId}/>
 				)
 			}else{
 				return (
