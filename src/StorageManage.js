@@ -40,8 +40,8 @@ export class StorageManage {
 	}
 
 	getZipCode() {
-		let zip = JSON.parse(localStorage.getItem("zipCode"));
-		return zip;
+		// let zip = JSON.parse(localStorage.getItem("zipCode"));
+		return 75205;
 	}
 
 

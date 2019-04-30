@@ -113,4 +113,13 @@ export class RealRepo {
                 .catch(resp => console.log(resp));
         });
     }
+
+		setProfileImage(profilePicture, userId) {
+				console.log("Image Upload Profile... API Call");
+        return new Promise((resolve, reject) => {
+            axios.put(`${this.url}/user/image`, profilePicture, userId, this.config)
+                .then(resp => resolve(resp.data))
+                .catch(resp => alert(resp));
+        });
+    }
 }

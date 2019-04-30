@@ -1,5 +1,5 @@
 export class User {
-    constructor(userId, username, firstname, lastname, address, city, state_code, zip, register_date) {
+    constructor(userId, username, firstname, lastname, address, city, state_code, zip, register_date, image) {
         this.userId = userId;
         this.username = username;
 				this.first_name = firstname;
@@ -9,6 +9,7 @@ export class User {
 				this.state_code = state_code;
         this.zip = zip;
         this.register_date = register_date;
+				this.image = image;
     }
 
 		jsonFormat() {
@@ -20,7 +21,7 @@ export class User {
 				address: this.address,
 				city: this.city,
 				state_code: this.state_code,
-        zip: this.zip,
+        zip: this.zip.toString(),
         register_date: this.register_date
 			})
 		}

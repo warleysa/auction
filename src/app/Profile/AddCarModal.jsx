@@ -150,7 +150,6 @@ class AddCarModal extends Component {
 												className="custom-select"
 												value={this.state.model}
 												onChange={this.handleInputChange}>
-												<option></option>
 												{
 													this.state.modelOptions.map((model, x) => <option key={x} value={model}>{model}</option>)
 												}
@@ -244,7 +243,6 @@ class AddCarModal extends Component {
 												className="custom-select"
 												value={this.state.duration}
 												onChange={ e => this.setState({ duration: e.target.value }) }>
-												<option></option>
 												{
 													this.state.durationValues.map(x => <option key={x} value={x}>{x}</option>)
 												}

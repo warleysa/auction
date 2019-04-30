@@ -29,7 +29,7 @@ export class Header extends React.Component {
 					<ul className="navbar-nav">
 						<li className="nav-item">
 							<NavLink to="/home" className="nav-item nav-link" activeClassName="active">
-								<i className="fa fa-home"></i>&nbsp;
+								<i className="fas fa-home"></i>&nbsp;
 									Home
 								</NavLink>
 							</li>
@@ -47,7 +47,7 @@ export class Header extends React.Component {
 									</li>
 									<li className="nav-item">
 										<NavLink to="/auctions" className="nav-item nav-link" activeClassName="active">
-											<i className="fa"></i>&nbsp;
+											<i className="fas fa-car-side"></i>&nbsp;
 												Auctions
 											</NavLink>
 										</li>
@@ -55,19 +55,19 @@ export class Header extends React.Component {
 									<ul className="navbar-nav ml-auto">
 										<li className="nav-item" hidden={ !this.props.isAuthenticated }>
 											<NavLink to="/profile" className="nav-link" activeClassName="active">
-												<i className="fa"></i>&nbsp;
+												<i className="fas fa-user"></i>&nbsp;
 													Profile
 												</NavLink>
 											</li>
 											<li className="nav-item" hidden={ !this.props.isAuthenticated }>
 												<NavLink to="/admin" className="nav-link" activeClassName="active">
-													<i className="fa"></i>&nbsp;
+													<i className="fas fa-lock"></i>&nbsp;
 														Admin Viewer
 													</NavLink>
 												</li>
 												<li className="nav-item" hidden={ !this.props.isAuthenticated }>
 													<NavLink to="/home" onClick={() => this.setAuthSignOut()} className="nav-link" activeClassName="active">
-														<i className="fa sign-out"></i>&nbsp;
+														<i className="fa fa-sign-out"></i>&nbsp;
 															Sign Out
 														</NavLink>
 													</li>

@@ -151,14 +151,7 @@ class UserProfile extends React.Component {
 
 		      <Row>
 		        <Col md={5} lg={4} xl={3}>
-							<AccountSidebar first_name={this.state.profile.first_name}
-		                            last_name={this.state.profile.last_name}
-		                            date_joined={this.state.profile.register_date}
-		                            cars_listed={this.state.cars_listed}
-		                            cars_purchased={this.state.profile.cars_purchased}
-		                            cars_sold={this.state.profile.cars_sold}
-		                            ranking={this.state.profile.ranking}
-																keyId="hello"/>
+							<AccountSidebar profile={this.state.profile} carsListed={this.state.cars_listed}/>
 		        </Col>
 
 		        <Col md={7} lg={8} xl={9}>
@@ -266,8 +259,6 @@ class UserProfile extends React.Component {
 		          </Tabs>
 		        </Col>
 		      </Row>
-
-					<UserList/>
 
       </Container>
     );

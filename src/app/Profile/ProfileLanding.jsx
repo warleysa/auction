@@ -41,10 +41,12 @@ export class ProfileLanding extends React.Component {
         return (
 
             <>
-							<Alert dismissible variant="success" show={ this.state.alertShow } onClose={() => this.onDismissAlert()} className="text-center fixed-top w-75 mx-auto mt-3">
-								{ this.state.alertMessage }
-							</Alert>
-							<UserProfile userInfo={ this.state.profile } carData={ this.state.cars } setProfileInfo={(p) => this.setProfileInfo(p)} getProfileInfo={() => this.getProfileInfo() }/>
+							<div className="mb-4">
+								<Alert dismissible variant="success" show={ this.state.alertShow } onClose={() => this.onDismissAlert()} className="text-center fixed-top w-75 mx-auto mt-3">
+									{ this.state.alertMessage }
+								</Alert>
+								<UserProfile userInfo={ this.state.profile } carData={ this.state.cars } setProfileInfo={(p) => this.setProfileInfo(p)} getProfileInfo={() => this.getProfileInfo() }/>
+							</div>
             </>
         );
     }
@@ -56,7 +58,7 @@ export class ProfileLanding extends React.Component {
 				let userId = +this.props.match.params.userId;
 					this.apiRepo.getUserInfo(userId)
 					.then(p => {
-						let userInfo = new User(p.UserId, p.Username, p.FirstName, p.LastName, p.Address, p.City, p.State, p.Zip, p.DateCreated.slice(0,10));
+						let userInfo = new User(p.UserId, p.Username, p.FirstName, p.LastName, p.Address, p.City, p.State, p.Zip, p.DateCreated.slice(0,10), p.ProfilePicture);
 						this.setState({profile: userInfo});
 						console.log(this.state);
 					});

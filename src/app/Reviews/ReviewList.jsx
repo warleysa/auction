@@ -34,6 +34,8 @@ class ReviewList extends Component {
 		return (
 		  <>
 				<h4> Product Reviews <span className="text-muted">({ this.props.reviews.length })</span> </h4>
+				console.log("Adding Review");
+				console.log(this.props.reviews);
 				{ (this.props.reviews.length === 0) && this.noReviewText() }
 				{ (this.props.reviews.length !== 0) && this.reviewList(this.props.reviews) }
 
