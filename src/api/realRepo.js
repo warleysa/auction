@@ -123,7 +123,7 @@ export class RealRepo {
         });
 		}
 
-		getUsers(){
+		getUsersAdmin(){
 			return new Promise((resolve, reject)=> {
 				axios.get(`${this.url}/users`, this.config)
 					.then(resp=> resolve(resp.data))
@@ -176,4 +176,5 @@ export class RealRepo {
 							.then(resp => resolve(resp.data))
 							.catch(resp => alert(resp));
 			});
+		}
 }
