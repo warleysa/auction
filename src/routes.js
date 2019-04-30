@@ -20,11 +20,11 @@ export const ROUTES = [
 	{ path: '/auctions', component: AuctionLanding, authRequired: false },
 	{ path: '/auction/:auctionId', component: AuctionPage, authRequired: false },
 	{ path: '/users', component: UsersLanding, authRequired: false },
-	{ path: '/home', component:HomeLanding, authRequired: false},
-	{ path: '/admin', component:AdminLanding, authRequired: true},
+	{ path: '/home', component: HomeLanding, authRequired: false},
+	{ path: '/admin', component: AdminLanding, authRequired: true},
 	// { path: '/profile/:userId', component: AccountEditor },
 	{ path: '/', component: HomeLanding, authRequired: false }
-	
+
 ];
 
 export default ROUTES;

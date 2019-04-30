@@ -15,7 +15,7 @@ export class UsersLanding extends React.Component {
     render() {
         return (
             <div className="container">
-				<UserList users={this.state.users} />
+							<UserList users={this.state.users} />
             </div>
         );
     }
@@ -30,7 +30,7 @@ export class UsersLanding extends React.Component {
                     avg_rating: 2,
                     cars_listed: 99,
                     UserId: 1
-                }, 
+                },
                 {
                     FirstName: "first2",
                     LastName: "last2",
@@ -38,7 +38,7 @@ export class UsersLanding extends React.Component {
                     avg_rating: 2,
                     cars_listed: 99,
                     UserId: 2
-                }, 
+                },
                 {
                     FirstName: "first3",
                     LastName: "last3",
@@ -46,7 +46,7 @@ export class UsersLanding extends React.Component {
                     avg_rating: 2,
                     cars_listed: 99,
                     UserId: 3
-                }, 
+                },
                 {
                     FirstName: "first4",
                     LastName: "last4",
@@ -64,4 +64,3 @@ export class UsersLanding extends React.Component {
 
 
 export default UsersLanding;
-
