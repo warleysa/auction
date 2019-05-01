@@ -105,7 +105,7 @@ export class AuctionLanding extends React.Component {
 								handleFilterModelChange={(e) => this.handleFilterModelChange(e)}/>
 							<div className="container col-lg-9">
 								<div className="loading-div">
-									<img src={spinner} 
+									<img src={spinner}
 											 alt="loading"/>
 								</div>
 							</div>
