@@ -12,7 +12,7 @@ var base64Img = require('base64-img');
 
 
 class AccountSidebar extends React.Component {
-	apiRepo = new RealRepo;
+	realRepo = new RealRepo;
 
 	state = {
 		profile: []
@@ -25,7 +25,7 @@ class AccountSidebar extends React.Component {
 			this.getBase64(selectorFiles[0], (result) => {
 		     idCardBase64 = result;
 				 console.log(idCardBase64);
-				 this.apiRepo.setProfileImage({
+				 this.realRepo.setProfileImage({
 					 												profilePicture: idCardBase64,
 					  											userId: this.props.profile.userId
 																})
@@ -59,7 +59,7 @@ class AccountSidebar extends React.Component {
 				<div className="p-2 position-relative">
 					<Card.Img variant="top" className="rounded-circle" src={ this.state.image || this.props.profile.image || defaultPic } />
 						<label class="btn btn-outline-primary btn-xs mt-2 w-100" id="profilePictureUpload">
-							Change Picture
+							Profile Picture
 							<i className="far fa-edit float-right m-1"></i>
 							<input type="file" className="d-none" onChange={ (e) => this.handleChange(e.target.files) } />
 						</label>

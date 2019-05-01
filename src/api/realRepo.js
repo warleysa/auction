@@ -123,6 +123,17 @@ export class RealRepo {
         });
 		}
 
+		setAuctionImage(auctionPicture, auctionId) {
+				console.log("Image Upload Auction... API Call");
+				console.log(auctionPicture);
+				console.log(auctionId);
+        return new Promise((resolve, reject) => {
+            axios.put(`${this.url}/auction/image`, {image: auctionPicture, auctionId: auctionId} , this.config)
+                .then(resp => resolve(resp.data))
+                .catch(resp => alert(resp));
+        });
+		}
+
 		getUsersAdmin(){
 			return new Promise((resolve, reject)=> {
 				axios.get(`${this.url}/users`, this.config)
@@ -170,7 +181,7 @@ export class RealRepo {
 
 		postReview(sellerReview) {
 			console.log("Adding review... API Call POST");
-
+			console.log(sellerReview.apiJsonFormat());
 			return new Promise((resolve, reject) => {
 					axios.post(`${this.url}/rating`, sellerReview.apiJsonFormat(), this.config)
 							.then(resp => resolve(resp.data))

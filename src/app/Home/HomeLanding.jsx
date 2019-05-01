@@ -8,8 +8,8 @@ import HomePage from './HomePage';
 export class HomeLanding extends React.Component {
 	realRepo = new RealRepo();
 
-    
-    
+
+
     state = {
         auctions: []
     };
@@ -17,7 +17,7 @@ export class HomeLanding extends React.Component {
 
     render() {
         return (
-            <>  
+            <>
                         <HomePage/>
 						<AuctionList auctions={this.state.auctions} userZipCode={this.props.userInfo.userZipCode}/>
             </>
@@ -26,10 +26,10 @@ export class HomeLanding extends React.Component {
 
 		componentDidMount() {
 			this.realRepo.getAuctions()
-				.then(auctions => {
-					let cars = auctions.map(c => new Car(c.UserId, c.Make, c.Model, c.Year, "No API Data for Mileage", c.Zip, c.Description, c.Price, c.StartTime, c.EndTime, +c.AuctionId));
-					this.setState({auctions: cars});
-				});
+			.then(auctions => {
+				let cars = auctions.map(c => new Car(c.UserId, c.Make, c.Model, +c.Year, c.Mileage, c.Color, c.Zip, c.Description, c.Price, c.StartTime, c.EndTime, +c.AuctionId, c.Image));
+				this.setState({auctions: cars});
+			});
 		}
 }
 
