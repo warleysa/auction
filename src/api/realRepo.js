@@ -218,7 +218,7 @@ export class RealRepo {
 
 		postBid(bid) {
 			console.log("Adding bid... API Call POST");
-			// console.log(bid.apiJsonFormat());
+			console.log(bid.apiJsonFormat());
 			return new Promise((resolve, reject) => {
 					axios.post(`${this.url}/bid`, bid.apiJsonFormat(), this.config)
 							.then(resp => resolve(resp.data))

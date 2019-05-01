@@ -19,24 +19,24 @@ class BidList extends Component {
                                 <div className="row">
                                     <div  className="col">
                                         <strong> Bid: ${b.Price || 'undefined'}</strong>
-                                        
+
                                     </div>
 
                                     <div  className="col">
-                                        
+
                                         <NavLink to={`/profile/${b.UserId}`}
                                             className="btn btn-outline-primary float-right">View profile</NavLink>
                                     </div>
                                 </div>
-								
+
 							</div>
 							<div className="card-body bg-light mx-2">
                                 <div>Bidder: @{b.Username}</div>
                                 {b.Date}
 							</div>
                             <div>
-                                
-                                
+
+
                             </div>
 					 </div>
 				 )
@@ -52,7 +52,7 @@ class BidList extends Component {
                     { (this.props.bids.length === 0) && this.noBidsText() }
                     { (this.props.bids.length !== 0) && this.bidList(this.props.bids) }
                 </div>
-				
+
 
 		  </>
 		)

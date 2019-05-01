@@ -12,12 +12,12 @@ class BidForm extends Component {
   }
 
   onSubmit(){
-    console.log(`this.props.user.Username: ${this.props.user.Username}`);
-    console.log(`this.props.user.UserId: ${this.props.user.UserId}`);
+    console.log(`this.props.user.Username: ${this.props.username}`);
+    console.log(`this.props.user.UserId: ${this.props.userId}`);
     console.log(`this.props.auctionId: ${this.props.auctionId}`);
     console.log(`this.state.price: ${this.state.price}`);
 
-    let newBid = new AuctionBid(this.props.user.Username, this.props.user.UserId, this.props.auctionId, +this.state.price);
+    let newBid = new AuctionBid(this.props.username, this.props.userId, this.props.auctionId, +this.state.price);
     this.props.onNewBid(newBid);
     console.log("created new auctionBid:");
     console.log(newBid)
@@ -37,14 +37,14 @@ class BidForm extends Component {
                     <div className="row px-4">
                         <label htmlFor="bidValue">Enter your bid:</label>
                         <div className="input-group mb-3">
-                            
+
                             <div className="input-group-prepend">
                                 <span className="input-group-text" id="basic-addon1">$</span>
                             </div>
-                            <input  type="text" 
-                                    className="form-control" 
-                                    placeholder="5000" 
-                                    aria-label="bidAmmount" 
+                            <input  type="text"
+                                    className="form-control"
+                                    placeholder="5000"
+                                    aria-label="bidAmmount"
                                     aria-describedby="bidValue"
                                     id="bidValue"
                                     name="bidValue"
@@ -52,7 +52,7 @@ class BidForm extends Component {
                                     onChange={ e => this.setState({ price: e.target.value }) }/>
 
                             <div className="input-group-append">
-                                <button className="btn btn-success" 
+                                <button className="btn btn-success"
                                         type="button"
                                         onClick={e => this.onSubmit()}>Submit Bid</button>
                             </div>

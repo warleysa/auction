@@ -71,9 +71,8 @@ export class AuctionPage extends Component {
 																		width: '60px',
 																		height: '60px'}}
 															  className="float-right rounded-circle"></div>
-													Color: <p className="text-muted">{ this.state.auction.Color }</p>
 												</span>
-												
+
 											</div>
 
 										</div>
@@ -81,7 +80,7 @@ export class AuctionPage extends Component {
 
 								<div>
 									{ <BidList bids={this.state.bids}/>}
-									{ <BidForm onNewBid={ b => this.onNewBid(b)} user={this.state.activeUser} userId={this.props.userInfo.currentUserId} auctionId={this.state.auction.AuctionId}/> }
+									{ !!this.props.userInfo.currentUserId && <BidForm onNewBid={ b => this.onNewBid(b)} username={this.state.activeUser.Username} userId={this.props.userInfo.currentUserId} auctionId={this.state.auction.AuctionId}/> }
 								</div>
 
 							</div>
@@ -90,7 +89,7 @@ export class AuctionPage extends Component {
 					<div className="col-md-4">
 						<UserTile user={this.state.profile} activeUserId={this.props.userInfo.currentUserId}/>
 					</div>
-						
+
 			</div>
 			</div>
 		)
@@ -120,14 +119,19 @@ export class AuctionPage extends Component {
 
 		this.realRepo.getBidsForAuction(auctionId)
 			.then(bids => {
-				console.log(`auctionBids: ${bids}`);
-				this.setState({ bids: bids[0]});
+				let newBidList = [];
+				bids.map((b) => {
+					newBidList.push(b);
+				});
+				this.setState({bids: newBidList});
 			})
 
-		this.realRepo.getUserRating(this.props.userInfo.currentUserId)
-		.then(user => {
-			this.setState({ activeUser: user[0]});
-		})
+			if(this.props.userInfo.currentUserId) {
+				this.realRepo.getUserRating(this.props.userInfo.currentUserId)
+				.then(user => {
+					this.setState({ activeUser: user[0]});
+				})
+			}
 
 	}
 };

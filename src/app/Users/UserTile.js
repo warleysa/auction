@@ -60,8 +60,9 @@ class UserTile extends Component {
     }
 
     render(){
-        const feedbackModalContent = () => {
+    const feedbackModalContent = () => {
 			if(this.state.activeUserId){
+				console.log("Loading Seller Form");
 				return (
 					<SellerReviewForm sellerUserId={+this.props.user.UserId} activeUserId={+this.props.activeUserId}/>
 				)
