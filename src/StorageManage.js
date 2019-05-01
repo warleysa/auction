@@ -8,7 +8,7 @@ export class StorageManage {
 	setAuthStatus(authenticated, userId) {
 		if(authenticated == false) {
 			localStorage.removeItem('authStatus');
-			localStorage.removeItem('currUserId');
+			localStorage.removeItem('userId');
 		} else {
 			let auth = {loggedIn: authenticated, timestamp: new Date().getTime()}
 			localStorage.setItem('authStatus', JSON.stringify(auth));

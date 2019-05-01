@@ -2,6 +2,7 @@
 import React from 'react';
 import { RealRepo } from '../../api/realRepo';
 import { AuctionList } from './AuctionList';
+import { FilterBar } from './FilterBar';
 import { Car } from './../../models/car';
 
 export class AuctionLanding extends React.Component {
@@ -16,7 +17,17 @@ export class AuctionLanding extends React.Component {
     render() {
         return (
             <>
-						<AuctionList auctions={this.state.auctions} userZipCode={this.props.userInfo.userZipCode}/>
+						<div className="container mt-2">
+							<div className="row">
+								<FilterBar/>
+								<div className="container col-lg-9">
+									<div className="row">
+										<AuctionList auctions={this.state.auctions} userZipCode={this.props.userInfo.userZipCode}/>
+									</div>
+								</div>
+								</div>
+							</div>
+
             </>
         );
     }

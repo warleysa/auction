@@ -60,7 +60,8 @@ export class Header extends React.Component {
 										Users
 								</NavLink>
 							</li>
-							<li className="nav-item dropdown" hidden={ !this.props.isAuthenticated }>
+
+							<li className="nav-item dropdown mb-2" hidden={ !this.props.isAuthenticated }>
 								<a className="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">My Account</a>
 								<div className="dropdown-menu dropdown-menu-right">
 									<li className="dropdown-item" hidden={ !this.props.isAuthenticated } data-toggle="collapse" data-target=".navbar-collapse.show">
@@ -83,6 +84,16 @@ export class Header extends React.Component {
 											</NavLink>
 										</li>
 									</div>
+								</li>
+								<li className="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+										<div class="input-group">
+									    <input type="text" class="form-control" placeholder="Search" />
+									    <div className="input-group-append">
+									      <button class="btn btn-secondary" type="submit">
+									        <i className="fas fa-search"></i>&nbsp;
+									      </button>
+									    </div>
+									  </div>
 								</li>
 							</ul>
 						</div>

@@ -6,11 +6,10 @@ var zipcodes = require('zipcodes');
 // 'SELECT A.UserId, AuctionId, StartTime, EndTime, Price, Make, Model, Year, A.Zip, Description, Username From Auctions A JOIN Users ON Users.UserId = A.UserId ORDER BY StartTime DESC;'
 
 export const AuctionList = (props) => (
-	<div className="container mt-2">
-		<div className="row">
+	<>
 			{
 				props.auctions.map((a, i) =>
-				<div className="col-sm-6 col-md-4 col-lg-3 mt-4" key={i}>
+				<div className="col-4 mt-4" key={i}>
 					<div className="card bg-light">
 						<img className="card-img-top p-3" alt={a.model} src={a.image} />
 						<div className="card-block p-3">
@@ -33,8 +32,7 @@ export const AuctionList = (props) => (
 				</div>
 			)
 		}
-	</div>
-</div>
+		</>
 );
 
 export default AuctionList;
