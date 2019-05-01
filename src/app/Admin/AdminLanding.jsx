@@ -33,7 +33,8 @@ export class AdminLanding extends React.Component {
 					let accounts = this.state.users;
 					accounts[userId-1].IsAdmin = !accounts[userId-1].IsAdmin;
                     this.setState(state => ({
-                        users: accounts,
+						users: accounts,
+						
                     }))
                 });
         }
