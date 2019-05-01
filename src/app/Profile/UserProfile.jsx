@@ -56,8 +56,6 @@ class UserProfile extends React.Component {
   };
 
   onCarAdded(newCar) {
-		console.log("Car Object:");
-		console.log(newCar);
 		this.apiRepo.postAuction(newCar)
 			.then(user => {
 				console.log("Car Auction submitted");
@@ -91,8 +89,6 @@ class UserProfile extends React.Component {
 	};
 
 	onCancel() {
-		console.log("Canceling");
-		console.log(this.props);
 		this.setState({
 			form_readOnly: true,
 			profile: {
@@ -274,8 +270,7 @@ class UserProfile extends React.Component {
     );
   }
 	componentWillReceiveProps(props) {
-		console.log("componentWillReceiveProps");
-		console.log(this.state);
+		// console.log(this.state);
 		if(props.userInfo) {
 			this.setState({
 				profile: props.userInfo
