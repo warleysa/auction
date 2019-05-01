@@ -1,9 +1,9 @@
 import React from 'react';
+import { Form, InputGroup, Col } from 'react-bootstrap'
 import { CirclePicker } from 'react-color';
 
-const FilterBar = (props) => {
-
-    return(
+export const FilterBar = (props) => {
+			return (
             <>
 						<div className="col-lg-3 device-lg visible-lg">
 							<div className="mt-5" data-spy="affix">
@@ -16,17 +16,38 @@ const FilterBar = (props) => {
 									</header>
 									<div className="filter-content">
 										<div className="card-body">
-										<form>
-										{ props.models.map( (m, i) =>
-											<label className="form-check" key={ m.AuctionId }>
-												<input className="form-check-input" type="checkbox" value=""/>
-												<p className="form-check-label text-break">
-													{m.Make}
-												</p>
-											</label>
-										) }
-										</form>
-
+													<Form.Label>Make</Form.Label>
+													<InputGroup>
+														<InputGroup.Prepend>
+															<InputGroup.Text id="inputGroupPrepend"><i className="fas fa-landmark"></i></InputGroup.Text>
+														</InputGroup.Prepend>
+														<Form.Control
+																as="select"
+																name="make"
+																className="custom-select"
+																value={props.filterMake}
+																onChange={(e) => props.handleFilterMakeChange(e)}>
+																<option value="000">All Makes</option>
+																	{ [...new Set(props.models.map(x => x.Make))].map( (m, i) => <option key={m} value={m}>{m}</option>) }
+															</Form.Control>
+													</InputGroup>
+													<div hidden={props.listModels.length == 0}>
+														<Form.Label>Model</Form.Label>
+														<InputGroup>
+															<InputGroup.Prepend>
+																<InputGroup.Text id="inputGroupPrepend"><i className="fas fa-landmark"></i></InputGroup.Text>
+															</InputGroup.Prepend>
+															<Form.Control
+																	as="select"
+																	name="make"
+																	className="custom-select"
+																	value={props.filterModel}
+																	onChange={(e) => props.handleFilterModelChange(e)}>
+																	<option value="000">All Models</option>
+																		{ [...new Set(props.listModels.map(x => x.Model))].map( (m, i) => <option key={m} value={m}>{m}</option>) }
+																</Form.Control>
+														</InputGroup>
+													</div>
 										</div>
 									</div>
 								</article>
@@ -48,5 +69,7 @@ const FilterBar = (props) => {
             </>
 				)
   }
+
+
 
 export default FilterBar;
