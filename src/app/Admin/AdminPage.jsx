@@ -25,6 +25,8 @@ export const AdminPage = (props) => (
 									<th>Time left</th>
 									<th>Seller ID</th>
 									<th>Seller Name</th>
+									<th>Picture</th>
+									<th></th>
 								</tr>
 							</thead>
 
@@ -38,6 +40,13 @@ export const AdminPage = (props) => (
 										<td>{ a.time_left }</td>
 										<td>{ a.userId}</td>
 										<td>{ a.UserName}</td>
+										<td>
+											<label class="btn btn-outline-primary btn-xs mt-2 w-100" id="profilePictureUpload">
+												Pic
+												<i className="far fa-edit float-right m-1"></i>
+												<input type="file" className="d-none" onChange={ (e) => props.handleChange(e.target.files) } />
+											</label>
+										</td>
 										<td>
 											<button className="btn btn-sm btn-danger"
 												onClick={e => props.onDelete(a.auctionId)}>
