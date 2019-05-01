@@ -85,6 +85,7 @@ export class Header extends React.Component {
 										</li>
 									</div>
 								</li>
+								{/*
 								<li className="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
 										<div class="input-group">
 									    <input type="text" class="form-control" placeholder="Search" />
@@ -95,6 +96,7 @@ export class Header extends React.Component {
 									    </div>
 									  </div>
 								</li>
+								*/}
 							</ul>
 						</div>
 					</nav>

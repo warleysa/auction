@@ -17,15 +17,17 @@ export const AuctionList = (props) => (
 							<h4 className="card-title">{`${a.Make} - ${a.Model} (${a.Year})`}</h4>
 							<span className="badge badge-primary">${ a.Price }</span>
 							<div className="card-text">
-								<p>{ a.name }</p>
-								<p><b>Color: </b> { a.Color }</p>
-								{ props.userZipCode && <p><b>Distance from { props.userZipCode }:</b> { zipcodes.distance(props.userZipCode, a.zip) } mi</p> }
+								<p>{ a.Name }</p>
+								<p><b>Mileage: </b> { a.Mileage }</p>
+								{ props.userZipCode && <p><b>Distance from { props.userZipCode }:</b> { zipcodes.distance(props.userZipCode, a.Zip) } mi</p> }
 								<p><b>Located in: </b> { a.Zip }</p>
 								<p><b>Time left:</b> { moment(a.EndTime).fromNow(true) }</p>
 							</div>
 						</div>
 						<div className="card-footer">
-							<Link to={`/auction/${ a.AuctionId }`} className="btn btn-primary float-right">
+							<div className="rounded-circle border border-secondary h-100 p-4 float-left" style={{background: a.Color}}>
+							</div>
+							<Link to={`/auction/${ a.AuctionId }`} className="btn btn-primary float-right mt-1">
 									View
 							</Link>
 						</div>
