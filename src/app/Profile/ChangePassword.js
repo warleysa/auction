@@ -12,7 +12,6 @@ class ChangePassword extends Component {
   constructor(props, context) {
     super(props, context);
     this.state={
-      userName:this.props.username,
       oldPassword: '',
       newPassword: '',
       newPassword2: '',
@@ -83,7 +82,7 @@ class ChangePassword extends Component {
       event.stopPropagation();
     }
     this.setState({ validated: true });
-    this.props.onChangePassword({username:this.state.username,password:this.state.newPassword});
+    this.props.onChangePassword({username:this.props.username,password:this.state.newPassword});
   }
 
 
@@ -103,7 +102,7 @@ class ChangePassword extends Component {
             <Form noValidate
                   validated={this.state.validated}>
 
-              <Form.Group>
+              {/* <Form.Group>
                 <Form.Label>Old password</Form.Label>
                 <Form.Control type="password"
                               name="oldPassword"
@@ -111,7 +110,7 @@ class ChangePassword extends Component {
                               onChange={this.handleInputChange}
                               required/>
                 <Form.Control.Feedback type='invalid'>password must be 4 characters or longer</Form.Control.Feedback>
-              </Form.Group>
+              </Form.Group> */}
 
               <Form.Group>
                 <Form.Label>New password</Form.Label>
