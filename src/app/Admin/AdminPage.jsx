@@ -44,10 +44,10 @@ export class AdminPage extends React.Component{
 										<td>{ a.userId}</td>
 										<td>{ a.UserName}</td>
 										<td>
-											<label class="btn btn-outline-primary btn-xs mt-2 w-100" id="profilePictureUpload">
+											<label class="btn btn-outline-primary btn-sm w-100" id="profilePictureUpload">
 												Pic
 												<i className="far fa-edit float-right m-1"></i>
-												<input type="file" className="d-none" onChange={ (e) => props.handleChange({file: e.target.files, id: a.auctionId}) } />
+												<input type="file" className="d-none" onChange={ (e) => this.props.handleChange({file: e.target.files, id: a.auctionId}) } />
 											</label>
 										</td>
 										<td>
@@ -87,14 +87,14 @@ export class AdminPage extends React.Component{
 									<td>{u.first_name+" "+u.last_name}</td>
 									<td>{ u.city + ", "+ u.state_code}</td>
 									<td>
-										{/* <div className="btn-group"> */}
-										<button className="btn btn-sm btn-info mr-3">
+										<button className="btn btn-sm btn-outline-info">
 											View Comments
 										</button>
-										<button className="btn btn-sm btn-warning">
+									</td>
+									<td>
+										<button className="btn btn-sm btn-outline-warning">
 											Change Password
 										</button>
-										{/* </div> */}
 									</td>
 								</tr>
 							)
