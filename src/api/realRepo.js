@@ -208,9 +208,9 @@ export class RealRepo {
 			})
 		}
 
-		getAllBids(){
+		getBidsForAuction(auctionId){
 			return new Promise((resolve, reject) => {
-				axios.get(`${this.url}/bids`,this.config)
+				axios.get(`${this.url}/bids/${auctionId}`,this.config)
 				.then(resp => resolve(resp.data))
 				.catch(resp => console.log(resp));
 			})

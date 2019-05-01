@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {NavLink} from 'react-router-dom';
 
 
 class BidList extends Component {
@@ -15,11 +16,28 @@ class BidList extends Component {
 		return ( bids.map((b, i) =>
 					<div className="card bg-light mt-3" key={i}>
 							<div className="card-header">
-								{b.date}
+                                <div className="row">
+                                    <div  className="col">
+                                        <div>Bidder: @{b.Username}</div>
+                                        
+                                        {b.Time}
+                                    </div>
+
+                                    <div  className="col">
+                                        
+                                        <NavLink to={`/profile/${b.UserId}`}
+                                            className="btn btn-outline-primary float-right">View profile</NavLink>
+                                    </div>
+                                </div>
+								
 							</div>
 							<div className="card-body bg-light mx-2">
-                                Bid: <strong>${b.price || 'undefined'}</strong>
+                                Bid: <strong>${b.Price || 'undefined'}</strong>
 							</div>
+                            <div>
+                                
+                                
+                            </div>
 					 </div>
 				 )
 			)
@@ -30,9 +48,12 @@ class BidList extends Component {
 		return (
 		  <>
 				<h4> Bids <span className="text-muted">({ this.props.bids.length })</span> </h4>
+				<div className="overflow-auto"
+                    style={{"height": "500px"}}>
+                    { (this.props.bids.length === 0) && this.noBidsText() }
+                    { (this.props.bids.length !== 0) && this.bidList(this.props.bids) }
+                </div>
 				
-				{ (this.props.bids.length === 0) && this.noBidsText() }
-				{ (this.props.bids.length !== 0) && this.bidList(this.props.bids) }
 
 		  </>
 		)
