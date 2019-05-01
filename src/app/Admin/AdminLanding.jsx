@@ -75,9 +75,10 @@ export class AdminLanding extends React.Component {
 					this.setState({auctions: cars});
                 });
 
-            this.realRepo.getUsersAdmin()
+            this.realRepo.getUsers()
             .then(users => {
-                    let accounts = users.map(a => new User(a.UserId, a.Username, a.FirstName, a.LastName, a.Address, a.City, a.State, a.Zip, a.DateCreated));
+                    let accounts = users.map(a => new User(a.UserId, a.Username, a.FirstName, a.LastName, '', '', '', a.Zip, a.DateCreated));
+                    accounts.map((a,i) => a['rating']= users[i].AvgRating);
                     this.setState({users: accounts});
             });
 

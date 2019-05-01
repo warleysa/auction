@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Rating from './../Reviews/Rating';
 var zipcodes = require('zipcodes');
 
 export class AdminPage extends React.Component{
@@ -72,8 +73,9 @@ export class AdminPage extends React.Component{
 								<th>UserID</th>
 								<th>User Name</th>
 								<th>Name</th>
+								<th>Register Date</th>
 								<th>Location</th>
-								<th></th>
+								<th>Rating</th>
 							</tr>
 						</thead>
 
@@ -85,14 +87,17 @@ export class AdminPage extends React.Component{
 									<td>{u.userId}</td>
 									<td>{u.username}</td>
 									<td>{u.first_name+" "+u.last_name}</td>
-									<td>{ u.city + ", "+ u.state_code}</td>
+									<td>{ u.register_date.substring(0,10)}</td>
+									<td> {u.zip} </td>
+									<td className="font-weight-light"><Rating value={u.rating}/></td>
+									
 									<td>
-										<button className="btn btn-sm btn-outline-info">
+										<button className="btn btn-sm btn-outline-info float-right">
 											View Comments
 										</button>
 									</td>
 									<td>
-										<button className="btn btn-sm btn-outline-warning">
+										<button className="btn btn-sm btn-outline-warning m-1 float-right">
 											Change Password
 										</button>
 									</td>
