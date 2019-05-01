@@ -18,7 +18,7 @@ const FilterBar = (props) => {
 										<div className="card-body">
 										<form>
 										{ props.models.map( (m, i) =>
-											<label className="form-check" key={m.auctionId}>
+											<label className="form-check" key={ m.auctionId }>
 												<input className="form-check-input" type="checkbox" value=""/>
 												<p className="form-check-label text-break">
 													{m.Make}

@@ -17,7 +17,7 @@ export class AuctionLanding extends React.Component {
     render() {
         return (
             <>
-						<div className="container mt-2">
+						<div className="container m-2 mb-5">
 							<div className="row">
 								<FilterBar models={this.state.auctions.filter(a => a.Image != "")}/>
 								<div className="container col-lg-9">
