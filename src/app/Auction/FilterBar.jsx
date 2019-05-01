@@ -9,9 +9,9 @@ export const FilterBar = (props) => {
 							<div className="mt-5" data-spy="affix">
 								<div className="card m-0">
 								<article className="card-group-item">
-									<h6 className="bg-light mx-1 mb-0">Filter By:</h6>
+									<h6 className="p-2 m-0" style={{background: '#eaebed'}}>Filter:</h6>
 									<hr className="m-0"/>
-									<header className="card-header">
+									<header className="card-header" style={{background: '#edf2f9'}}>
 										<h6 className="title">Type </h6>
 									</header>
 									<div className="filter-content">
@@ -53,11 +53,11 @@ export const FilterBar = (props) => {
 								</article>
 								<hr className="mb-0"/>
 								<article className="card-group-item">
-									<header className="card-header">
+									<header className="card-header" style={{background: '#edf2f9'}}>
 										<h6 className="title">Color </h6>
 									</header>
 									<div className="filter-content">
-										<div className="card-body">
+										<div className="card-body bg-light">
 											<CirclePicker
 												color={props.filterColor}
 												colors={[...new Set(props.auctions.map(x => x.Color))]}
