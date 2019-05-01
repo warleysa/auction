@@ -58,7 +58,11 @@ export const FilterBar = (props) => {
 									</header>
 									<div className="filter-content">
 										<div className="card-body">
-											<CirclePicker width="100%" />
+											<CirclePicker
+												color={props.filterColor}
+												colors={[...new Set(props.auctions.map(x => x.Color))]}
+												width="100%"
+												onChangeComplete={ (color, event) => props.handleFilterColorChange({ color: color.hex }) } />
 										</div>
 									</div>
 								</article>
