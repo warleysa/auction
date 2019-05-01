@@ -1,9 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Rating from './../Reviews/Rating';
 var zipcodes = require('zipcodes');
 
-export const AdminPage = (props) => (
-	<div className="m-5">
+export class AdminPage extends React.Component{
+
+	render(){
+		return(
+		<div className="m-5">
 		<div className="w-100">
 			<ul className="nav nav-tabs" id="myTab" role="tablist">
 				<li className="nav-item">
@@ -32,7 +36,7 @@ export const AdminPage = (props) => (
 
 							<tbody>
 								{
-									props.auctions.map((a, i) =>
+									this.props.auctions.map((a, i) =>
 									<tr key={i}>
 
 										<td>{ `${a.make} - ${a.model} (${a.year})` }</td>
@@ -41,15 +45,15 @@ export const AdminPage = (props) => (
 										<td>{ a.userId}</td>
 										<td>{ a.UserName}</td>
 										<td>
-											<label class="btn btn-outline-primary btn-xs mt-2 w-100" id="profilePictureUpload">
+											<label class="btn btn-outline-primary btn-sm w-100" id="profilePictureUpload">
 												Pic
 												<i className="far fa-edit float-right m-1"></i>
-												<input type="file" className="d-none" onChange={ (e) => props.handleChange({file: e.target.files, id: a.auctionId}) } />
+												<input type="file" className="d-none" onChange={ (e) => this.props.handleChange({file: e.target.files, id: a.auctionId}) } />
 											</label>
 										</td>
 										<td>
 											<button className="btn btn-sm btn-danger"
-												onClick={e => props.onDelete(a.auctionId)}>
+												onClick={e => this.props.onDelete(a.auctionId)}>
 												<i className="fa fa-trash"></i>
 											</button>
 										</td>
@@ -69,29 +73,33 @@ export const AdminPage = (props) => (
 								<th>UserID</th>
 								<th>User Name</th>
 								<th>Name</th>
+								<th>Register Date</th>
 								<th>Location</th>
-								<th></th>
+								<th>Rating</th>
 							</tr>
 						</thead>
 
 						<tbody>
 							{
-								props.users.map((u, i) =>
+								this.props.users.map((u, i) =>
 								<tr key={i}>
 
 									<td>{u.userId}</td>
 									<td>{u.username}</td>
 									<td>{u.first_name+" "+u.last_name}</td>
-									<td>{ u.city + ", "+ u.state_code}</td>
+									<td>{ u.register_date.substring(0,10)}</td>
+									<td> {u.zip} </td>
+									<td className="font-weight-light"><Rating value={u.rating}/></td>
+									
 									<td>
-										{/* <div className="btn-group"> */}
-										<button className="btn btn-sm btn-info mr-3">
+										<button className="btn btn-sm btn-outline-info float-right">
 											View Comments
 										</button>
-										<button className="btn btn-sm btn-warning">
+									</td>
+									<td>
+										<button className="btn btn-sm btn-outline-warning m-1 float-right">
 											Change Password
 										</button>
-										{/* </div> */}
 									</td>
 								</tr>
 							)
@@ -103,6 +111,8 @@ export const AdminPage = (props) => (
 	</div>
 </div>
 </div>
-);
 
+	)};
+}
+	
 export default AdminPage;

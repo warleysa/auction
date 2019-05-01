@@ -9,8 +9,15 @@ body, html {
     background-size: cover;
     }
 
-.btn-bottom {
+.cover {
     position: absolute;
     bottom: 1em;
 
 }
+
+.placeholder {
+    height:50vh;
+    background-color:black;
+    opacity: 0;
+    display: block;
+  }
