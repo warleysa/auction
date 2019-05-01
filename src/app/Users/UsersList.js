@@ -19,9 +19,9 @@ class UsersList extends Component {
         <div className="card-columns">
 
         {
-            this.props.users.map((user, i) =>
-                    <UserTile user={user} activeUserId={activeUser} key={user.UserId}/>
-            )
+            this.props.users.map((user, i) => 
+                  <UserTile user={user} activeUserId={activeUser} key={user.UserId}/>  
+            ) 
         }
     </div>
     )

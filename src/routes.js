@@ -9,11 +9,12 @@ import { ProfileLanding } from './app/Profile/ProfileLanding';
 import {AdminLanding} from './app/Admin/AdminLanding';
 import {HomeLanding} from './app/Home/HomeLanding';
 import UsersLanding from './app/Users/UsersLanding';
+import PublicProfile from './app/Users/PublicProfile';
 
 export const ROUTES = [
 	{ path: '/register', component: RegisterPage, authRequired: false },
 	{ path: '/login', component: LoginPage, authRequired: false },
-	{ path: '/profile/:userId', component: ProfileLanding, authRequired: false },
+	{ path: '/profile/:userId', component: PublicProfile, authRequired: false },
 	{ path: '/profile', component: ProfileLanding, authRequired: true },
 	// { path: '/edit/:accountId', component: CarEditor },
 	// { path: '/new', component: CarEditor },
