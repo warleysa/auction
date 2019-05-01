@@ -177,4 +177,13 @@ export class RealRepo {
 							.catch(resp => alert(resp));
 			});
 		}
+
+		changePassword(UserName, Password){
+
+			return new Promise((resolve, reject) => {
+				axios.put(`${this.url}/user/password`, {username:UserName,password:Password}, this.config)
+					.then(resp=> resolve(resp.data))
+					.catch(resp=>alert(resp));	
+			});
+		}
 }
