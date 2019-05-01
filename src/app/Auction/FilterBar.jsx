@@ -21,7 +21,7 @@ const FilterBar = (props) => {
 											<label className="form-check" key={m.auctionId}>
 												<input className="form-check-input" type="checkbox" value=""/>
 												<p className="form-check-label text-break">
-													{m.make}
+													{m.Make}
 												</p>
 											</label>
 										) }
