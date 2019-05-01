@@ -7,6 +7,7 @@ import Button from 'react-bootstrap/Button';
 
 
 
+
 class ChangePassword extends Component {
   constructor(props, context) {
     super(props, context);
@@ -81,6 +82,7 @@ class ChangePassword extends Component {
       event.stopPropagation();
     }
     this.setState({ validated: true });
+    // this.props.onChangePassword({})
   }
 
 
