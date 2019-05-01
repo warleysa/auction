@@ -98,11 +98,14 @@ export class AuctionLanding extends React.Component {
 					<div className="container m-2 mb-5">
 						<div className="row">
 							<FilterBar models={this.state.auctions.filter(a => a.Image != "")}
+								auctions={this.state.auctions}
 								filterMake={this.state.filterMake}
 								filterModel={this.state.filterModel}
+								filterColor={this.state.filterColor}
 								listModels={this.state.listModels}
 								handleFilterMakeChange={(e) => this.handleFilterMakeChange(e)}
-								handleFilterModelChange={(e) => this.handleFilterModelChange(e)}/>
+								handleFilterModelChange={(e) => this.handleFilterModelChange(e)}
+								handleFilterColorChange={(c) => this.handleFilterColorChange(c)}/>
 							<div className="container col-lg-9">
 								<div className="loading-div">
 									<img src={spinner}
