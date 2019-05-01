@@ -5,8 +5,19 @@ var zipcodes = require('zipcodes');
 
 export class AdminPage extends React.Component{
 
+
+    saveChange(){
+        this.props.onChangePassword({username:this.state.changingUser, password:this.state.newPassword});
+        this.setState({changingUser:'', password:''});
+    }
+    state = {
+        changingUser:'',
+        newPassword:'',
+    }
+
 	render(){
 		return(
+    <>
 		<div className="m-5">
 		<div className="w-100">
 			<ul className="nav nav-tabs" id="myTab" role="tablist">
@@ -45,7 +56,7 @@ export class AdminPage extends React.Component{
 										<td>{ a.userId}</td>
 										<td>{ a.UserName}</td>
 										<td>
-											<label class="btn btn-outline-primary btn-sm w-100" id="profilePictureUpload">
+											<label className="btn btn-outline-primary btn-sm w-100" id="profilePictureUpload">
 												Pic
 												<i className="far fa-edit float-right m-1"></i>
 												<input type="file" className="d-none" onChange={ (e) => this.props.handleChange({file: e.target.files, id: a.auctionId}) } />
@@ -80,7 +91,7 @@ export class AdminPage extends React.Component{
 						</thead>
 
 						<tbody>
-							{
+						{
 								this.props.users.map((u, i) =>
 								<tr key={i}>
 
@@ -88,16 +99,18 @@ export class AdminPage extends React.Component{
 									<td>{u.username}</td>
 									<td>{u.first_name+" "+u.last_name}</td>
 									<td>{ u.register_date.substring(0,10)}</td>
-									<td> {u.zip} </td>
+									<td> {u.zip? u.zip:"null"} </td>
 									<td className="font-weight-light"><Rating value={u.rating}/></td>
 									
-									<td>
+									{/* <td>
 										<button className="btn btn-sm btn-outline-info float-right">
 											View Comments
 										</button>
-									</td>
+									</td> */}
 									<td>
-										<button className="btn btn-sm btn-outline-warning m-1 float-right">
+										<button className="btn btn-sm btn-warning m-1 float-right" data-toggle="modal" data-target="#passwordmodal"
+                                            onClick={()=>this.setState({changingUser:u.username})}>
+                                            <i className="fas fa-lock mr-1"></i>
 											Change Password
 										</button>
 									</td>
@@ -107,11 +120,46 @@ export class AdminPage extends React.Component{
 					</tbody>
 				</table>
 			</div>
-		</div>
+		</div>              
 	</div>
 </div>
 </div>
 
+<div className="modal fade" id="passwordmodal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div className="modal-dialog modal-dialog-centered" role="document">
+    <div className="modal-content">
+      <div className="modal-header">
+        <h5 className="modal-title" id="exampleModalCenterTitle">Change Password</h5>
+        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+        <div className="modal-body">
+                                <div className="form-group">
+									<label htmlFor="password">New password</label>
+									<input type="text"
+										id="password"
+										name="password"
+										className="form-control"
+										value={this.state.newPassword}
+										onChange={ e => this.setState({ newPassword: e.target.value }) }/>
+								</div>
+    </div>
+      <div className="modal-footer">
+        <button type="button" className="btn btn-success" data-dismiss="modal"
+            onClick={() => this.saveChange()}>
+            Save
+        </button>
+
+        <button type="button" className="btn btn-secondary" data-dismiss="modal"
+            onClick={()=>this.setState({changingUser:'', password:''})}>
+            Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+</>
 	)};
 }
 	
