@@ -34,8 +34,9 @@ Auction Product Page (VIEW)
 		- Sending body with user_id and comment
 		- Return comment_id, username (& user_id if needed), comment, and date created
 
-Auction Home Page (VIEW)
-	- GET for all auctions that have not expired and rating associated with them
-		- Returns auction_id and associated data
-		- Return rating as average of all ratings associated with that auction_id
-	- PUT for sending the rating to DB, no return needed? Or should we need rating_id for tracking?
+		"scripts": {
+    	"start": "PORT=80 HOST='0.0.0.0' react-scripts start",
+    	"build": "react-scripts build",
+    	"test": "react-scripts test",
+    	"eject": "react-scripts eject"
+    },

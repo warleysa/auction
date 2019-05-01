@@ -47,8 +47,8 @@ class SellerReviewForm extends Component {
 									}
 							</select>
 		                </div>
-						
-						
+
+
 					</div>
 
 

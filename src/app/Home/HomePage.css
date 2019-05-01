@@ -3,7 +3,7 @@ body, html {
     }
     .bg {
     background-image: url("https://amp.businessinsider.com/images/5a57df4ef421493e028b4752-1334-1001.jpg");
-    height: 91vh;
+    height: 95vh;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -11,5 +11,6 @@ body, html {
 
 .btn-bottom {
     position: absolute;
-    bottom: .7em;
+    bottom: 1em;
+
 }

@@ -13,7 +13,7 @@ import { Collapse } from 'react-bootstrap';
 
 class UserTile extends Component {
     realRepo = new RealRepo();
-    
+
     state = {
         user: [],
         showModal: false,
@@ -35,7 +35,7 @@ class UserTile extends Component {
                 });
             });
             console.log(this.state.sellerFeedback);
-    
+
         }else{
             console.log("could not find user");
         }
@@ -49,15 +49,15 @@ class UserTile extends Component {
         this.setState({ showModal: true });
     }
 
-    
+
     onSubmit = () => {
-        
+
     }
 
     toggleCollapse = () => {
         this.setState(state => ({ showFeedback: !state.showFeedback }));
     }
-    
+
     render(){
         const feedbackModalContent = () => {
 			if(this.state.activeUserId){
@@ -73,7 +73,7 @@ class UserTile extends Component {
                                 <i className="fa fa-sign-in"></i>&nbsp;
                                 Login
                             </NavLink>
-                            
+
                             <NavLink to="/register" className="nav-item nav-link btn btn-primary my-2" activeClassName="active">
                                 <i className="fa fa-edit"></i>&nbsp;
                                 Register
@@ -83,7 +83,7 @@ class UserTile extends Component {
 				)
 			}
         };
-        
+
         const displayReviews = () => {
             if(this.state.feedbackLoaded){
                 if(this.state.sellerFeedback.length){
@@ -114,12 +114,12 @@ class UserTile extends Component {
         }
 
         return(
-            <Card className="mb-auto shadow-sm my-4">
+            <Card className="mb-auto shadow-sm m-3 p-0 h-75">
             <div className="p-2 position-relative">
                 <Card.Img variant="top" className="rounded-circle" src={this.props.user.ProfilePicture || defaultPic}  />
             </div>
             <Card.Header className="text-center"><Card.Title>{`${this.props.user.FirstName}'s account`}</Card.Title></Card.Header>
-            <Card.Body className="p-3">
+            <Card.Body className="p-3 m-3">
 
                 <div>
                     <ul className="list-group mb-3">

@@ -112,8 +112,32 @@ export class RealRepo {
                 .then(resp => resolve(resp.data))
                 .catch(resp => console.log(resp));
         });
+    }
+
+		setProfileImage(profilePicture, userId) {
+				console.log("Image Upload Profile... API Call");
+        return new Promise((resolve, reject) => {
+            axios.put(`${this.url}/user/image`, profilePicture, userId, this.config)
+                .then(resp => resolve(resp.data))
+                .catch(resp => alert(resp));
+        });
 		}
-		
+
+		getUsersAdmin(){
+			return new Promise((resolve, reject)=> {
+				axios.get(`${this.url}/users`, this.config)
+					.then(resp=> resolve(resp.data))
+					.catch(resp=>alert(resp));
+			});
+		}
+
+		deleteAuction(auctionId){
+			return new Promise((resolve, reject)=>{
+				axios.delete(`${this.url}/auction/${auctionId}`,this.config)
+					.then(resp=> resolve(resp.data))
+					.catch(resp=>alert(resp));
+			});
+		}
 		getUsers() {
 			return new Promise((resolve, reject) => {
 					axios.get(`${this.url}/usersPublic`, this.config)
@@ -140,9 +164,9 @@ export class RealRepo {
 
 		async getUserFeedback(userId) {
 			const feedback = await axios.get(`${this.url}/user/ratings/${userId}`, this.config)
-			return await feedback; 
+			return await feedback;
 		}
-		
+
 
 		postReview(sellerReview) {
 			console.log("Adding review... API Call POST");
@@ -152,6 +176,5 @@ export class RealRepo {
 							.then(resp => resolve(resp.data))
 							.catch(resp => alert(resp));
 			});
-	}
-
+		}
 }
