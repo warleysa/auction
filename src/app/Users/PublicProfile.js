@@ -11,7 +11,7 @@ export class PublicProfile extends React.Component {
 
 
     state = {
-       profile: {}
+       profile: []
     };
 
 
@@ -24,9 +24,8 @@ export class PublicProfile extends React.Component {
                         <PublicUserTile profile={this.state.profile} activeUserId={this.props.userInfo.currentUserId}/>
                     </div>
 
-                    <div className="col-md-8">
-                        {this.state.profile.FirstName}'s Cars:
-                        <UserCarsList cars={this.state.cars || []}/>
+                    <div className="col-md-8 mt-4">
+                        <UserCarsList profile={this.state.profile} cars={this.state.cars || [] } />
                     </div>
                 </div>
                 
@@ -48,7 +47,8 @@ export class PublicProfile extends React.Component {
 
                 this.realRepo.getAuctionsByUser(profileUserId)
                 .then(auctions => {
-                    let carsList = auctions.map(c => new Car(c.UserId, c.Make, c.Model, c.Year, c.Color, c.Zip, c.Description, c.Price, c.StartTime, c.EndTime, c.AuctionId));
+                    console.log(auctions);
+                    let carsList = auctions.map(c => new Car(c.UserId, c.Make, c.Model, c.Year, c.Mileage ,c.Color, c.Zip, c.Description, c.Price, c.StartTime, c.EndTime, c.AuctionId, c.Image));
                     this.setState({cars: carsList});
                     console.log(this.state);
                 });

@@ -44,7 +44,7 @@ export const AdminPage = (props) => (
 											<label class="btn btn-outline-primary btn-xs mt-2 w-100" id="profilePictureUpload">
 												Pic
 												<i className="far fa-edit float-right m-1"></i>
-												<input type="file" className="d-none" onChange={ (e) => props.handleChange(e.target.files) } />
+												<input type="file" className="d-none" onChange={ (e) => props.handleChange({file: e.target.files, id: a.auctionId}) } />
 											</label>
 										</td>
 										<td>

@@ -20,7 +20,7 @@ class UsersList extends Component {
 
         {
             this.props.users.map((user, i) => 
-                    <UserTile user={user} activeUserId={activeUser} key={user.UserId}/>  
+                  <UserTile user={user} activeUserId={activeUser} key={user.UserId}/>  
             ) 
         }
     </div>

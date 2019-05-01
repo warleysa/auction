@@ -31,7 +31,7 @@ const MyCarsList = (props) => {
           <div className="card-body">
             <Row>
               <Col>
-                  <img src={car.imageURL} width='100%' />
+                  <img src={car.image} width='100%' />
               </Col>
               <Col className="text-left">
                   <h5 className="card-title">Car details</h5>

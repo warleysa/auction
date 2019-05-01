@@ -45,6 +45,7 @@ class UserTile extends Component {
         this.setState({ showModal: false });
     }
     
+
     handleModalShow = () => {
         this.setState({ showModal: true });
     }
@@ -90,7 +91,7 @@ class UserTile extends Component {
                     return(
                         <div>
                         {
-                            this.state.sellerFeedback.map((review, i) => 
+                            this.state.sellerFeedback.map((review, i) =>
                                 <div className="m-1" key={`review${i}`}>
                                     <div className="float-right">
                                         <Rating value={review.rating}/>
@@ -99,7 +100,7 @@ class UserTile extends Component {
                                     <hr/>
                                     <p>"Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident."</p>
                                 </div>
-                            ) 
+                            )
                         }
                         </div>
                     );
@@ -154,7 +155,7 @@ class UserTile extends Component {
                 </div>
 
             </Card.Body>
-          
+
             <div className="collapse collapsed p-3" id={`feedback${this.props.user.UserId}`}>
                 <div className="card card-body">
                     {displayReviews()}

@@ -7,6 +7,7 @@ import { Container, Dropdown } from 'react-bootstrap';
 import logo from './logo.ico';
 
 
+var headerColor = "#e3f2fd";
 
 export class Header extends React.Component {
 
@@ -17,7 +18,7 @@ export class Header extends React.Component {
 	render() {
 		return (
 			<>
-			<nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+			<nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top shadow-sm">
 					<NavLink to="/home" className="">
 						<img src={ logo } className="mx-auto p-2" alt="Logo" height="50" width="50"/>
 					</NavLink>
@@ -53,7 +54,7 @@ export class Header extends React.Component {
 										Register
 								</NavLink>
 							</li>
-							<li className="nav-item" hidden={ !this.props.isAuthenticated } data-toggle="collapse" data-target=".navbar-collapse.show">
+							<li className="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
 								<NavLink to="/users" className="nav-link" activeClassName="active">
 									<i className="fas fa-users"></i>&nbsp;
 										Users
