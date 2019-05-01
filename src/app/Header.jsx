@@ -54,7 +54,7 @@ export class Header extends React.Component {
 										Register
 								</NavLink>
 							</li>
-							<li className="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+							<li className="nav-item" hidden={ !this.props.isAuthenticated } data-toggle="collapse" data-target=".navbar-collapse.show">
 								<NavLink to="/users" className="nav-link" activeClassName="active">
 									<i className="fas fa-users"></i>&nbsp;
 										Users
