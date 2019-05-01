@@ -40,7 +40,7 @@ class AddCarModal extends Component {
 			durationValues: [1,3,7,14,30],
 			modelInputDiasbled: true,
 			modelOptions: [],
-			defaultColors: ['#8ed1fc', '#0693e3', '#01579b', '#7b1fa2', '#f78da7', '#ff0404', '#b71c1c', "#ffffff" ,'#abb8c3', '#607d8b',
+			defaultColors: ['#8ed1fc', '#01579b', '#0000ff', '#7b1fa2', '#f78da7', '#ff0404', '#b71c1c', "#ffffff" ,'#abb8c3', '#607d8b',
 											'#555555', '#000000', '#194d33', '#4caf50', '#00d084', '#ffeb3b', '#ff9800']
 		};
 	}
