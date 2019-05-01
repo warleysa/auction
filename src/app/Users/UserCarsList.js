@@ -34,7 +34,7 @@ const UserCarsList = (props) => {
                 <h4>{props.profile.FirstName}'s Cars <span className="text-muted">({props.cars.length})</span></h4>
                 <CheckForCars/>
 
-            { 
+            {
                 props.cars.map( (car, i) =>
                     <div className="card text-center my-3">
                         <div className="card-header">

@@ -36,7 +36,7 @@ class AddCarModal extends Component {
 			description:	"",
 			duration: '',
 			auction_reserve_price: "",
-			images: [],
+			images: "",
 			durationValues: [1,3,7,14,30],
 			modelInputDiasbled: true,
 			modelOptions: [],
@@ -48,6 +48,10 @@ class AddCarModal extends Component {
 	handleClose() {
     this.setState({ modalShowState: false });
   }
+
+	setImage(image) {
+		this.setState({ image: image });
+	}
 
   handleShow() {
     this.setState({ modalShowState: true });
@@ -83,7 +87,9 @@ class AddCarModal extends Component {
 																	this.state.description,
 																	this.state.auction_reserve_price,
 																	date_created,
-																	end_date
+																	end_date,
+																	0,
+																	this.state.image
 																));
 		this.setState(
 			{
@@ -284,7 +290,8 @@ class AddCarModal extends Component {
 								</Form.Group>
 							</Form.Row>
 
-							<AddImages/>
+
+							<AddImages setImage={(image) => this.setImage(image)}/>
 
 
 						</Form>

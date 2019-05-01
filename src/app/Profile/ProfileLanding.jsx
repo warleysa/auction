@@ -65,7 +65,7 @@ export class ProfileLanding extends React.Component {
 
 					this.apiRepo.getAuctionsByUser(userId)
 					.then(res => {
-						let cars = res.map(c => new Car(c.UserId, c.Make, c.Model, c.Year, c.Color, c.Zip, c.Description, c.Price, c.StartTime, c.EndTime, c.AuctionId));
+						let cars = res.map(c => new Car(c.UserId, c.Make, c.Model, +c.Year, c.Mileage, c.Color, c.Zip, c.Description, c.Price, c.StartTime, c.EndTime, +c.AuctionId, c.Image));
 						this.setState({cars: cars});
 						console.log(this.state);
 					});

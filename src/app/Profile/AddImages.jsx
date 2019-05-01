@@ -3,27 +3,47 @@ import ImageUploader from 'react-images-upload';
 
 class AddImages extends React.Component {
 
-	constructor(props) {
-		super(props);
-		 this.state = { pictures: [] };
-		 this.onDrop = this.onDrop.bind(this);
+	state = {
+		image: null
 	}
 
-	onDrop(pictureFiles, pictureDataURLs) {
-		this.setState({
-            pictures: this.state.pictures.concat(pictureFiles),
-        });
+	handleChange(selectorFiles: FileList) {
+      console.log(selectorFiles);
+			let changedFile = selectorFiles[0].toString('base64');
+			let idCardBase64 = '';
+			this.getBase64(selectorFiles[0], (result) => {
+		     idCardBase64 = result;
+				 console.log(idCardBase64);
+				 this.setImage(idCardBase64);
+			 });
+  }
+
+	getBase64(file, cb) {
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function () {
+        cb(reader.result)
+    };
+    reader.onerror = function (error) {
+        console.log('Error: ', error);
+    };
+	}
+
+	setImage(image){
+		this.props.setImage(image);
+		this.setState({ image: image })
 	}
 
     render() {
         return (
-            <ImageUploader
-                	withIcon={true}
-                	buttonText='Choose images'
-                	onChange={this.onDrop}
-                	imgExtension={['.jpg', '.gif', '.png', '.gif']}
-                	maxFileSize={5242880}
-            />
+					<>
+					{ this.state.image && <img src={this.state.image} class="rounded mx-auto d-block" alt="Car Image" /> }
+					<label class="btn btn-outline-primary btn-xs mt-2 w-100" id="profilePictureUpload">
+						Add Car Picture
+						<i className="far fa-edit float-right m-1"></i>
+						<input type="file" className="d-none" onChange={ (e) => this.handleChange(e.target.files) } />
+					</label>
+					</>
         );
     }
 }
