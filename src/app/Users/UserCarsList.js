@@ -5,6 +5,7 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import Form from 'react-bootstrap/Form';
 import moment from 'moment';
 import {NavLink} from 'react-router-dom';
+import spinner from '../loadingSpinner.gif';
 
 
 const UserCarsList = (props) => {
@@ -104,7 +105,9 @@ const UserCarsList = (props) => {
           )
       }else{
           return(
-              <div>No cars to show</div>
+            <img src={spinner} 
+                 alt="loading"
+                 className="loading-div"/>
           )
       }
   }

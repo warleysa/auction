@@ -18,9 +18,8 @@ class BidList extends Component {
 							<div className="card-header">
                                 <div className="row">
                                     <div  className="col">
-                                        <div>Bidder: @{b.Username}</div>
+                                        <strong> Bid: ${b.Price || 'undefined'}</strong>
                                         
-                                        {b.Time}
                                     </div>
 
                                     <div  className="col">
@@ -32,7 +31,8 @@ class BidList extends Component {
 								
 							</div>
 							<div className="card-body bg-light mx-2">
-                                Bid: <strong>${b.Price || 'undefined'}</strong>
+                                <div>Bidder: @{b.Username}</div>
+                                {b.Date}
 							</div>
                             <div>
                                 
@@ -48,8 +48,7 @@ class BidList extends Component {
 		return (
 		  <>
 				<h4> Bids <span className="text-muted">({ this.props.bids.length })</span> </h4>
-				<div className="overflow-auto"
-                    style={{"height": "500px"}}>
+				<div className="overflow-auto">
                     { (this.props.bids.length === 0) && this.noBidsText() }
                     { (this.props.bids.length !== 0) && this.bidList(this.props.bids) }
                 </div>

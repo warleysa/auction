@@ -5,17 +5,25 @@ import { AuctionBid } from '../../../models/auctionBid';
 class BidForm extends Component {
 
   state = {
+    username: '',
     userId: '',
     auctionId: '',
     price: ''
   }
 
   onSubmit(){
-    this.props.onNewBid(new AuctionBid(this.props.userId, this.props.auctionId, this.state.price));
-    console.log("created new auctionBid");
-		this.setState({
+    console.log(`this.props.user.Username: ${this.props.user.Username}`);
+    console.log(`this.props.user.UserId: ${this.props.user.UserId}`);
+    console.log(`this.props.auctionId: ${this.props.auctionId}`);
+    console.log(`this.state.price: ${this.state.price}`);
+
+    let newBid = new AuctionBid(this.props.user.Username, this.props.user.UserId, this.props.auctionId, +this.state.price);
+    this.props.onNewBid(newBid);
+    console.log("created new auctionBid:");
+    console.log(newBid)
+        this.setState({
             price: ''
-		});
+        });
   }
 
 
@@ -28,7 +36,7 @@ class BidForm extends Component {
                 <form id="bid-form">
                     <div className="row px-4">
                         <label htmlFor="bidValue">Enter your bid:</label>
-                        <div class="input-group mb-3">
+                        <div className="input-group mb-3">
                             
                             <div className="input-group-prepend">
                                 <span className="input-group-text" id="basic-addon1">$</span>

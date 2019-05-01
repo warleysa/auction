@@ -4,6 +4,7 @@ import { RealRepo } from '../../api/realRepo';
 import { AuctionList } from './AuctionList';
 import FilterBar from './FilterBar';
 import { Car } from './../../models/car';
+import spinner from '../loadingSpinner.gif';
 
 export class AuctionLanding extends React.Component {
 	realRepo = new RealRepo();
@@ -66,6 +67,7 @@ export class AuctionLanding extends React.Component {
 
 
     render() {
+			if(this.state.auctions.length > 0){
         return (
             <>
 						<div className="container m-2 mb-5">
@@ -88,7 +90,30 @@ export class AuctionLanding extends React.Component {
 							</div>
 
             </>
-        );
+				);
+			}
+
+			return(
+				<>
+					<div className="container m-2 mb-5">
+						<div className="row">
+							<FilterBar models={this.state.auctions.filter(a => a.Image != "")}
+								filterMake={this.state.filterMake}
+								filterModel={this.state.filterModel}
+								listModels={this.state.listModels}
+								handleFilterMakeChange={(e) => this.handleFilterMakeChange(e)}
+								handleFilterModelChange={(e) => this.handleFilterModelChange(e)}/>
+							<div className="container col-lg-9">
+								<div className="loading-div">
+									<img src={spinner} 
+											 alt="loading"/>
+								</div>
+							</div>
+							</div>
+						</div>
+
+        </>
+			);
     }
 
 		componentDidMount() {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { RealRepo } from '../../api/realRepo';
 import  UsersList from './UsersList';
-
+import spinner from '../loadingSpinner.gif';
 
 export class UsersLanding extends React.Component {
 	realRepo = new RealRepo();
@@ -13,11 +13,19 @@ export class UsersLanding extends React.Component {
 
 
     render() {
-        return (
-            <div className="container">
-				<UsersList users={this.state.users} activeUserId={this.props.userInfo.currentUserId}/>
-            </div>
-        );
+        if(this.state.users.length > 0){
+            return (
+                <div className="container">
+                    <UsersList users={this.state.users} activeUserId={this.props.userInfo.currentUserId}/>
+                </div>
+            );
+        }
+
+        return(
+            <img src={spinner} 
+                 alt="loading"
+                 className="loading-div"/>
+        )
     }
 
 		componentDidMount() {

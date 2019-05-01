@@ -14,6 +14,7 @@ export class AuctionPage extends Component {
 		reviews: [],
 		bids: [],
 		UserId: null,
+		activeUser: [],
 		profile: [],
 		auction: {
 			name: '',
@@ -69,7 +70,7 @@ export class AuctionPage extends Component {
 													<div style={{backgroundColor: this.state.auction.Color,
 																		width: '60px',
 																		height: '60px'}}
-															  className="float-right"></div>
+															  className="float-right rounded-circle"></div>
 													Color: <p className="text-muted">{ this.state.auction.Color }</p>
 												</span>
 												
@@ -80,7 +81,7 @@ export class AuctionPage extends Component {
 
 								<div>
 									{ <BidList bids={this.state.bids}/>}
-									{ <BidForm onNewBid={ b => this.onNewBid(b)} userId={this.props.userInfo.currentUserId} auctionId={this.state.auction.AuctionId}/> }
+									{ <BidForm onNewBid={ b => this.onNewBid(b)} user={this.state.activeUser} userId={this.props.userInfo.currentUserId} auctionId={this.state.auction.AuctionId}/> }
 								</div>
 
 							</div>
@@ -120,9 +121,13 @@ export class AuctionPage extends Component {
 		this.realRepo.getBidsForAuction(auctionId)
 			.then(bids => {
 				console.log(`auctionBids: ${bids}`);
-				this.setState({ bids: bids});
+				this.setState({ bids: bids[0]});
 			})
 
+		this.realRepo.getUserRating(this.props.userInfo.currentUserId)
+		.then(user => {
+			this.setState({ activeUser: user[0]});
+		})
 
 	}
 };
