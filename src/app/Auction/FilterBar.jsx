@@ -12,7 +12,7 @@ export const FilterBar = (props) => {
 									<h6 className="bg-light mx-1 mb-0">Filter By:</h6>
 									<hr className="m-0"/>
 									<header className="card-header">
-										<h6 className="title">Make </h6>
+										<h6 className="title">Type </h6>
 									</header>
 									<div className="filter-content">
 										<div className="card-body">
@@ -35,7 +35,7 @@ export const FilterBar = (props) => {
 														<Form.Label>Model</Form.Label>
 														<InputGroup>
 															<InputGroup.Prepend>
-																<InputGroup.Text id="inputGroupPrepend"><i className="fas fa-landmark"></i></InputGroup.Text>
+																<InputGroup.Text id="inputGroupPrepend"><i className="fas fa-car-side"></i></InputGroup.Text>
 															</InputGroup.Prepend>
 															<Form.Control
 																	as="select"
