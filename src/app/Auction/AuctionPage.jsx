@@ -15,6 +15,7 @@ export class AuctionPage extends Component {
 			image: '',
 			price: '',
 			color: ''
+
 		}
   }
 
@@ -28,6 +29,7 @@ export class AuctionPage extends Component {
 	render () {
 		return (
 			<>
+			
 			<div className="m-4">
 				<header className="mb-4">
 					<nav aria-label="breadcrumb">
