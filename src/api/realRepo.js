@@ -197,4 +197,12 @@ export class RealRepo {
 					.catch(resp=>alert(resp));	
 			});
 		}
+
+		getAuction(auctionId){
+			return new Promise((resolve, reject) => {
+				axios.get(`${this.url}/auction/${auctionId}`,this.config)
+				.then(resp => resolve(resp.data))
+				.catch(resp => console.log(resp));
+			})
+		}
 }
