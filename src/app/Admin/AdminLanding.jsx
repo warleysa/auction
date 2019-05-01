@@ -26,11 +26,46 @@ export class AdminLanding extends React.Component {
     }
 
 
+		handleChange(selectorFiles: FileList, auctionId) {
+	      console.log(selectorFiles);
+				let changedFile = selectorFiles[0].toString('base64');
+				let idCardBase64 = '';
+				this.getBase64(selectorFiles[0], (result) => {
+			     idCardBase64 = result;
+					 console.log(idCardBase64);
+					 this.apiRepo.setProfileImage({
+						 												auctionPicture: idCardBase64,
+						  											auctionId: auctionId
+																	})
+					 .then(p => {
+						 this.setImage(idCardBase64);
+						 console.log(this.state);
+					 });
+				 });
+	  }
+
+		getBase64(file, cb) {
+	    let reader = new FileReader();
+	    reader.readAsDataURL(file);
+	    reader.onload = function () {
+	        cb(reader.result)
+	    };
+	    reader.onerror = function (error) {
+	        console.log('Error: ', error);
+	    };
+		}
+
+		// setImage(image){
+		// 	this.setState({ image: image })
+		// }
+
+
     render() {
         return (
             <>
 						<AdminPage auctions={this.state.auctions} users={this.state.users}
-                        onDelete={x => this.onDelete(x)}/>
+                        onDelete={x => this.onDelete(x)}
+												handleChange={(x) => this.handleChange(x)}/>
             </>
         );
     }
