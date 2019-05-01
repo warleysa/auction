@@ -39,9 +39,13 @@ export class StorageManage {
 		localStorage.setItem("zipCode", JSON.stringify(zip));
 	}
 
+	logOutUser() {
+		localStorage.clear();
+	}
+
 	getZipCode() {
-		// let zip = JSON.parse(localStorage.getItem("zipCode"));
-		return 75205;
+		let zip = JSON.parse(localStorage.getItem("zipCode"));
+		return zip;
 	}
 
 

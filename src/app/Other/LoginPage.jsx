@@ -31,6 +31,7 @@ export class LoginPage extends Component{
 						}
 					)
 				} else {
+					console.log(this.state);
 					this.props.setAuthState(true, this.state.userId);
 					this.props.setZipCode(this.state.zip);
 					this.setState(

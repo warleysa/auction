@@ -14,10 +14,11 @@ class App extends Component {
 	state = {
 		isAuthenticated: this.storage.getAuthStatus(),
 		currentUserId: this.storage.getUserId(),
-		userZipCode: this.storage.getZipCode()
+		userZipCode: this.storage.getZipCode(),
+		isAdmin: false
 	}
 
-	setAuthState(auth, userId) {
+	setAuthState(auth, userId, isAdmin) {
 		console.log("Setting UserID to: " + userId);
 		if(auth == true) {
 			console.log("Logging In");
@@ -25,14 +26,16 @@ class App extends Component {
 			this.setState(state => {
 	      state.isAuthenticated = true;
 				state.currentUserId = +userId;
+				state.isAdmin = true;
 	      return state;
 	    });
 		} else {
 			console.log("Logging out");
-			this.storage.setAuthStatus(false);
+			this.storage.logOutUser();
 			this.setState(state => {
 	      state.isAuthenticated = false;
 				state.currentUserId = '';
+				state.isAdmin = false;
 	      return state;
 	    });
 		}
@@ -52,9 +55,9 @@ class App extends Component {
       <>
 			<div className="container-fluid p-0">
 				<Router>
-					<Header isAuthenticated={ this.state.isAuthenticated } setAuthState={ (auth, userId) => this.setAuthState(auth, userId) } />
+					<Header isAuthenticated={ this.state.isAuthenticated } isAdmin={ this.state.isAdmin } setAuthState={ (auth, userId) => this.setAuthState(auth, userId) } />
 					<Switch>
-						{ ROUTES.filter(x => this.state.isAuthenticated || !x.authRequired).map(({path, component: C, getAuthStatus}, i) => (
+						{ ROUTES.filter(x => this.state.isAuthenticated || !x.authRequired).filter(x => this.state.isAdmin || !x.adminRequired).map(({path, component: C, getAuthStatus}, i) => (
 							<Route
 								key={i}
 								path={path}

@@ -70,7 +70,7 @@ export class Header extends React.Component {
 												My Profile
 										</NavLink>
 									</li>
-									<li className="dropdown-item" hidden={ !this.props.isAuthenticated } data-toggle="collapse" data-target=".navbar-collapse.show">
+									<li className="dropdown-item" hidden={ !this.props.isAdmin } data-toggle="collapse" data-target=".navbar-collapse.show">
 										<NavLink to="/admin" className="nav-link" activeClassName="active">
 											<i className="fas fa-lock"></i>&nbsp;
 												Admin Viewer

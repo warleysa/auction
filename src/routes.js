@@ -12,20 +12,20 @@ import UsersLanding from './app/Users/UsersLanding';
 import PublicProfile from './app/Users/PublicProfile';
 
 export const ROUTES = [
-	{ path: '/register', component: RegisterPage, authRequired: false },
-	{ path: '/login', component: LoginPage, authRequired: false },
-	{ path: '/profile/:userId', component: PublicProfile, authRequired: false },
-	{ path: '/profile', component: ProfileLanding, authRequired: true },
+	{ path: '/register', component: RegisterPage, authRequired: false, adminRequired: false },
+	{ path: '/login', component: LoginPage, authRequired: false, adminRequired: false },
+	{ path: '/profile/:userId', component: PublicProfile, authRequired: false, adminRequired: false },
+	{ path: '/profile', component: ProfileLanding, authRequired: true, adminRequired: false },
 	// { path: '/edit/:accountId', component: CarEditor },
 	// { path: '/new', component: CarEditor },
-	{ path: '/auctions', component: AuctionLanding, authRequired: false },
-	{ path: '/auction/:auctionId', component: AuctionPage, authRequired: false },
-	{ path: '/users', component: UsersLanding, authRequired: false },
-	{ path: '/home', component:HomeLanding, authRequired: false},
-	{ path: '/admin', component:AdminLanding, authRequired: true},
+	{ path: '/auctions', component: AuctionLanding, authRequired: false, adminRequired: false },
+	{ path: '/auction/:auctionId', component: AuctionPage, authRequired: false, adminRequired: false },
+	{ path: '/users', component: UsersLanding, authRequired: false, adminRequired: false },
+	{ path: '/home', component:HomeLanding, authRequired: false, adminRequired: false },
+	{ path: '/admin', component:AdminLanding, authRequired: true, adminRequired: true },
 	// { path: '/profile/:userId', component: AccountEditor },
-	{ path: '/', component: HomeLanding, authRequired: false }
-	
+	{ path: '/', component: HomeLanding, authRequired: false, adminRequired: false }
+
 ];
 
 export default ROUTES;
