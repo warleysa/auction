@@ -19,14 +19,14 @@ class App extends Component {
 	}
 
 	setAuthState(auth, userId, isAdmin) {
-		console.log("Setting UserID to: " + userId);
+		console.log("Setting Admin Status to: " + isAdmin);
 		if(auth == true) {
 			console.log("Logging In");
 			this.storage.setAuthStatus(true, userId);
 			this.setState(state => {
 	      state.isAuthenticated = true;
 				state.currentUserId = +userId;
-				state.isAdmin = true;
+				state.isAdmin = isAdmin;
 	      return state;
 	    });
 		} else {
@@ -62,7 +62,7 @@ class App extends Component {
 								key={i}
 								path={path}
 								render={ (props) => <C {...props} userInfo={ {isAuthenticated: this.state.isAuthenticated, currentUserId: this.state.currentUserId, userZipCode: this.state.userZipCode } }
-								 									setAuthState={(auth, userId) => this.setAuthState(auth, userId) } setZipCode={zip => this.setZipCode(zip)} /> } />
+								 									setAuthState={(auth, userId, isAdmin) => this.setAuthState(auth, userId, isAdmin) } setZipCode={zip => this.setZipCode(zip)} /> } />
 						))}
 					</Switch>
 				</Router>
