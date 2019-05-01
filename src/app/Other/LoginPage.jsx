@@ -35,7 +35,7 @@ export class LoginPage extends Component{
 					this.props.setZipCode(this.state.zip);
 					this.setState(
 						{
-							redirect: `/profile/${ this.state.userId }`,
+							redirect: `/profile`,
 							authId: this.state.userId
 						}
 					)

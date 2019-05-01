@@ -18,7 +18,7 @@ const FilterBar = (props) => {
 										<div className="card-body">
 										<form>
 										{ props.models.map( (m, i) =>
-											<label className="form-check" key={ m.auctionId }>
+											<label className="form-check" key={ m.AuctionId }>
 												<input className="form-check-input" type="checkbox" value=""/>
 												<p className="form-check-label text-break">
 													{m.Make}
@@ -37,7 +37,7 @@ const FilterBar = (props) => {
 									</header>
 									<div className="filter-content">
 										<div className="card-body">
-										<CirclePicker width="100%" />
+											<CirclePicker width="100%" />
 										</div>
 									</div>
 								</article>

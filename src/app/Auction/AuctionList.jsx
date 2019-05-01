@@ -1,6 +1,7 @@
 /* eslint eqeqeq: "off" */
 import React from 'react';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
 var zipcodes = require('zipcodes');
 
 // 'SELECT A.UserId, AuctionId, StartTime, EndTime, Price, Make, Model, Year, A.Zip, Description, Username From Auctions A JOIN Users ON Users.UserId = A.UserId ORDER BY StartTime DESC;'
@@ -20,7 +21,7 @@ export const AuctionList = (props) => (
 								<p><b>Color: </b> { a.Color }</p>
 								{ props.userZipCode && <p><b>Distance from { props.userZipCode }:</b> { zipcodes.distance(props.userZipCode, a.zip) } mi</p> }
 								<p><b>Located in: </b> { a.Zip }</p>
-								<p><b>Time left:</b> { a.time_left }</p>
+								<p><b>Time left:</b> { moment(a.EndTime).fromNow(true) }</p>
 							</div>
 						</div>
 						<div className="card-footer">
