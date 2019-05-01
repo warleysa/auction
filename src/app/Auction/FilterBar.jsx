@@ -11,21 +11,22 @@ export class FilterBar extends React.Component {
     render() {
         return (
             <>
-						<div className="col-lg-3">
-							<div class="position-fixed">
-								<div className="card">
+						<div className="col-lg-3 device-lg visible-lg">
+							<div className="mt-5" data-spy="affix">
+								<div className="card m-0">
 								<article className="card-group-item">
+									<h6 className="bg-light mx-1 mb-0">Filter By:</h6>
 									<header className="card-header">
-										<h6 className="title">Brands </h6>
+										<h6 className="title">Make </h6>
 									</header>
 									<div className="filter-content">
 										<div className="card-body">
 										<form>
 											<label className="form-check">
 												<input className="form-check-input" type="checkbox" value=""/>
-												<span className="form-check-label">
-													Mersedes Benz
-												</span>
+												<p className="form-check-label text-break">
+													Mersedes Benz Test Here Mersedes Benz Test Here
+												</p>
 											</label>
 											<label className="form-check">
 												<input className="form-check-input" type="checkbox" value=""/>
@@ -47,7 +48,7 @@ export class FilterBar extends React.Component {
 
 								<article className="card-group-item">
 									<header className="card-header">
-										<h6 className="title">Choose type </h6>
+										<h6 className="title">Color </h6>
 									</header>
 									<div className="filter-content">
 										<div className="card-body">

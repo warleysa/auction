@@ -12,7 +12,7 @@ export const HomePage = () =>(
                 Get Started
                 </Link>
             </div>
-            
+
         </div>
 );
 

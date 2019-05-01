@@ -18,8 +18,7 @@ export class HomeLanding extends React.Component {
     render() {
         return (
             <>
-                        <HomePage/>
-						
+              <HomePage/>
             </>
         );
     }

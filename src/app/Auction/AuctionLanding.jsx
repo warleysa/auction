@@ -4,6 +4,7 @@ import { RealRepo } from '../../api/realRepo';
 import { AuctionList } from './AuctionList';
 import { FilterBar } from './FilterBar';
 import { Car } from './../../models/car';
+import './Filter.css';
 
 export class AuctionLanding extends React.Component {
 	realRepo = new RealRepo();
