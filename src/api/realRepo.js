@@ -225,4 +225,13 @@ export class RealRepo {
 							.catch(resp => alert(resp));
 			});
 		}
+
+		changeAdmin(userId){
+			return new Promise((resolve, reject) => {
+				console.log("changing admin status");
+				axios.put(`${this.url}/user/admin/${userId}`, this.config)
+					.then(resp=> resolve(resp.data))
+					.catch(resp=>alert(resp));
+			});
+		}
 }
