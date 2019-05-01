@@ -15,7 +15,7 @@ class App extends Component {
 		isAuthenticated: this.storage.getAuthStatus(),
 		currentUserId: this.storage.getUserId(),
 		userZipCode: this.storage.getZipCode(),
-		isAdmin: false
+		isAdmin: this.storage.getAdminStatus()
 	}
 
 	setAuthState(auth, userId, isAdmin) {

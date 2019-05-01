@@ -99,7 +99,8 @@ class UserProfile extends React.Component {
 				city: this.props.userInfo.city || '',
 				state_code: this.props.userInfo.state_code || '',
 				zip: this.props.userInfo.zip || '',
-				register_date: this.props.userInfo.register_date || ''
+				register_date: this.props.userInfo.register_date || '',
+				image: this.props.userInfo.image
 			}
 		});
 	}

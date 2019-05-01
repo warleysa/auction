@@ -5,15 +5,16 @@ export class StorageManage {
 
 	}
 
-	setAuthStatus(authenticated, userId) {
+	setAuthStatus(authenticated, userId, isAdmin) {
 		if(authenticated == false) {
 			localStorage.removeItem('authStatus');
 			localStorage.removeItem('userId');
+			localStorage.removeItem('isAdmin');
 		} else {
 			let auth = {loggedIn: authenticated, timestamp: new Date().getTime()}
 			localStorage.setItem('authStatus', JSON.stringify(auth));
 			localStorage.setItem('userId', userId);
-
+			localStorage.setItem('isAdmin', JSON.stringify(isAdmin));
 		}
 	}
 
@@ -33,6 +34,11 @@ export class StorageManage {
 	getUserId() {
 		let currUserId = +localStorage.getItem("userId");
 		return currUserId;
+	}
+
+	getAdminStatus() {
+		let isAdmin = localStorage.getItem("isAdmin");
+		return isAdmin;
 	}
 
 	setZipCode(zip) {
