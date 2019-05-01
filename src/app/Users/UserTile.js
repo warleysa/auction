@@ -116,12 +116,12 @@ class UserTile extends Component {
         }
 
         return(
-            <Card className="mb-auto shadow-sm m-3 p-0 h-75">
+            <Card className="mb-auto shadow-sm m-3 p-0 ">
             <div className="p-2 position-relative">
                 <Card.Img variant="top" className="rounded-circle" src={this.props.user.ProfilePicture || defaultPic}  />
             </div>
             <Card.Header className="text-center"><Card.Title>{`${this.props.user.FirstName}'s account`}</Card.Title></Card.Header>
-            <Card.Body className="p-3 m-3">
+            <Card.Body className="p-1 m-3">
 
                 <div>
                     <ul className="list-group mb-3">

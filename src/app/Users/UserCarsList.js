@@ -95,7 +95,7 @@ const UserCarsList = (props) => {
                                     </dd>
                                     </dl>
                             <Col>
-                                <NavLink to="/" className="btn btn-primary float-right">View Auction</NavLink>
+                                <NavLink to={`/auction/${car.auctionId}`} className="btn btn-primary float-right">View Auction</NavLink>
                             </Col>
                         </div>
                     </div>
