@@ -19,8 +19,6 @@ export class ProfileLanding extends React.Component {
 		}
 
 		setProfileInfo(user) {
-			console.log("SETTING STATE: ");
-			console.log(user);
 			this.apiRepo.updateUser(user)
 				.then(user => {
 					this.setState({
@@ -53,21 +51,18 @@ export class ProfileLanding extends React.Component {
 
 
 		componentDidMount() {
-			console.log("Profile Landing mounting");
 			if(this.props.match) {
 				let userId = +this.props.match.params.userId;
 					this.apiRepo.getUserInfo(userId)
 					.then(p => {
 						let userInfo = new User(p.UserId, p.Username, p.FirstName, p.LastName, p.Address, p.City, p.State, p.Zip, p.DateCreated.slice(0,10), p.ProfilePicture);
 						this.setState({profile: userInfo});
-						console.log(this.state);
 					});
 
 					this.apiRepo.getAuctionsByUser(userId)
 					.then(res => {
 						let cars = res.map(c => new Car(c.UserId, c.Make, c.Model, +c.Year, c.Mileage, c.Color, c.Zip, c.Description, c.Price, c.StartTime, c.EndTime, +c.AuctionId, c.Image));
 						this.setState({cars: cars});
-						console.log(this.state);
 					});
 			}
 		}
