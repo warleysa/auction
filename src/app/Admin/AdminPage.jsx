@@ -2,8 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 var zipcodes = require('zipcodes');
 
-export const AdminPage = (props) => (
-	<div className="m-5">
+export class AdminPage extends React.Component{
+
+	render(){
+		return(
+		<div className="m-5">
 		<div className="w-100">
 			<ul className="nav nav-tabs" id="myTab" role="tablist">
 				<li className="nav-item">
@@ -30,7 +33,7 @@ export const AdminPage = (props) => (
 
 							<tbody>
 								{
-									props.auctions.map((a, i) =>
+									this.props.auctions.map((a, i) =>
 									<tr key={i}>
 
 										<td>{ `${a.make} - ${a.model} (${a.year})` }</td>
@@ -40,7 +43,7 @@ export const AdminPage = (props) => (
 										<td>{ a.UserName}</td>
 										<td>
 											<button className="btn btn-sm btn-danger"
-												onClick={e => props.onDelete(a.auctionId)}>
+												onClick={e => this.props.onDelete(a.auctionId)}>
 												<i className="fa fa-trash"></i>
 											</button>
 										</td>
@@ -67,7 +70,7 @@ export const AdminPage = (props) => (
 
 						<tbody>
 							{
-								props.users.map((u, i) =>
+								this.props.users.map((u, i) =>
 								<tr key={i}>
 
 									<td>{u.userId}</td>
@@ -94,6 +97,8 @@ export const AdminPage = (props) => (
 	</div>
 </div>
 </div>
-);
 
+	)};
+}
+	
 export default AdminPage;
