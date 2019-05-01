@@ -16,14 +16,11 @@ export const ROUTES = [
 	{ path: '/login', component: LoginPage, authRequired: false, adminRequired: false },
 	{ path: '/profile/:userId', component: PublicProfile, authRequired: false, adminRequired: false },
 	{ path: '/profile', component: ProfileLanding, authRequired: true, adminRequired: false },
-	// { path: '/edit/:accountId', component: CarEditor },
-	// { path: '/new', component: CarEditor },
 	{ path: '/auctions', component: AuctionLanding, authRequired: false, adminRequired: false },
 	{ path: '/auction/:auctionId', component: AuctionPage, authRequired: false, adminRequired: false },
 	{ path: '/users', component: UsersLanding, authRequired: false, adminRequired: false },
 	{ path: '/home', component:HomeLanding, authRequired: false, adminRequired: false },
 	{ path: '/admin', component:AdminLanding, authRequired: true, adminRequired: true },
-	// { path: '/profile/:userId', component: AccountEditor },
 	{ path: '/', component: HomeLanding, authRequired: false, adminRequired: false }
 
 ];

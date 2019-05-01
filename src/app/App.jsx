@@ -22,7 +22,7 @@ class App extends Component {
 		console.log("Setting Admin Status to: " + isAdmin);
 		if(auth == true) {
 			console.log("Logging In");
-			this.storage.setAuthStatus(true, userId);
+			this.storage.setAuthStatus(true, userId, isAdmin);
 			this.setState(state => {
 	      state.isAuthenticated = true;
 				state.currentUserId = +userId;

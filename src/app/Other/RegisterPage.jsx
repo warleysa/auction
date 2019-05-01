@@ -39,7 +39,7 @@ export class RegisterPage extends Component {
 						this.props.setAuthState(true, this.state.userId);
 						this.setState(
 							{
-								redirect: `/profile/${ this.state.userId }`,
+								redirect: `/profile`,
 								authId: this.state.userId
 							}
 						)

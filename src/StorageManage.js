@@ -14,7 +14,7 @@ export class StorageManage {
 			let auth = {loggedIn: authenticated, timestamp: new Date().getTime()}
 			localStorage.setItem('authStatus', JSON.stringify(auth));
 			localStorage.setItem('userId', userId);
-			localStorage.setItem('isAdmin', JSON.stringify(isAdmin));
+			localStorage.setItem('isAdmin', isAdmin);
 		}
 	}
 
