@@ -104,11 +104,11 @@ class UserTile extends Component {
                         </div>
                     );
                 }else{
-                    return(<div>Seller doesn't have any reviews</div>);
+                    return(<div className="text-center mb-1">Seller doesn't have any reviews</div>);
                 }
             }else{
                 return(
-                    <div>Seller doesn't have any reviews</div>
+                    <div className="text-center mb-1">Seller doesn't have any reviews</div>
                 ); 
             }
         }
@@ -132,7 +132,7 @@ class UserTile extends Component {
 
                 <div className="row">
                     <div className="col py-1">
-                        <button type="button" className="btn btn-primary  btn-block">View Cars</button>
+                        <NavLink to={`/profile/${this.props.user.UserId}`} className="btn btn-primary btn-block">View Cars</NavLink>
                     </div>
                 </div>
 
