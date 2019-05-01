@@ -2,7 +2,7 @@
 import React from 'react';
 import { RealRepo } from '../../api/realRepo';
 import { AuctionList } from './AuctionList';
-import { FilterBar } from './FilterBar';
+import FilterBar from './FilterBar';
 import { Car } from './../../models/car';
 
 export class AuctionLanding extends React.Component {
@@ -19,7 +19,7 @@ export class AuctionLanding extends React.Component {
             <>
 						<div className="container mt-2">
 							<div className="row">
-								<FilterBar/>
+								<FilterBar models={this.state.auctions.filter(a => a.Image != "")}/>
 								<div className="container col-lg-9">
 									<div className="row">
 										<AuctionList auctions={this.state.auctions} userZipCode={this.props.userInfo.userZipCode}/>
@@ -34,9 +34,8 @@ export class AuctionLanding extends React.Component {
 
 		componentDidMount() {
 			this.realRepo.getAuctions()
-				.then(auctions => {
-					let cars = auctions.map(c => new Car(c.UserId, c.Make, c.Model, +c.Year, c.Mileage, c.Color, c.Zip, c.Description, c.Price, c.StartTime, c.EndTime, +c.AuctionId, c.Image));
-					this.setState({auctions: cars});
+				.then(a => {
+					this.setState({auctions: a});
         });
 
     	}
