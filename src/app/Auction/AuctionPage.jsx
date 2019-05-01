@@ -15,7 +15,6 @@ export class AuctionPage extends Component {
 			image: '',
 			price: '',
 			color: ''
-
 		}
   }
 

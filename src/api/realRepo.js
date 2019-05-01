@@ -194,7 +194,7 @@ export class RealRepo {
 			return new Promise((resolve, reject) => {
 				axios.put(`${this.url}/user/password`, username,password, this.config)
 					.then(resp=> resolve(resp.data))
-					.catch(resp=>alert(resp));	
+					.catch(resp=>alert(resp));
 			});
 		}
 
