@@ -205,4 +205,22 @@ export class RealRepo {
 				.catch(resp => console.log(resp));
 			})
 		}
+
+		getAllBids(){
+			return new Promise((resolve, reject) => {
+				axios.get(`${this.url}/bids`,this.config)
+				.then(resp => resolve(resp.data))
+				.catch(resp => console.log(resp));
+			})
+		}
+		
+		postBid(bid) {
+			console.log("Adding bid... API Call POST");
+			console.log(bid.apiJsonFormat());
+			return new Promise((resolve, reject) => {
+					axios.post(`${this.url}/bid`, bid.apiJsonFormat(), this.config)
+							.then(resp => resolve(resp.data))
+							.catch(resp => alert(resp));
+			});
+		}
 }
