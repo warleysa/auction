@@ -1,6 +1,6 @@
 
 export class AuctionBid{
-	constructor(username, userId, auctionId, price){
+	constructor(username, userId, auctionId, price, time){
         this.Username = username;
         this.UserId = userId;
         this.AuctionId  = auctionId;
@@ -8,6 +8,7 @@ export class AuctionBid{
         let today = new Date();
         let thisDate = today.toDateString();
         this.Date = thisDate;
+				this.Time = thisDate
 
 
 	}

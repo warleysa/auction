@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 import {NavLink} from 'react-router-dom';
+import {moment} from 'moment';
 
 
 class BidList extends Component {
+
+	state = {
+
+	}
 
 	noBidsText() {
 		return <div className="card">
@@ -32,7 +37,7 @@ class BidList extends Component {
 							</div>
 							<div className="card-body bg-light mx-2">
                                 <div>Bidder: @{b.Username}</div>
-                                {b.Date}
+                                {b.Time.slice(0, 10)}
 							</div>
                             <div>
 
