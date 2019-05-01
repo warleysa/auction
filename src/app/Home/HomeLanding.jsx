@@ -19,7 +19,7 @@ export class HomeLanding extends React.Component {
         return (
             <>
                         <HomePage/>
-						<AuctionList auctions={this.state.auctions} userZipCode={this.props.userInfo.userZipCode}/>
+						
             </>
         );
     }
