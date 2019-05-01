@@ -11,15 +11,29 @@ export class AdminLanding extends React.Component {
 
     state = {
         auctions: [],
-        users: []
+		users: [],
     };
 
     onDelete(auctionId){
-        if(window.confirm("Are you sure")){
+        if(window.confirm("Are you sure?")){
             this.realRepo.deleteAuction(auctionId)
                 .then(()=> {
                     this.setState(state => ({
                         auctions: state.auctions.filter(x => x.auctionId != auctionId)
+                    }))
+                });
+        }
+	}
+
+	onChangeAdmin(userId){
+        if(window.confirm("Are you sure?")){
+            this.realRepo.changeAdmin(userId)
+                .then(()=> {
+
+					let accounts = this.state.users;
+					accounts[userId-1].IsAdmin = !accounts[userId-1].IsAdmin;
+                    this.setState(state => ({
+                        users: accounts,
                     }))
                 });
         }
@@ -71,6 +85,7 @@ export class AdminLanding extends React.Component {
                         onDelete={x => this.onDelete(x)}
 						handleChange={(x) => this.handleChange(x)}
 						onChangePassword={(x)=>this.onChangePassword(x)}
+						onChangeAdmin={(X)=>this.onChangeAdmin(X)}
 						/>
             </>
         );
@@ -89,7 +104,14 @@ export class AdminLanding extends React.Component {
                     let accounts = users.map(a => new User(a.UserId, a.Username, a.FirstName, a.LastName, '', '', '', a.Zip, a.DateCreated));
                     accounts.map((a,i) => a['rating']= users[i].AvgRating);
                     this.setState({users: accounts});
-            });
+			});
+			
+			this.realRepo.getUsersAdmin()
+			.then(admins => {
+				let accounts = this.state.users;
+				accounts.map((a,i)=> a['IsAdmin']=admins[i].IsAdmin);
+				this.setState({users:accounts});
+			});
 
 
         }

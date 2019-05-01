@@ -86,6 +86,7 @@ export class AdminPage extends React.Component{
 								<th>Name</th>
 								<th>Register Date</th>
 								<th>Location</th>
+								<th>IsAdmin</th>
 								<th>Rating</th>
 							</tr>
 						</thead>
@@ -100,13 +101,17 @@ export class AdminPage extends React.Component{
 									<td>{u.first_name+" "+u.last_name}</td>
 									<td>{ u.register_date.substring(0,10)}</td>
 									<td> {u.zip? u.zip:"null"} </td>
+									<td> {u.IsAdmin? 'Yes':"NO"}</td>
 									<td className="font-weight-light"><Rating value={u.rating}/></td>
 									
-									{/* <td>
-										<button className="btn btn-sm btn-outline-info float-right">
-											View Comments
+									<td>
+										<button className="btn btn-sm btn-danger m-1 float-right"
+											onClick={()=>this.props.onChangeAdmin(u.userId)}>
+											<i className="fas fa-user-cog mr-1"></i>
+											Change Admin
 										</button>
-									</td> */}
+									</td>
+
 									<td>
 										<button className="btn btn-sm btn-warning m-1 float-right" data-toggle="modal" data-target="#passwordmodal"
                                             onClick={()=>this.setState({changingUser:u.username})}>
