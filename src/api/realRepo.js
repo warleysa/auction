@@ -192,6 +192,8 @@ export class RealRepo {
 		changePassword(userName, passWord){
 			return new Promise((resolve, reject) => {
 				console.log("changing password");
+				console.log(userName);
+				console.log(passWord);
 				axios.put(`${this.url}/user/password`, userName,passWord, this.config)
 					.then(resp=> resolve(resp.data))
 					.catch(resp=>alert(resp));	

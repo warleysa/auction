@@ -12,6 +12,7 @@ class ChangePassword extends Component {
   constructor(props, context) {
     super(props, context);
     this.state={
+      userName:this.props.username,
       oldPassword: '',
       newPassword: '',
       newPassword2: '',
@@ -82,7 +83,7 @@ class ChangePassword extends Component {
       event.stopPropagation();
     }
     this.setState({ validated: true });
-    // this.props.onChangePassword({})
+    this.props.onChangePassword({username:this.state.username,password:this.state.newPassword});
   }
 
 
@@ -138,7 +139,10 @@ class ChangePassword extends Component {
           </Modal.Body>
 
           <Modal.Footer>
-            <Button variant="success" className="float-right">Submit</Button>
+            <Button variant="success" className="float-right"
+              onClick={this.onSubmit}>
+              Submit
+            </Button>
           </Modal.Footer>
         </Modal>
         </>

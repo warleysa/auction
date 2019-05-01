@@ -109,7 +109,7 @@ class UserProfile extends React.Component {
 	}
 
 	onChangePassword(username,password){
-		this.realRepo.changePassword(username,password)
+		this.apiRepo.changePassword(username,password)
 			.then(()=>{
 				window.alert("You successfully changed the user's password")}
 			)
@@ -251,7 +251,8 @@ class UserProfile extends React.Component {
 
 								<Row className='justify-content-between'>
 									<Col className="col-sm-auto">
-										<ChangePassword onChangePassword={(x)=>this.onChangePassword(x)}/>
+										<ChangePassword username={this.state.profile.username}
+											onChangePassword={(x)=>this.onChangePassword(x)}/>
 									</Col>
 									<Col className="col-sm-auto" > {editSaveButton()}</Col>
 								</Row>
