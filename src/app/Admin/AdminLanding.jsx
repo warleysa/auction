@@ -23,7 +23,14 @@ export class AdminLanding extends React.Component {
                     }))
                 });
         }
-    }
+	}
+	
+	onChangePassword(username,password){
+		this.realRepo.changePassword(username,password)
+			.then(()=>{
+				window.alert("You successfully changed the user's password")}
+			)
+	}
 
 
 		handleChange(input) {
@@ -62,7 +69,9 @@ export class AdminLanding extends React.Component {
             <>
 						<AdminPage auctions={this.state.auctions} users={this.state.users}
                         onDelete={x => this.onDelete(x)}
-												handleChange={(x) => this.handleChange(x)}/>
+						handleChange={(x) => this.handleChange(x)}
+						onChangePassword={(x)=>this.onChangePassword(x)}
+						/>
             </>
         );
     }
