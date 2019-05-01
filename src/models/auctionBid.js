@@ -1,21 +1,24 @@
 
 export class AuctionBid{
-	constructor(userId, auctionId, price){
-		this.userId = userId;
-        this.auctionId  = auctionId;
-        this.price = price;
+	constructor(username, userId, auctionId, price){
+        this.Username = username;
+        this.UserId = userId;
+        this.AuctionId  = auctionId;
+        this.Price = price;
         let today = new Date();
         let thisDate = today.toDateString();
-        this.date = thisDate;
+        this.Date = thisDate;
+        
 
 	}
 
 	apiJsonFormat() {
 		return({
-			userId: this.userId,
-			auctionId: this.auctionId,
-            price: this.price,
-            date: this.date
+            Username: this.username,
+			UserId: this.userId,
+			AuctionId: this.auctionId,
+            Price: this.price,
+            Date: this.date
 		})
 	}
 

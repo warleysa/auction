@@ -89,7 +89,8 @@ class UserTile extends Component {
             if(this.state.feedbackLoaded){
                 if(this.state.sellerFeedback.length){
                     return(
-                        <div>
+                        <div className="overflow-auto"
+                            style={{"max-height": "275px"}}>
                         {
                             this.state.sellerFeedback.map((review, i) =>
                                 <div className="m-1 m-3" key={`review${i}`}>
@@ -158,11 +159,11 @@ class UserTile extends Component {
             </Card.Body>
 
             <div className="collapse collapsed p-3" id={`feedback${this.props.user.UserId}`}>
-                <div className="card card-body">
+                <div className="card card-body" >
                     {displayReviews()}
 
 
-                    <button className="btn btn-block btn-outline-danger"
+                    <button className="btn btn-block btn-outline-danger mt-2"
                             type="button"
                             data-toggle="collapse"
                             data-target={`#feedback${this.props.user.UserId}`}

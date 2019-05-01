@@ -171,7 +171,8 @@ class PublicUserTile extends Component {
                 </Card.Body>
           
                 <div className="collapse collapsed p-3" id={`feedback${this.props.profile.UserId}`}>
-                    <div className="card card-body">
+                    <div className="card card-body"
+                         style={{"max-height": "250px"}}>
                         {displayReviews()}
 
 
