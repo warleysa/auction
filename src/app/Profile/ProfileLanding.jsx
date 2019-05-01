@@ -26,9 +26,10 @@ export class ProfileLanding extends React.Component {
 						alertShow: true,
 						profile: this.user
 					});
-					this.props.setZipCode(user.zip);
 				}
 			 );
+			 console.log(user.zip);
+			 this.props.setZipCode(user.zip);
 		}
 
 		onDismissAlert() {
