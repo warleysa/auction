@@ -12,7 +12,7 @@ var base64Img = require('base64-img');
 
 
 class AccountSidebar extends React.Component {
-	apiRepo = new RealRepo;
+	realRepo = new RealRepo;
 
 	state = {
 		profile: []
@@ -25,7 +25,7 @@ class AccountSidebar extends React.Component {
 			this.getBase64(selectorFiles[0], (result) => {
 		     idCardBase64 = result;
 				 console.log(idCardBase64);
-				 this.apiRepo.setProfileImage({
+				 this.realRepo.setProfileImage({
 					 												profilePicture: idCardBase64,
 					  											userId: this.props.profile.userId
 																})

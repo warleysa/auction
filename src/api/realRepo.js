@@ -123,10 +123,12 @@ export class RealRepo {
         });
 		}
 
-		setAuctionImage(auctionImage, auctionId) {
+		setAuctionImage(auctionPicture, auctionId) {
 				console.log("Image Upload Auction... API Call");
+				console.log(auctionPicture);
+				console.log(auctionId);
         return new Promise((resolve, reject) => {
-            axios.put(`${this.url}/auction/image`, auctionImage, auctionId, this.config)
+            axios.put(`${this.url}/auction/image`, {image: auctionPicture, auctionId: auctionId} , this.config)
                 .then(resp => resolve(resp.data))
                 .catch(resp => alert(resp));
         });

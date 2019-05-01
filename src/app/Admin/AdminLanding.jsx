@@ -26,19 +26,16 @@ export class AdminLanding extends React.Component {
     }
 
 
-		handleChange(selectorFiles: FileList, auctionId) {
-	      console.log(selectorFiles);
-				let changedFile = selectorFiles[0].toString('base64');
+		handleChange(input) {
+	      console.log(input.file);
+				let changedFile = input.file[0].toString('base64');
 				let idCardBase64 = '';
-				this.getBase64(selectorFiles[0], (result) => {
+				this.getBase64(input.file[0], (result) => {
 			     idCardBase64 = result;
 					 console.log(idCardBase64);
-					 this.apiRepo.setProfileImage({
-						 												auctionPicture: idCardBase64,
-						  											auctionId: auctionId
-																	})
+					 console.log(input.id);
+					 this.realRepo.setAuctionImage(idCardBase64, input.id)
 					 .then(p => {
-						 this.setImage(idCardBase64);
 						 console.log(this.state);
 					 });
 				 });
