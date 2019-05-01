@@ -126,7 +126,7 @@ class UserTile extends Component {
                 <div>
                     <ul className="list-group mb-3">
                     <li className="list-group-item text-left"><span className=" mr-2"><strong>Name:</strong></span>{this.props.user.FirstName} {this.props.user.LastName}</li>
-                    <li className="list-group-item text-left"><span className="pull-left mr-2"><strong>Joined:</strong></span>{this.props.user.DateCreated.slice(0,10)}</li>
+                    <li className="list-group-item text-left"><span className="pull-left mr-2"><strong>Joined:</strong></span>{this.props.user.DateCreated}</li>
                     <li className="list-group-item text-left"><span className="pull-left mr-2"><strong>Listings:</strong></span>{this.props.user.CarsListed}</li>
                     <li className="list-group-item text-left"><span className="pull-left mr-2"><strong>Rating:</strong></span><Rating value={this.props.user.AvgRating}/></li>
                     </ul>
