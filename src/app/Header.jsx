@@ -85,18 +85,6 @@ export class Header extends React.Component {
 										</li>
 									</div>
 								</li>
-								{/*
-								<li className="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-										<div class="input-group">
-									    <input type="text" class="form-control" placeholder="Search" />
-									    <div className="input-group-append">
-									      <button class="btn btn-secondary" type="submit">
-									        <i className="fas fa-search"></i>&nbsp;
-									      </button>
-									    </div>
-									  </div>
-								</li>
-								*/}
 							</ul>
 						</div>
 					</nav>
