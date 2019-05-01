@@ -25,11 +25,14 @@ export class AuctionPage extends Component {
   }
 
 	onNewBid(bid) {
+		this.realRepo.postBid(bid)
     this.setState(state => {
       state.bids.push(bid);
       return state;
     });
 	};
+
+
 
   onNewReview(review) {
     this.setState(state => {
@@ -114,10 +117,10 @@ export class AuctionPage extends Component {
 				});
 		}
 
-		this.realRepo.getAllBids()
+		this.realRepo.getBidsForAuction(auctionId)
 			.then(bids => {
-				console.log(`allBids: ${bids}`)
-				this.setState({ allBids: bids});
+				console.log(`auctionBids: ${bids}`);
+				this.setState({ bids: bids});
 			})
 
 
