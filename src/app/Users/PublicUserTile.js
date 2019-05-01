@@ -112,11 +112,11 @@ class PublicUserTile extends Component {
                             this.state.sellerFeedback.map((review, i) => 
                                 <div className="m-1" key={`review${i}`}>
                                     <div className="float-right">
-                                        <Rating value={review.rating}/>
+                                        <Rating value={review.Rating}/>
                                     </div>
                                     <h6><strong>{review.FirstName}-</strong></h6>
                                     <hr/>
-                                    <p>"Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident."</p>
+                                    <p>"{review.Description}"</p>
                                 </div>
                             ) 
                         }
@@ -144,8 +144,8 @@ class PublicUserTile extends Component {
                         <ul className="list-group mb-3">
                             <li className="list-group-item text-left"><span className=" mr-2"><strong>Name:</strong></span>{this.props.profile.FirstName} {this.props.profile.LastName}</li>
                             <li className="list-group-item text-left"><span className="pull-left mr-2"><strong>Joined:</strong></span>{this.props.profile.DateCreated}</li>
-                            <li className="list-group-item text-left"><span className="pull-left mr-2"><strong>Listings:</strong></span>{this.props.profile.CarsListed}</li>
-                            <li className="list-group-item text-left"><span className="pull-left mr-2"><strong>Rating:</strong></span><Rating value={this.props.profile.AvgRating || 0}/></li>
+                            <li className="list-group-item text-left"><span className="pull-left mr-2"><strong>Listings:</strong></span>{this.props.profile.carsListed}</li>
+                            <li className="list-group-item text-left"><span className="pull-left mr-2"><strong>Rating:</strong></span><Rating value={this.props.profile.averageRating || 0}/></li>
                         </ul>
                     </div>
 

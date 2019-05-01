@@ -92,13 +92,14 @@ class UserTile extends Component {
                         <div>
                         {
                             this.state.sellerFeedback.map((review, i) =>
-                                <div className="m-1" key={`review${i}`}>
+                                <div className="m-1 m-3" key={`review${i}`}>
                                     <div className="float-right">
-                                        <Rating value={review.rating}/>
+                                        <Rating value={review.Rating}/>
                                     </div>
                                     <h6><strong>{review.FirstName}-</strong></h6>
+                                    
+                                    <p>"{review.Description}"</p>
                                     <hr/>
-                                    <p>"Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident."</p>
                                 </div>
                             )
                         }
