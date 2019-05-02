@@ -107,7 +107,7 @@ class PublicUserTile extends Component {
             if(this.state.feedbackLoaded){
                 if(this.state.sellerFeedback.length){
                     return(
-                        <div>
+                        <div style={{"max-height": "250px"}}>
                         {
                             this.state.sellerFeedback.map((review, i) => 
                                 <div className="m-1" key={`review${i}`}>
@@ -171,8 +171,7 @@ class PublicUserTile extends Component {
                 </Card.Body>
           
                 <div className="collapse collapsed p-3" id={`feedback${this.props.profile.UserId}`}>
-                    <div className="card card-body"
-                         style={{"max-height": "250px"}}>
+                    <div className="card card-body">
                         {displayReviews()}
 
 
