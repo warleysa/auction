@@ -39,7 +39,10 @@ export class StorageManage {
 	}
 
 	getAdminStatus() {
-		let isAdmin = localStorage.getItem("isAdmin");
+		let isAdmin = JSON.parse(localStorage.getItem("isAdmin"));
+		if(isAdmin == "undefined") {
+			return false;
+		}
 		return isAdmin;
 	}
 

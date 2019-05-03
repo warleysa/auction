@@ -1,3 +1,4 @@
+/* eslint eqeqeq: "off" */
 import React from 'react';
 import Rating from './../Reviews/Rating';
 
