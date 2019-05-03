@@ -1,5 +1,4 @@
 import React from 'react';
-import ImageUploader from 'react-images-upload';
 
 class AddImages extends React.Component {
 
@@ -8,7 +7,6 @@ class AddImages extends React.Component {
 	}
 
 	handleChange(selectorFiles: FileList) {
-			let changedFile = selectorFiles[0].toString('base64');
 			let idCardBase64 = '';
 			this.getBase64(selectorFiles[0], (result) => {
 		     idCardBase64 = result;
@@ -35,7 +33,7 @@ class AddImages extends React.Component {
     render() {
         return (
 					<>
-					{ this.state.image && <img src={this.state.image} class="rounded mx-auto d-block" alt="Car Image" /> }
+					{ this.state.image && <img src={this.state.image} class="rounded mx-auto d-block" alt="Car - Here" /> }
 					<label class="btn btn-outline-primary btn-xs mt-2 w-100" id="profilePictureUpload">
 						Add Car Picture
 						<i className="far fa-edit float-right m-1"></i>

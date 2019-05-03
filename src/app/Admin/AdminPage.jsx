@@ -1,7 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import Rating from './../Reviews/Rating';
-var zipcodes = require('zipcodes');
 
 export class AdminPage extends React.Component{
 

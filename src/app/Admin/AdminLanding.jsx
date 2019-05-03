@@ -1,3 +1,4 @@
+/* eslint eqeqeq: "off" */
 import React from 'react';
 import {RealRepo} from '../../api/realRepo';
 import {AdminPage} from './AdminPage';
@@ -49,7 +50,6 @@ export class AdminLanding extends React.Component {
 
 
 		handleChange(input) {
-				let changedFile = input.file[0].toString('base64');
 				let idCardBase64 = '';
 				this.getBase64(input.file[0], (result) => {
 			     idCardBase64 = result;

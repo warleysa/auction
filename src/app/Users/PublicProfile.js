@@ -1,8 +1,6 @@
 import React from 'react';
 import { RealRepo } from '../../api/realRepo';
-import { User } from '../../models/user';
 import  Car from '../../models/car';
-import {NavLink} from 'react-router-dom';
 import PublicUserTile from './PublicUserTile';
 import UserCarsList from './UserCarsList';
 

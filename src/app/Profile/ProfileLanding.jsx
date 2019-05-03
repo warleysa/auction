@@ -6,7 +6,7 @@ import { Car } from './../../models/car';
 import { Alert } from 'react-bootstrap';
 
 export class ProfileLanding extends React.Component {
-		apiRepo = new RealRepo;
+		apiRepo = new RealRepo();
 
 
     state = {

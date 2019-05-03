@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
 import Rating from './../Reviews/Rating';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import defaultPic from '../Profile/images/man.png';
 import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
 import { RealRepo } from '../../api/realRepo';
 import Modal from 'react-bootstrap/Modal';
 import SellerReviewForm from '../Reviews/SellerReviewForm';
 import {NavLink} from 'react-router-dom';
-import { Collapse } from 'react-bootstrap';
 
 class PublicUserTile extends Component {
     realRepo = new RealRepo();

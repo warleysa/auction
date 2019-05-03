@@ -1,7 +1,6 @@
 /* eslint eqeqeq: "off" */
 import React from 'react';
 import { RealRepo } from '../../api/realRepo';
-import { AuctionList } from '../Auction/AuctionList';
 import { Car } from '../../models/car';
 import HomePage from './HomePage';
 

@@ -1,9 +1,6 @@
 /* eslint eqeqeq: "off" */
 
 export class StorageManage {
-	constructor() {
-
-	}
 
 	setAuthStatus(authenticated, userId, isAdmin) {
 		if(authenticated == false) {

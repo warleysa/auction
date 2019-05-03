@@ -1,7 +1,7 @@
 /* eslint eqeqeq: "off" */
 import React, { Component } from 'react';
 import luigi from './../images/Luigi.png';
-import { Card, Button, Col, Alert, Container } from 'react-bootstrap';
+import { Card, Button, Col, Alert } from 'react-bootstrap';
 import { RealRepo } from '../../api/realRepo';
 import { Link, Redirect } from 'react-router-dom';
 

@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
-import Row from 'react-bootstrap/Row';
-import { Col, Dropdown } from 'react-bootstrap';
-import Datetime from 'react-datetime';
+import { Col } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import AddImages	from './AddImages';
 import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Car from './../../models/car';
 import carData from './json/carData.json';
-import moment from 'moment';
 import './style/UserProfile.css';
 
 import { CirclePicker } from 'react-color';
@@ -75,8 +72,6 @@ class AddCarModal extends Component {
 		let date_created = new Date();
 		let end_date = new Date();
 		end_date.setDate(date_created.getDate()+(+this.state.duration));
-		console.log(end_date);
-		console.log(date_created);
 		this.props.onCarAdded(new Car(this.state.userId,
 																	this.state.make,
 																	this.state.model,

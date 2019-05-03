@@ -3,7 +3,6 @@ import React from 'react';
 import { RealRepo } from '../../api/realRepo';
 import { AuctionList } from './AuctionList';
 import FilterBar from './FilterBar';
-import { Car } from './../../models/car';
 import spinner from '../images/loadingSpinner.gif';
 
 export class AuctionLanding extends React.Component {
@@ -23,7 +22,7 @@ export class AuctionLanding extends React.Component {
 		handleFilterMakeChange(e) {
 			if(e.target.value == "000") {
 				this.setState({
-		        filterModel: 'All Makes',
+		        filterMake: 'All Makes',
 						filterModel: 'All Models',
 						listModels: [],
 						filteredAuctions: this.state.auctions
@@ -55,7 +54,7 @@ export class AuctionLanding extends React.Component {
 
 		handleFilterColorChange(c) {
 			this.setState({
-				filterModel: 'All Makes',
+				filterMake: 'All Makes',
 				filterModel: 'All Models',
 				filterColor: c.color,
 				listModels: [],

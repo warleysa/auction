@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+/* eslint eqeqeq: "off" */
+import React from 'react';
 
 import { Container, Form, Row, Col, Button, Tabs, Tab, ButtonToolbar, Alert } from 'react-bootstrap';
 import './style/UserProfile.css';
@@ -7,7 +8,6 @@ import MyCarsList from './MyCarsList';
 import AddCarModal from './AddCarModal';
 import AccountSidebar from './AccountSidebar';
 import ChangePassword from './ChangePassword';
-import UsersLanding from './../Users/UsersLanding';
 import { User } from './../../models/user';
 import { RealRepo } from '../../api/realRepo';
 var zipcodes = require('zipcodes');

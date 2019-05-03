@@ -4,6 +4,7 @@ import Col from 'react-bootstrap/Col';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Form from 'react-bootstrap/Form';
 import moment from 'moment';
+import { Link } from 'react-router-dom';
 
 
 const MyCarsList = (props) => {
@@ -31,7 +32,7 @@ const MyCarsList = (props) => {
           <div className="card-body">
             <Row>
               <Col>
-                  <img src={car.image} width='100%' />
+                  <img src={car.image} width='100%' alt="Auction - Here"/>
               </Col>
               <Col className="text-left">
                   <h5 className="card-title">Car details</h5>
@@ -83,7 +84,9 @@ const MyCarsList = (props) => {
 					  </dd>
 					</dl>
             <Col>
-              <a href="#" className="btn btn-primary float-right">View Auction</a>
+								<Link to={`/auction/${ car.auctionId }`} className="btn btn-primary float-right">
+										View
+								</Link>
             </Col>
           </div>
         </div>

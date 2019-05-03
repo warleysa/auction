@@ -2,8 +2,6 @@ import React from 'react';
 
 import { NavLink } from 'react-router-dom';
 
-import { Container, Dropdown } from 'react-bootstrap';
-
 import logo from './images/logo.ico';
 
 export class Header extends React.Component {

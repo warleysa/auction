@@ -1,25 +1,18 @@
 import React from 'react';
 import Rating from './../Reviews/Rating';
-import { Row, FormControl, Form } from 'react-bootstrap';
-import Col from 'react-bootstrap/Col';
 import defaultPic from './images/man.png';
 import './style/sidebar.css';
 import { RealRepo } from '../../api/realRepo';
 import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
-import FileBase64 from 'react-file-base64';
-var base64Img = require('base64-img');
-
 
 class AccountSidebar extends React.Component {
-	realRepo = new RealRepo;
+	realRepo = new RealRepo();
 
 	state = {
 		profile: []
 	}
 
 	handleChange(selectorFiles: FileList) {
-			let changedFile = selectorFiles[0].toString('base64');
 			let idCardBase64 = '';
 			this.getBase64(selectorFiles[0], (result) => {
 		     idCardBase64 = result;

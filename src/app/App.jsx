@@ -1,8 +1,8 @@
+/* eslint eqeqeq: "off" */
 import React, { Component } from 'react';
 import { Header } from './Header';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { StorageManage } from './../StorageManage';
-import { Container } from 'react-bootstrap';
 import "./App.css";
 
 import ROUTES from './../routes.js';

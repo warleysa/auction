@@ -1,5 +1,6 @@
+/* eslint eqeqeq: "off" */
 import React from 'react';
-import { Form, InputGroup, Col } from 'react-bootstrap'
+import { Form, InputGroup } from 'react-bootstrap'
 import { CirclePicker } from 'react-color';
 
 export const FilterBar = (props) => {
