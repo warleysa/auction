@@ -98,7 +98,6 @@ export class AuctionPage extends Component {
 
 	componentDidMount() {
 		let auctionId = +this.props.match.params.auctionId;
-		console.log(auctionId);
 		if(auctionId){
 			this.realRepo.getAuction(auctionId)
 				.then(listing => {
@@ -107,13 +106,10 @@ export class AuctionPage extends Component {
 						this.realRepo.getUserRating(sellerId)
 						.then(p => {
 								let prof = p[0];
-								console.log(prof);
 								this.setState({profile: prof});
-								console.log(this.state);
 						});
 						this.setState({auction: listing[0],
 													 userId: +listing[0].UserId});
-						console.log(this.state);
 				});
 		}
 

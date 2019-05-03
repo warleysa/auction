@@ -34,12 +34,12 @@ export class AdminLanding extends React.Component {
 					accounts[userId-1].IsAdmin = !accounts[userId-1].IsAdmin;
                     this.setState(state => ({
 						users: accounts,
-						
+
                     }))
                 });
         }
 	}
-	
+
 	onChangePassword(username,password){
 		this.realRepo.changePassword(username,password)
 			.then(()=>{
@@ -49,13 +49,10 @@ export class AdminLanding extends React.Component {
 
 
 		handleChange(input) {
-	      console.log(input.file);
 				let changedFile = input.file[0].toString('base64');
 				let idCardBase64 = '';
 				this.getBase64(input.file[0], (result) => {
 			     idCardBase64 = result;
-					 console.log(idCardBase64);
-					 console.log(input.id);
 					 this.realRepo.setAuctionImage(idCardBase64, input.id)
 					 .then(p => {
 						 console.log(this.state);
@@ -106,7 +103,7 @@ export class AdminLanding extends React.Component {
                     accounts.map((a,i) => a['rating']= users[i].AvgRating);
                     this.setState({users: accounts});
 			});
-			
+
 			this.realRepo.getUsersAdmin()
 			.then(admins => {
 				let accounts = this.state.users;

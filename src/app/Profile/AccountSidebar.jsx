@@ -2,8 +2,8 @@ import React from 'react';
 import Rating from './../Reviews/Rating';
 import { Row, FormControl, Form } from 'react-bootstrap';
 import Col from 'react-bootstrap/Col';
-import defaultPic from './man.png';
-import './sidebar.css';
+import defaultPic from './images/man.png';
+import './style/sidebar.css';
 import { RealRepo } from '../../api/realRepo';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
@@ -19,19 +19,16 @@ class AccountSidebar extends React.Component {
 	}
 
 	handleChange(selectorFiles: FileList) {
-      console.log(selectorFiles);
 			let changedFile = selectorFiles[0].toString('base64');
 			let idCardBase64 = '';
 			this.getBase64(selectorFiles[0], (result) => {
 		     idCardBase64 = result;
-				 console.log(idCardBase64);
 				 this.realRepo.setProfileImage({
 					 												profilePicture: idCardBase64,
 					  											userId: this.props.profile.userId
 																})
 				 .then(p => {
 					 this.setImage(idCardBase64);
-					 console.log(this.state);
 				 });
 			 });
   }
@@ -82,15 +79,7 @@ class AccountSidebar extends React.Component {
 				</Card>
 			)
 		}
-		// componentWillReceiveProps(props) {
-		// 	console.log("componentWillReceiveProps");
-		// 	console.log(this.state);
-		// 	if(props.profile) {
-		// 		this.setState({
-		// 			profile: props.profile
-		// 		});
-		// 	}
-		// }
+
 	}
 
 	export default AccountSidebar;

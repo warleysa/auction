@@ -4,7 +4,7 @@ import { RealRepo } from '../../api/realRepo';
 import { AuctionList } from './AuctionList';
 import FilterBar from './FilterBar';
 import { Car } from './../../models/car';
-import spinner from '../loadingSpinner.gif';
+import spinner from '../images/loadingSpinner.gif';
 
 export class AuctionLanding extends React.Component {
 	realRepo = new RealRepo();
@@ -54,7 +54,6 @@ export class AuctionLanding extends React.Component {
 		}
 
 		handleFilterColorChange(c) {
-			console.log(c);
 			this.setState({
 				filterModel: 'All Makes',
 				filterModel: 'All Models',

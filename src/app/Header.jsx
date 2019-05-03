@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 
 import { Container, Dropdown } from 'react-bootstrap';
 
-import logo from './logo.ico';
+import logo from './images/logo.ico';
 
 
 var headerColor = "#e3f2fd";

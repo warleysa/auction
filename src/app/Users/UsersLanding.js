@@ -1,7 +1,7 @@
 import React from 'react';
 import { RealRepo } from '../../api/realRepo';
 import  UsersList from './UsersList';
-import spinner from '../loadingSpinner.gif';
+import spinner from '../images/loadingSpinner.gif';
 
 export class UsersLanding extends React.Component {
 	realRepo = new RealRepo();
@@ -22,7 +22,7 @@ export class UsersLanding extends React.Component {
         }
 
         return(
-            <img src={spinner} 
+            <img src={spinner}
                  alt="loading"
                  className="loading-div"/>
         )

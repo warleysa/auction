@@ -12,15 +12,9 @@ class BidForm extends Component {
   }
 
   onSubmit(){
-    console.log(`this.props.user.Username: ${this.props.username}`);
-    console.log(`this.props.user.UserId: ${this.props.userId}`);
-    console.log(`this.props.auctionId: ${this.props.auctionId}`);
-    console.log(`this.state.price: ${this.state.price}`);
 
     let newBid = new AuctionBid(this.props.username, this.props.userId, this.props.auctionId, +this.state.price);
     this.props.onNewBid(newBid);
-    console.log("created new auctionBid:");
-    console.log(newBid)
         this.setState({
             price: ''
         });

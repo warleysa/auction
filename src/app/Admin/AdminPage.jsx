@@ -88,6 +88,8 @@ export class AdminPage extends React.Component{
 								<th>Location</th>
 								<th>IsAdmin</th>
 								<th>Rating</th>
+								<th></th>
+								<th></th>
 							</tr>
 						</thead>
 
@@ -103,7 +105,7 @@ export class AdminPage extends React.Component{
 									<td> {u.zip? u.zip:"null"} </td>
 									<td> {u.IsAdmin? 'Yes':"NO"}</td>
 									<td className="font-weight-light"><Rating value={u.rating}/></td>
-									
+
 									<td>
 										<button className="btn btn-sm btn-danger m-1 float-right"
 											onClick={()=>this.props.onChangeAdmin(u.userId)}>
@@ -125,7 +127,7 @@ export class AdminPage extends React.Component{
 					</tbody>
 				</table>
 			</div>
-		</div>              
+		</div>
 	</div>
 </div>
 </div>
@@ -167,5 +169,5 @@ export class AdminPage extends React.Component{
 </>
 	)};
 }
-	
+
 export default AdminPage;

@@ -1,6 +1,6 @@
 /* eslint eqeqeq: "off" */
 import React, { Component } from 'react';
-import luigi from './../Luigi.png';
+import luigi from './../images/Luigi.png';
 import { Card, Button, Col, Alert, Container } from 'react-bootstrap';
 import { RealRepo } from '../../api/realRepo';
 import { Link, Redirect } from 'react-router-dom';
@@ -24,7 +24,6 @@ export class LoginPage extends Component{
 			)
 			.then(user => {
 				this.setState(user)
-				console.log(user);
 				if(this.state.loginAuth == 0) {
 					this.setState(
 						{
@@ -32,7 +31,6 @@ export class LoginPage extends Component{
 						}
 					)
 				} else {
-					console.log(this.state);
 					this.props.setAuthState(true, this.state.userId, this.state.isAdmin);
 					this.props.setZipCode(this.state.zip);
 					this.setState(

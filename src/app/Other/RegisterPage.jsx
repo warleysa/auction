@@ -1,6 +1,6 @@
 /* eslint eqeqeq: "off" */
 import React, { Component } from 'react';
-import luigi from './../Luigi.png';
+import luigi from './../images/Luigi.png';
 import { Card, Button, Row, Col, Alert } from 'react-bootstrap';
 import { Link, Redirect } from 'react-router-dom';
 import { RealRepo } from '../../api/realRepo';
@@ -31,7 +31,6 @@ export class RegisterPage extends Component {
 				lastName: this.state.lastName
 			})
 				.then(user => {
-					console.log("Register submitted");
 					if(this.state.errorCode == -1) {
 		 				window.alert('This username has already been taken! Please choose another!');
 		 			} else {
@@ -55,13 +54,10 @@ export class RegisterPage extends Component {
 
 	usernameCheck(e) {
 		this.setState({ username: e.target.value });
-		console.log("Username check: -> " + e.target.value);
 		if(e.target.value) {
 			this.apiRepo.checkUsername(e.target.value)
 				.then(u => {
 					this.setState(u);
-					console.log(u);
-					console.log(this.state);
 					if(this.state.userAvailable == 0) {
 						this.setState(state => ({
 							usernameNotAvailable: true
@@ -76,7 +72,6 @@ export class RegisterPage extends Component {
 	}
 
 	hideLoginModal() {
-		console.log("Closing Modal");
 		this.props.hideLoginModal(false);
 	}
 

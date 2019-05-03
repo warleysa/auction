@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { Container, Form, Row, Col, Button, Tabs, Tab, ButtonToolbar, Alert } from 'react-bootstrap';
-import './UserProfile.css';
+import './style/UserProfile.css';
 import MyCarsList from './MyCarsList';
 
 import AddCarModal from './AddCarModal';
@@ -271,7 +271,6 @@ class UserProfile extends React.Component {
     );
   }
 	componentWillReceiveProps(props) {
-		// console.log(this.state);
 		if(props.userInfo) {
 			this.setState({
 				profile: props.userInfo

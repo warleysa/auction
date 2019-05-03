@@ -25,6 +25,11 @@ export class StorageManage {
 			let now = dateString;
 			dateString = authStatus.timestamp;
 			console.log("Time Difference" + ((dateString - now) / 1000) + " - Seconds since login");
+			/*
+				Never got to this feature
+				Was suppose to log users out after a certain amount of time
+			*/
+
 		} else {
 			return false;
 		}

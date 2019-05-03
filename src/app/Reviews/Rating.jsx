@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import "./rating.css";
+import "./style/rating.css";
 
 class Rating extends Component {
 

@@ -8,12 +8,10 @@ class AddImages extends React.Component {
 	}
 
 	handleChange(selectorFiles: FileList) {
-      console.log(selectorFiles);
 			let changedFile = selectorFiles[0].toString('base64');
 			let idCardBase64 = '';
 			this.getBase64(selectorFiles[0], (result) => {
 		     idCardBase64 = result;
-				 console.log(idCardBase64);
 				 this.setImage(idCardBase64);
 			 });
   }

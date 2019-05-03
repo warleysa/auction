@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Rating from './../Reviews/Rating';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import defaultPic from '../Profile/man.png';
+import defaultPic from '../Profile/images/man.png';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import { RealRepo } from '../../api/realRepo';
@@ -34,7 +34,6 @@ class PublicUserTile extends Component {
                     feedbackLoaded: true
                 });
             });
-            console.log(this.state.sellerFeedback);
 
         }else{
             console.log("could not find user");
@@ -44,7 +43,7 @@ class PublicUserTile extends Component {
 	handleModalClose = () => {
         this.setState({ showModal: false });
     }
-    
+
     handleModalShow = () => {
         this.setState({ showModal: true });
     }
@@ -109,7 +108,7 @@ class PublicUserTile extends Component {
                     return(
                         <div>
                         {
-                            this.state.sellerFeedback.map((review, i) => 
+                            this.state.sellerFeedback.map((review, i) =>
                                 <div className="m-1" key={`review${i}`}>
                                     <div className="float-right">
                                         <Rating value={review.Rating}/>
@@ -118,7 +117,7 @@ class PublicUserTile extends Component {
                                     <hr/>
                                     <p>"{review.Description}"</p>
                                 </div>
-                            ) 
+                            )
                         }
                         </div>
                     );
@@ -128,7 +127,7 @@ class PublicUserTile extends Component {
             }else{
                 return(
                     <div className="text-center mb-1">Seller doesn't have any reviews</div>
-                ); 
+                );
             }
         }
 
@@ -149,7 +148,7 @@ class PublicUserTile extends Component {
                         </ul>
                     </div>
 
-                   
+
 
                     <div className="row ">
                         <div className=" col-9 pr-1 py-1">
@@ -160,7 +159,7 @@ class PublicUserTile extends Component {
                                 aria-expanded="false"
                                 aria-controls={`feedback${this.props.profile.UserId}`}
                                 onClick={e => this.updateFeedback(this.props.profile.UserId)}>Seller Feedback</button>
-                            
+
                         </div>
                         <div className="col-3 pl-1 py-1">
                             <button className="btn btn-success btn-block text-center"
@@ -169,7 +168,7 @@ class PublicUserTile extends Component {
                     </div>
 
                 </Card.Body>
-          
+
                 <div className="collapse collapsed p-3" id={`feedback${this.props.profile.UserId}`}>
                     <div className="card card-body"
                          style={{"max-height": "250px"}}>

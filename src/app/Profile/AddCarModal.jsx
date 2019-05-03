@@ -9,9 +9,9 @@ import AddImages	from './AddImages';
 import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Car from './../../models/car';
-import carData from './carData.json';
+import carData from './json/carData.json';
 import moment from 'moment';
-import './UserProfile.css';
+import './style/UserProfile.css';
 
 import { CirclePicker } from 'react-color';
 

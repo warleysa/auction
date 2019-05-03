@@ -42,14 +42,12 @@ export class RealRepo {
 
 		getUserInfo(userId) {
 			console.log("Getting User Info... API Call");
-			// console.log(userId);
-			// console.log("Local Storage: " + this.storage.getUserId() + ", Passed in: " + userId);
 			if(!userId) {
 				userId = this.storage.getUserId();
 				return new Promise((resolve, reject) => {
 						axios.get(`${this.url}/user/${userId}`, this.config) //private
 								.then(resp => resolve(resp.data))
-								.catch(resp => alert(resp));
+								.catch(resp => console.log(resp));
 				});
 			}
 			if(this.storage.getUserId() == userId) {
@@ -62,7 +60,7 @@ export class RealRepo {
 				return new Promise((resolve, reject) => {
 						axios.get(`${this.url}/user/${userId}`, this.config)
 								.then(resp => resolve(resp.data))
-								.catch(resp => alert(resp));
+								.catch(resp => console.log(resp));
 				});
 			}
     }
@@ -79,7 +77,6 @@ export class RealRepo {
 
 		postAuction(car) {
 				console.log("Adding Car... API Call POST");
-				// console.log(car.apiJsonFormat());
         return new Promise((resolve, reject) => {
             axios.post(`${this.url}/auction`, car.apiJsonFormat(), this.config)
                 .then(resp => resolve(resp.data))
@@ -89,7 +86,6 @@ export class RealRepo {
 
 		getAuctionsByUser(userId) {
 				console.log("Getting Auctions... API Call GET");
-				// console.log(userId);
 				if(!userId) {
 					userId = this.storage.getUserId();
 	        return new Promise((resolve, reject) => {
@@ -125,8 +121,6 @@ export class RealRepo {
 
 		setAuctionImage(auctionPicture, auctionId) {
 				console.log("Image Upload Auction... API Call");
-				// console.log(auctionPicture);
-				// console.log(auctionId);
         return new Promise((resolve, reject) => {
             axios.put(`${this.url}/auction/image`, {image: auctionPicture, auctionId: auctionId} , this.config)
                 .then(resp => resolve(resp.data))
@@ -138,7 +132,7 @@ export class RealRepo {
 			return new Promise((resolve, reject)=> {
 				axios.get(`${this.url}/users`, this.config)
 					.then(resp=> resolve(resp.data))
-					.catch(resp=>alert(resp));
+					.catch(resp=>console.log(resp));
 			});
 		}
 
@@ -181,7 +175,6 @@ export class RealRepo {
 
 		postReview(sellerReview) {
 			console.log("Adding review... API Call POST");
-			// console.log(sellerReview.apiJsonFormat());
 			return new Promise((resolve, reject) => {
 					axios.post(`${this.url}/rating`, sellerReview.apiJsonFormat(), this.config)
 							.then(resp => resolve(resp.data))
@@ -192,8 +185,6 @@ export class RealRepo {
 		changePassword(userName, passWord){
 			return new Promise((resolve, reject) => {
 				console.log("changing password");
-				// console.log(userName);
-				// console.log(passWord);
 				axios.put(`${this.url}/user/password`, userName,passWord, this.config)
 					.then(resp=> resolve(resp.data))
 					.catch(resp=>alert(resp));
@@ -218,7 +209,6 @@ export class RealRepo {
 
 		postBid(bid) {
 			console.log("Adding bid... API Call POST");
-			console.log(bid.apiJsonFormat());
 			return new Promise((resolve, reject) => {
 					axios.post(`${this.url}/bid`, bid.apiJsonFormat(), this.config)
 							.then(resp => resolve(resp.data))

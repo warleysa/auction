@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Rating from './../Reviews/Rating';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import defaultPic from '../Profile/man.png';
+import defaultPic from '../Profile/images/man.png';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import { RealRepo } from '../../api/realRepo';
@@ -26,7 +26,6 @@ class UserTile extends Component {
     updateFeedback(userId) {
         console.log("running updateFeedback");
         if(userId){
-            console.log("found userID");
             this.realRepo.getUserFeedback2(userId)
             .then(fb => {
                 this.setState({
@@ -34,7 +33,6 @@ class UserTile extends Component {
                     feedbackLoaded: true
                 });
             });
-            console.log(this.state.sellerFeedback);
 
         }else{
             console.log("could not find user");
@@ -62,7 +60,6 @@ class UserTile extends Component {
     render(){
     const feedbackModalContent = () => {
 			if(this.state.activeUserId){
-				console.log("Loading Seller Form");
 				return (
 					<SellerReviewForm sellerUserId={+this.props.user.UserId} activeUserId={+this.props.activeUserId}/>
 				)
