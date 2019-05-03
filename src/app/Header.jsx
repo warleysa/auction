@@ -6,9 +6,6 @@ import { Container, Dropdown } from 'react-bootstrap';
 
 import logo from './images/logo.ico';
 
-
-var headerColor = "#e3f2fd";
-
 export class Header extends React.Component {
 
 	setAuthSignOut() {
