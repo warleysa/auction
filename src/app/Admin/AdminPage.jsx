@@ -39,7 +39,8 @@ export class AdminPage extends React.Component{
 									<th>Time left</th>
 									<th>Seller ID</th>
 									<th>Seller Name</th>
-									<th>Picture</th>
+									<th>Pic</th>
+									<th>Edit Pic</th>
 									<th></th>
 								</tr>
 							</thead>
@@ -54,6 +55,7 @@ export class AdminPage extends React.Component{
 										<td>{ a.time_left }</td>
 										<td>{ a.userId}</td>
 										<td>{ a.UserName}</td>
+										<img className="thumbnail img-responsive" alt={a.make} src={a.image} />
 										<td>
 											<label className="btn btn-outline-primary btn-sm w-100" id="profilePictureUpload">
 												Pic
