@@ -63,6 +63,17 @@ export class AuctionLanding extends React.Component {
 			return this.state;
 		}
 
+		handleFilterClear(e) {
+			this.setState({
+	        filterMake: 'All Makes',
+					filterModel: 'All Models',
+					filterColor: "#000000",
+					listModels: [],
+					filteredAuctions: this.state.auctions
+	    })
+			return this.state;
+		}
+
 
     render() {
 			if(this.state.auctions.length > 0){
