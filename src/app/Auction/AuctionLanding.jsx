@@ -87,6 +87,7 @@ export class AuctionLanding extends React.Component {
 									filterModel={this.state.filterModel}
 									filterColor={this.state.filterColor}
 									listModels={this.state.listModels}
+									handleFilterClear={(e) => this.handleFilterClear(e)}
 									handleFilterMakeChange={(e) => this.handleFilterMakeChange(e)}
 									handleFilterModelChange={(e) => this.handleFilterModelChange(e)}
 									handleFilterColorChange={(c) => this.handleFilterColorChange(c)}/>
@@ -112,6 +113,7 @@ export class AuctionLanding extends React.Component {
 								filterModel={this.state.filterModel}
 								filterColor={this.state.filterColor}
 								listModels={this.state.listModels}
+								handleFilterClear={(e) => this.handleFilterClear(e)}
 								handleFilterMakeChange={(e) => this.handleFilterMakeChange(e)}
 								handleFilterModelChange={(e) => this.handleFilterModelChange(e)}
 								handleFilterColorChange={(c) => this.handleFilterColorChange(c)}/>
