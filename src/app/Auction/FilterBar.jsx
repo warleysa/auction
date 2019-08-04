@@ -67,8 +67,7 @@ export const FilterBar = (props) => {
 										</div>
 									</div>
 								</article>
-								<hr className="mb-0"/>
-								<article className="card-group-item">
+								<article className="card-group-item m-2">
 									<Button variant="secondary"
 										onClick={(e) => props.handleFilterClear(e)}
 										type="submit" className="form-control">

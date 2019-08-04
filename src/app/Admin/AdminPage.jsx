@@ -55,7 +55,9 @@ export class AdminPage extends React.Component{
 										<td>{ a.time_left }</td>
 										<td>{ a.userId}</td>
 										<td>{ a.UserName}</td>
-										<img className="pt-2 thumbnail img-responsive" alt={a.make} src={a.image} width="50rem" height="50rem"/>
+										<td>
+											<img className="pt-2 thumbnail img-responsive" alt={a.make} src={a.image} width="50rem" height="50rem"/>
+										</td>
 										<td>
 											<label className="btn btn-outline-primary btn-sm w-100" id="profilePictureUpload">
 												Pic
